@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dt4g2ewu42uek"]
 
 [ext_resource type="Script" path="res://assets/fruits/tomato/tomato.gd" id="1_1rutx"]
-[ext_resource type="Texture2D" uid="uid://dmsem81nqueop" path="res://assets/fruits/tomato/tomato.png" id="2_6idki"]
+[ext_resource type="SpriteFrames" uid="uid://bqcfvqs1b1mms" path="res://assets/fruits/tomato/tomato_frames.tres" id="2_5awyp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0y85t"]
 radius = 78.0
@@ -14,9 +14,10 @@ floor_max_angle = 0.0
 floor_snap_length = 0.0
 script = ExtResource("1_1rutx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6idki")
+sprite_frames = ExtResource("2_5awyp")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0y85t")

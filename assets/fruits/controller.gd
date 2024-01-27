@@ -103,19 +103,17 @@ func process_hit(player):
 		player = "BANANA"
 	make_laugh(player, 5)
 		
-func flip_uv_if_necessary(mat : StandardMaterial3D, idle_anim, walk_anim):
+func update_animation(animated_sprite, idle_anim, walk_anim):
 	
 	if abs(velocity.x) > 0.0:
-		mat.albedo_texture = walk_anim
-		anim_state = AnimState.WALK
+		animated_sprite.play("walk")
 	else:
-		mat.albedo_texture = idle_anim
-		anim_state = AnimState.IDLE
+		animated_sprite.play("idle")
 
 	if velocity.x > 0.0:
-		mat.uv1_scale.x = -1
+		animated_sprite.flip_h = true
 	elif velocity.x < 0.0:
-		mat.uv1_scale.x = 1
+		animated_sprite.flip_h = false
 
 func make_laugh(player, intensity):
 	funny += intensity
