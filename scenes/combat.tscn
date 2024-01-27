@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=5 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
+[ext_resource type="PackedScene" uid="uid://bg5fug08dimbt" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
+[ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="3_0iy8d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1147, 49)
@@ -9,6 +11,11 @@ size = Vector2(1147, 49)
 
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 position = Vector2(308, 391)
+
+[node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
+position = Vector2(954, 388)
+scale = Vector2(1.00106, 1.02448)
+script = ExtResource("3_0iy8d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
