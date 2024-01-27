@@ -1,11 +1,11 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://5yxjellvaehc"]
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://h5kr26k8vncq"]
 
 [ext_resource type="Texture2D" uid="uid://cww5idu0f85y3" path="res://assets/fruits/banana/banana_block_0.png" id="1_2hnj0"]
-[ext_resource type="Texture2D" uid="uid://dtgix7k60dl5e" path="res://assets/fruits/banana/banana_idle_0.png" id="1_h1476"]
-[ext_resource type="Texture2D" uid="uid://btedy53tpop1n" path="res://assets/fruits/banana/banana_idle_1.png" id="2_hk552"]
+[ext_resource type="Texture2D" uid="uid://kc8rxr31ixs1" path="res://assets/fruits/banana/idle/platano_anims_idle_01.png" id="2_n5xnt"]
 [ext_resource type="Texture2D" uid="uid://lm60g1dewl3p" path="res://assets/fruits/banana/banana_walk_0.png" id="3_3affm"]
+[ext_resource type="Texture2D" uid="uid://dqjc1xf02w8l4" path="res://assets/fruits/banana/idle/platano_anims_idle_02.png" id="3_yrsxx"]
+[ext_resource type="Texture2D" uid="uid://31cbuclomfn3" path="res://assets/fruits/banana/idle/platano_anims_idle_03.png" id="4_8rc78"]
 [ext_resource type="Texture2D" uid="uid://dc7ebpyrjdao7" path="res://assets/fruits/banana/banana_walk_1.png" id="4_tsdkq"]
-[ext_resource type="Texture2D" uid="uid://bryyjs4py03q" path="res://assets/fruits/banana/banana_idle_2.png" id="4_xh8yp"]
 
 [resource]
 animations = [{
@@ -19,13 +19,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_h1476")
+"texture": ExtResource("2_n5xnt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_hk552")
+"texture": ExtResource("3_yrsxx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_xh8yp")
+"texture": ExtResource("4_8rc78")
 }],
 "loop": true,
 "name": &"idle",

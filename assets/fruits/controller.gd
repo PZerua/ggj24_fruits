@@ -152,10 +152,10 @@ func update_animation():
 		sprite.play("idle")
 
 	if velocity.x > 0.0:
-		sprite.flip_h = true
+		sprite.flip_h = false
 		side = Sides.RIGHT
 	elif velocity.x < 0.0:
-		sprite.flip_h = false
+		sprite.flip_h = true
 		side = Sides.LEFT
 
 func toggle_punch_enabled():

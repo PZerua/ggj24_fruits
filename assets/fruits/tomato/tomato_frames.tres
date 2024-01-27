@@ -1,9 +1,9 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cxoci2w2tp4ss"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bn4sv2khs84d3"]
 
 [ext_resource type="Texture2D" uid="uid://d13c05hcxb8nk" path="res://assets/fruits/tomato/tomato_block_0.png" id="1_2p3sq"]
-[ext_resource type="Texture2D" uid="uid://c4hcwm53ljwn8" path="res://assets/fruits/tomato/tomato_idle_0.png" id="1_f23yb"]
-[ext_resource type="Texture2D" uid="uid://c1sfinvbvvbaq" path="res://assets/fruits/tomato/tomato_idle_1.png" id="2_ovs3b"]
+[ext_resource type="Texture2D" uid="uid://bq6xau7jrklaj" path="res://assets/fruits/tomato/idle/idle_0.png" id="2_q1d6s"]
 [ext_resource type="Texture2D" uid="uid://brxn3f8wepq7v" path="res://assets/fruits/tomato/tomato_walk_0.png" id="3_or3p7"]
+[ext_resource type="Texture2D" uid="uid://djk37seka00by" path="res://assets/fruits/tomato/idle/idle_1.png" id="3_ynyaw"]
 [ext_resource type="Texture2D" uid="uid://bu5wut5763tcy" path="res://assets/fruits/tomato/tomato_walk_1.png" id="4_wstpp"]
 
 [resource]
@@ -18,10 +18,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_f23yb")
+"texture": ExtResource("2_q1d6s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ovs3b")
+"texture": ExtResource("3_ynyaw")
 }],
 "loop": true,
 "name": &"idle",

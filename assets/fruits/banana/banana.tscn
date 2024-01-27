@@ -126,11 +126,12 @@ floor_snap_length = 0.0
 script = ExtResource("1_m5ces")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(1.1, 1.1)
 sprite_frames = ExtResource("2_1t8ls")
 animation = &"idle"
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(6.99731, -1.01862)
 shape = SubResource("CapsuleShape2D_hqn10")
 
 [node name="Colliders" type="Node2D" parent="."]
