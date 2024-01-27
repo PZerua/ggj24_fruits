@@ -7,5 +7,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	value = %Banana.life_points;
-	if value == 200:
-		$"../..".end()
+	if value == 100:
+		$"../../..".end()

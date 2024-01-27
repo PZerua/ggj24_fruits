@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6wyeafjeby6t"
-path="res://.godot/imported/layer_05_2048 x 1546.png-5fe524d802295e1ed53a639cbf7363ad.ctex"
+uid="uid://dc0babkt42pj8"
+path="res://.godot/imported/bar-tomato.png-8b3c77837da19f22cc2160c56906c3cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/layer_05_2048 x 1546.png"
-dest_files=["res://.godot/imported/layer_05_2048 x 1546.png-5fe524d802295e1ed53a639cbf7363ad.ctex"]
+source_file="res://assets/bars/bar-tomato.png"
+dest_files=["res://.godot/imported/bar-tomato.png-8b3c77837da19f22cc2160c56906c3cf.ctex"]
 
 [params]
 
