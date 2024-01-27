@@ -6,6 +6,7 @@ const SPEED = 700.0
 const JUMP_VELOCITY = -1200.0
 
 var enable_movement : bool = true
+var funny: int = 50;
 
 var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -76,6 +77,7 @@ func process_movement(delta, jump_button, move_buttons):
 	# Handle jump.
 	if Input.is_action_just_pressed(jump_button) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		make_laugh(5)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -84,6 +86,8 @@ func process_movement(delta, jump_button, move_buttons):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	
 
 	move_and_slide()
 
@@ -107,3 +111,7 @@ func flip_uv_if_necessary(mat : StandardMaterial3D, idle_anim, walk_anim):
 		mat.uv1_scale.x = -1
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
+
+func make_laugh(intensity):
+	funny += intensity
+
