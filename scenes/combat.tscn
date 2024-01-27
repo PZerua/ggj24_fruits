@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://by7e8og87xis2"]
+
+[ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
+size = Vector2(1147, 49)
+
+[node name="combat_scene" type="Node2D"]
+
+[node name="Tomato" parent="." instance=ExtResource("1_h62js")]
+position = Vector2(308, 391)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(575, 624)
+shape = SubResource("RectangleShape2D_f6e4s")
