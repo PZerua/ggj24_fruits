@@ -42,9 +42,9 @@ func _process(delta):
 	
 	# Invert collider
 	if velocity.x > 0.0:
-		$Punch.scale.x = 1
+		$Colliders.scale.x = 1
 	elif velocity.x < 0.0:
-		$Punch.scale.x = -1
+		$Colliders.scale.x = -1
 	
 func process_moves(buttons):
 	
@@ -125,3 +125,10 @@ func update_animation():
 		sprite.flip_h = true
 	elif velocity.x < 0.0:
 		sprite.flip_h = false
+
+	
+func toggle_punch_enabled():
+	$Colliders/PunchTrigger/PunchCollider.disabled = !$Colliders/PunchTrigger/PunchCollider.disabled
+
+func toggle_kick_enabled():
+	$Colliders/KickTrigger/KickCollider.disabled = !$Colliders/KickTrigger/KickCollider.disabled

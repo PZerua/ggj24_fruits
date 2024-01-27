@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="1_m5ces"]
 [ext_resource type="SpriteFrames" uid="uid://h5kr26k8vncq" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
-[ext_resource type="Script" path="res://assets/fruits/tomato/PunchCollider.gd" id="3_wy7bt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
 radius = 77.037
 height = 251.37
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xue5o"]
+size = Vector2(75.0024, 29.9361)
 
 [sub_resource type="Animation" id="Animation_u0afy"]
 resource_name = "Punch"
@@ -15,7 +17,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Punch/PunchTrigger:position")
+tracks/0/path = NodePath("Colliders/PunchTrigger:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Punch/PunchTrigger/PunchCollider")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,10 +37,10 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"toggle_enabled"
+"method": &"toggle_punch_enabled"
 }, {
 "args": [],
-"method": &"toggle_enabled"
+"method": &"toggle_punch_enabled"
 }]
 }
 
@@ -47,7 +49,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Punch/PunchTrigger:position")
+tracks/0/path = NodePath("Colliders/PunchTrigger:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,9 +58,56 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(38, -5)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Colliders/KickTrigger:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(88.8826, 44.2367)]
+}
+
+[sub_resource type="Animation" id="Animation_o8xpe"]
+resource_name = "Kick"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Colliders/KickTrigger:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(88.8826, 44.2367), Vector2(126.709, 109.338), Vector2(88.8826, 44.2367)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"toggle_kick_enabled"
+}, {
+"args": [],
+"method": &"toggle_kick_enabled"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6cbsb"]
 _data = {
+"Kick": SubResource("Animation_o8xpe"),
 "Punch": SubResource("Animation_u0afy"),
 "RESET": SubResource("Animation_aogj6")
 }
@@ -66,8 +115,6 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m08m5"]
 radius = 12.0026
 height = 76.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hsuj6"]
 
 [node name="Banana" type="CharacterBody2D" groups=["Fruit"]]
 rotation = 0.00266102
@@ -86,44 +133,42 @@ animation = &"idle"
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hqn10")
 
-[node name="Punch" type="Node2D" parent="."]
-unique_name_in_owner = true
+[node name="Colliders" type="Node2D" parent="."]
 scale = Vector2(-1, 1)
 
-[node name="PunchTrigger" type="Area2D" parent="Punch"]
-position = Vector2(38, -5)
-rotation = -3.14159
+[node name="KickTrigger" type="Area2D" parent="Colliders"]
+position = Vector2(88.8826, 44.2367)
+scale = Vector2(1, -1)
 collision_layer = 0
 
-[node name="PunchAnimation" type="AnimationPlayer" parent="Punch/PunchTrigger"]
+[node name="KickCollider" type="CollisionShape2D" parent="Colliders/KickTrigger"]
+shape = SubResource("RectangleShape2D_xue5o")
+disabled = true
+
+[node name="KickAnimation" type="AnimationPlayer" parent="Colliders/KickTrigger"]
 unique_name_in_owner = true
 root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_6cbsb")
 }
 
-[node name="PunchCollider" type="CollisionShape2D" parent="Punch/PunchTrigger"]
+[node name="PunchTrigger" type="Area2D" parent="Colliders"]
+position = Vector2(38, -5)
+scale = Vector2(1, -1)
+collision_layer = 0
+
+[node name="PunchCollider" type="CollisionShape2D" parent="Colliders/PunchTrigger"]
 rotation = 1.5708
+scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_m08m5")
 disabled = true
-script = ExtResource("3_wy7bt")
 
-[node name="Kick" type="Node2D" parent="."]
+[node name="PunchAnimation" type="AnimationPlayer" parent="Colliders/PunchTrigger"]
 unique_name_in_owner = true
-scale = Vector2(-1, 1)
-
-[node name="KickTrigger" type="Area2D" parent="Kick"]
-position = Vector2(50.1909, 71.6828)
-rotation = 3.14159
-collision_layer = 0
-
-[node name="KickCollider" type="CollisionShape2D" parent="Kick/KickTrigger"]
-shape = SubResource("CapsuleShape2D_hsuj6")
-
-[node name="KickAnimation" type="AnimationPlayer" parent="Kick/KickTrigger"]
 root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_6cbsb")
 }
 
-[connection signal="body_entered" from="Punch/PunchTrigger" to="." method="_on_punch_trigger_body_entered"]
+[connection signal="body_entered" from="Colliders/KickTrigger" to="." method="_on_kick_trigger_body_entered"]
+[connection signal="body_entered" from="Colliders/PunchTrigger" to="." method="_on_punch_trigger_body_entered"]
