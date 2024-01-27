@@ -1,16 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://dt4g2ewu42uek"]
 
 [ext_resource type="Script" path="res://assets/fruits/tomato/tomato.gd" id="1_1rutx"]
-[ext_resource type="SpriteFrames" uid="uid://bqcfvqs1b1mms" path="res://assets/fruits/tomato/tomato_frames.tres" id="2_5awyp"]
+[ext_resource type="SpriteFrames" uid="uid://bn4sv2khs84d3" path="res://assets/fruits/tomato/tomato_frames.tres" id="2_5awyp"]
 [ext_resource type="Script" path="res://assets/fruits/tomato/PunchCollider.gd" id="3_e7hte"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0y85t"]
 radius = 78.0
 height = 172.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfrdh"]
-radius = 12.0026
-height = 76.0
 
 [sub_resource type="Animation" id="Animation_u0afy"]
 resource_name = "Punch"
@@ -19,7 +15,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PunchTrigger:position")
+tracks/0/path = NodePath("Punch/PunchTrigger:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PunchTrigger/PunchCollider")
+tracks/1/path = NodePath("Punch/PunchTrigger/PunchCollider")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -51,7 +47,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PunchTrigger:position")
+tracks/0/path = NodePath("Punch/PunchTrigger:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,6 +63,10 @@ _data = {
 "RESET": SubResource("Animation_aogj6")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfrdh"]
+radius = 12.0026
+height = 76.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmcov"]
 
 [node name="Tomato" type="CharacterBody2D" groups=["Fruit"]]
@@ -79,41 +79,53 @@ script = ExtResource("1_1rutx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_5awyp")
-animation = &"walk"
+animation = &"idle"
+frame = 1
+frame_progress = 0.27589
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0y85t")
 
-[node name="PunchTrigger" type="Area2D" parent="."]
+[node name="Punch" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PunchTrigger" type="Area2D" parent="Punch"]
 position = Vector2(38, -5)
+rotation = -3.14159
 collision_layer = 0
 collision_mask = 2
 
-[node name="PunchCollider" type="CollisionShape2D" parent="PunchTrigger"]
+[node name="PunchAnimation" type="AnimationPlayer" parent="Punch/PunchTrigger"]
+unique_name_in_owner = true
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_6cbsb")
+}
+
+[node name="PunchCollider" type="CollisionShape2D" parent="Punch/PunchTrigger"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cfrdh")
 disabled = true
 script = ExtResource("3_e7hte")
 
-[node name="PunchAnimation" type="AnimationPlayer" parent="PunchTrigger"]
+[node name="Kick" type="Node2D" parent="."]
 unique_name_in_owner = true
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_6cbsb")
-}
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="KickTrigger" type="Area2D" parent="."]
-position = Vector2(69, 72)
+[node name="KickTrigger" type="Area2D" parent="Kick"]
+position = Vector2(-69, 72)
+rotation = 3.14159
 collision_layer = 0
 collision_mask = 2
 
-[node name="KickCollider" type="CollisionShape2D" parent="KickTrigger"]
+[node name="KickCollider" type="CollisionShape2D" parent="Kick/KickTrigger"]
 shape = SubResource("CapsuleShape2D_vmcov")
 
-[node name="KickAnimation" type="AnimationPlayer" parent="KickTrigger"]
-root_node = NodePath("../..")
+[node name="KickAnimation" type="AnimationPlayer" parent="Kick/KickTrigger"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_6cbsb")
 }
 
-[connection signal="body_entered" from="PunchTrigger" to="." method="_on_punch_trigger_body_entered"]
+[connection signal="body_entered" from="Punch/PunchTrigger" to="." method="_on_punch_trigger_body_entered"]
