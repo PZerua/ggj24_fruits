@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=15 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dlam4itbryoui" path="res://assets/bars/red-bar.jpg" id="7_ukvkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
-size = Vector2(1147, 49)
+size = Vector2(3135, 53.5)
 
 [sub_resource type="Animation" id="Animation_52gks"]
 length = 0.001
@@ -66,6 +66,9 @@ _data = {
 "fade_out": SubResource("Animation_phtuo")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xay3"]
+size = Vector2(25.1396, 20)
+
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("1_sshmf")
 
@@ -73,17 +76,28 @@ script = ExtResource("1_sshmf")
 unique_name_in_owner = true
 position = Vector2(308, 391)
 
+[node name="Camera2D" type="Camera2D" parent="Tomato"]
+zoom = Vector2(0.8, 0.8)
+limit_left = -400
+limit_top = -200
+limit_right = 1600
+limit_bottom = 800
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+editor_draw_limits = true
+
 [node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
 unique_name_in_owner = true
 position = Vector2(939, 401)
 rotation = -0.00158102
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(575, 624)
+position = Vector2(639.5, 626.25)
 shape = SubResource("RectangleShape2D_f6e4s")
 
 [node name="FunnyBar" type="Node2D" parent="."]
@@ -160,5 +174,22 @@ libraries = {
 "": SubResource("AnimationLibrary_2t27m")
 }
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-412, 296)
+rotation = 1.57079
+scale = Vector2(32.96, 1)
+shape = SubResource("RectangleShape2D_4xay3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(1615, 299)
+rotation = 1.57079
+scale = Vector2(32.96, 1)
+shape = SubResource("RectangleShape2D_4xay3")
+
 [connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="CanvasLayer/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
