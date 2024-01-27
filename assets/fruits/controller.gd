@@ -45,13 +45,13 @@ func process_moves(buttons):
 	
 	# BLOCK
 	
-	if Input.is_action_pressed(block_button):
+	if Input.is_action_pressed(block_button) and available_hit_blocks > 0 and is_on_floor():
 		is_blocking = true
 		
-	if Input.is_action_just_released(block_button):
+	if Input.is_action_just_released(block_button) or available_hit_blocks == 0:
 		is_blocking = false
 		recover_block_timer = TIME_RECOVER_BLOCK
-	
+		
 	# PUNCH
 	
 	if Input.is_action_pressed(punch_button):
@@ -93,7 +93,7 @@ func process_hit(body, damage):
 	if body.is_blocking:
 		body.available_hit_blocks -= 1
 		body.available_hit_blocks = max(body.available_hit_blocks, 0)
-		print("block used... (", body.available_hit_blocks, ")")
+		print("enemy used block... (", body.available_hit_blocks, " remaining)")
 	else:
 		body.life_points -= damage
 		life_points += damage
