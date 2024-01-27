@@ -6,13 +6,6 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("PUNCH_1"):
 		%PunchAnimation.play("Punch")
-	
-	update_animation($AnimatedSprite2D, "", "")
-	
-	if velocity.x > 0.0:
-		%Punch.scale.x = 1
-	elif velocity.x < 0.0:
-		%Punch.scale.x = -1
 
 func _physics_process(delta):
 	process_movement(delta, "JUMP_1", ["MOVE_LEFT_1", "MOVE_RIGHT_1"])
