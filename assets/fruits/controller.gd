@@ -7,7 +7,7 @@ var life_points : int = 50
 # MOVEMENT STUFF
 
 const SPEED = 700.0
-const JUMP_VELOCITY = -1200.0
+const JUMP_VELOCITY = -1300.0
 
 var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -67,8 +67,11 @@ func process_movement(delta, jump_button, move_buttons):
 	if is_blocking:
 		return
 
+	var final_speed = SPEED
+	
 	# Add the gravity.
 	if not is_on_floor():
+		final_speed *= 1.5
 		velocity.y += gravity * delta
 
 	# Handle jump.
@@ -79,9 +82,9 @@ func process_movement(delta, jump_button, move_buttons):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(move_buttons[0], move_buttons[1])
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * final_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, final_speed)
 
 	move_and_slide()
 

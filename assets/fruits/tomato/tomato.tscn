@@ -129,3 +129,4 @@ libraries = {
 }
 
 [connection signal="body_entered" from="Punch/PunchTrigger" to="." method="_on_punch_trigger_body_entered"]
+[connection signal="body_entered" from="Kick/KickTrigger" to="." method="_on_kick_trigger_body_entered"]
