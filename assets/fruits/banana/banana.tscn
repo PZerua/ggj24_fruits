@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://qir670b60hs5"]
 
-[ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="1_dqe4f"]
-[ext_resource type="Texture2D" uid="uid://c3uxi7f5ppecd" path="res://assets/fruits/banana/banana.png" id="2_u2ixo"]
+[ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="1_m5ces"]
+[ext_resource type="SpriteFrames" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
 radius = 55.0
@@ -20,11 +20,12 @@ collision_mask = 5
 slide_on_ceiling = false
 floor_max_angle = 0.0
 floor_snap_length = 0.0
-script = ExtResource("1_dqe4f")
+script = ExtResource("1_m5ces")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_u2ixo")
+sprite_frames = ExtResource("2_1t8ls")
+animation = &"idle"
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hqn10")

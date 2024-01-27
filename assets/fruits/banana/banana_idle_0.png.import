@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlqllibrcv2vq"
-path="res://.godot/imported/tomato.jpg-2be1b01585b2208fdbc79ad949c84460.ctex"
+uid="uid://cywab0ua0k3gx"
+path="res://.godot/imported/banana_idle_0.png-a1fca40f6d62e6f7f7d65ca599777fdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/tomato/tomato.jpg"
-dest_files=["res://.godot/imported/tomato.jpg-2be1b01585b2208fdbc79ad949c84460.ctex"]
+source_file="res://assets/fruits/banana/banana_idle_0.png"
+dest_files=["res://.godot/imported/banana_idle_0.png-a1fca40f6d62e6f7f7d65ca599777fdc.ctex"]
 
 [params]
 

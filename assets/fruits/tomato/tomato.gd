@@ -2,12 +2,10 @@ extends "res://assets/fruits/controller.gd"
 
 func _process(delta):
 
-	#var mat : StandardMaterial3D = %Sprite2D.get_surface_override_material(0)
-	#flip_uv_if_necessary(mat, "", "")
-	
 	if Input.is_action_just_pressed("PUNCH_1"):
 		%PunchAnimation.play("Punch")
-
+	
+	update_animation($AnimatedSprite2D, "", "")
 
 func _physics_process(delta):
 

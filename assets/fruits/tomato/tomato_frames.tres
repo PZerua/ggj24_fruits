@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bqcfvqs1b1mms"]
+
+[ext_resource type="Texture2D" uid="uid://c4hcwm53ljwn8" path="res://assets/fruits/tomato/tomato_idle_0.png" id="1_f23yb"]
+[ext_resource type="Texture2D" uid="uid://c1sfinvbvvbaq" path="res://assets/fruits/tomato/tomato_idle_1.png" id="2_ovs3b"]
+[ext_resource type="Texture2D" uid="uid://brxn3f8wepq7v" path="res://assets/fruits/tomato/tomato_walk_0.png" id="3_or3p7"]
+[ext_resource type="Texture2D" uid="uid://bu5wut5763tcy" path="res://assets/fruits/tomato/tomato_walk_1.png" id="4_wstpp"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f23yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ovs3b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_or3p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wstpp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
