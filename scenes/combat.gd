@@ -6,6 +6,8 @@ var seconds = 10
 func _ready():
 	$GUI/ColorRect/AnimationPlayer.play("fade_in")
 	$GUI/Label.text = str(seconds)	
+	$MultiTargetCamera.add_target($Tomato)
+	$MultiTargetCamera.add_target($Banana)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
