@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=21 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
 [ext_resource type="Texture2D" uid="uid://di8023awuqelo" path="res://assets/backgrounds/background.png" id="2_3hqkn"]
 [ext_resource type="PackedScene" uid="uid://qir670b60hs5" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
 [ext_resource type="Script" path="res://scenes/ParallaxLayer.gd" id="3_2qpbc"]
+[ext_resource type="Script" path="res://scenes/camera.gd" id="3_h0w0o"]
 [ext_resource type="Script" path="res://assets/bars/tomatoBar.gd" id="3_tiox5"]
 [ext_resource type="Texture2D" uid="uid://bv083suvinbcf" path="res://assets/backgrounds/background_1.png" id="4_hwt11"]
 [ext_resource type="Texture2D" uid="uid://cpykyj0qwbl14" path="res://assets/backgrounds/background_2.png" id="5_n4qd6"]
@@ -120,16 +121,12 @@ unique_name_in_owner = true
 z_index = 36
 position = Vector2(322, 637)
 
-[node name="Camera2D" type="Camera2D" parent="Tomato"]
-unique_name_in_owner = true
-zoom = Vector2(0.8, 0.8)
-limit_left = -400
-limit_top = -200
-limit_right = 1600
-limit_bottom = 800
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 editor_draw_limits = true
+script = ExtResource("3_h0w0o")
 
 [node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
 unique_name_in_owner = true
