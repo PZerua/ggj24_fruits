@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 700.0
+const JUMP_VELOCITY = -1200.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var isBackwardsAnim : bool = false
 

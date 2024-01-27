@@ -3,14 +3,20 @@
 [ext_resource type="Script" path="res://assets/fruits/tomato/tomato.gd" id="1_1rutx"]
 [ext_resource type="Texture2D" uid="uid://dmsem81nqueop" path="res://assets/fruits/tomato/tomato.png" id="2_6idki"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mwtx5"]
-radius = 170.065
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0y85t"]
+radius = 78.0
+height = 172.0
 
 [node name="Tomato" type="CharacterBody2D"]
+collision_mask = 6
+slide_on_ceiling = false
+floor_max_angle = 0.0
+floor_snap_length = 0.0
 script = ExtResource("1_1rutx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_6idki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mwtx5")
+shape = SubResource("CapsuleShape2D_0y85t")
