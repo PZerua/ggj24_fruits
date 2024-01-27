@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bqcfvqs1b1mms"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cxoci2w2tp4ss"]
 
 [ext_resource type="Texture2D" uid="uid://d13c05hcxb8nk" path="res://assets/fruits/tomato/tomato_block_0.png" id="1_2p3sq"]
 [ext_resource type="Texture2D" uid="uid://c4hcwm53ljwn8" path="res://assets/fruits/tomato/tomato_idle_0.png" id="1_f23yb"]
