@@ -1,13 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=18 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
+[ext_resource type="Texture2D" uid="uid://di8023awuqelo" path="res://assets/backgrounds/background.png" id="2_3hqkn"]
 [ext_resource type="Texture2D" uid="uid://b0k1h3yv0rjhw" path="res://assets/bars/bar-over.png" id="2_g5582"]
 [ext_resource type="PackedScene" uid="uid://qir670b60hs5" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
+[ext_resource type="Script" path="res://scenes/ParallaxLayer.gd" id="3_2qpbc"]
 [ext_resource type="Script" path="res://assets/bars/tomatoBar.gd" id="3_tiox5"]
 [ext_resource type="Texture2D" uid="uid://cpuc5b3bdc2jc" path="res://assets/bars/yellow-orange.png" id="5_ut5nq"]
 [ext_resource type="Script" path="res://assets/bars/bananaBar.gd" id="7_u80wl"]
 [ext_resource type="Texture2D" uid="uid://dlam4itbryoui" path="res://assets/bars/red-bar.jpg" id="7_ukvkr"]
+[ext_resource type="Texture2D" uid="uid://wkv5v7kra43r" path="res://assets/backgrounds/layer_02_2048 x 1546.png" id="13_xcmmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(3135, 53.5)
@@ -72,11 +75,27 @@ size = Vector2(25.1396, 20)
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("1_sshmf")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -100
+position = Vector2(-140, -268)
+scale = Vector2(1.36, 1.36)
+motion_scale = Vector2(0.5, 0.5)
+script = ExtResource("3_2qpbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(544.118, 376.471)
+scale = Vector2(0.764706, 0.764706)
+texture = ExtResource("2_3hqkn")
+
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 unique_name_in_owner = true
-position = Vector2(308, 391)
+z_index = 36
+position = Vector2(322, 637)
 
 [node name="Camera2D" type="Camera2D" parent="Tomato"]
+unique_name_in_owner = true
 zoom = Vector2(0.8, 0.8)
 limit_left = -400
 limit_top = -200
@@ -88,11 +107,11 @@ editor_draw_limits = true
 
 [node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
 unique_name_in_owner = true
-position = Vector2(939, 401)
+position = Vector2(853, 629)
 rotation = -0.00158102
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(3, 3)
+position = Vector2(28, 156)
 collision_layer = 4
 collision_mask = 0
 
@@ -100,14 +119,40 @@ collision_mask = 0
 position = Vector2(639.5, 626.25)
 shape = SubResource("RectangleShape2D_f6e4s")
 
-[node name="FunnyBar" type="Node2D" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="transitioner" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2t27m")
+}
+
+[node name="FunnyBar" type="Node2D" parent="GUI"]
+z_index = 100
 position = Vector2(-51, 79)
 
-[node name="BarBanana" type="TextureProgressBar" parent="FunnyBar"]
-offset_left = 656.0
-offset_top = -55.0
-offset_right = 1061.0
-offset_bottom = 9.00002
+[node name="BarBanana" type="TextureProgressBar" parent="GUI/FunnyBar"]
+z_index = 100
+offset_left = 598.0
+offset_top = -50.0
+offset_right = 1003.0
+offset_bottom = 14.0
 scale = Vector2(1, 0.405734)
 value = 50.0
 rounded = true
@@ -115,13 +160,12 @@ nine_patch_stretch = true
 texture_over = ExtResource("2_g5582")
 texture_progress = ExtResource("5_ut5nq")
 script = ExtResource("7_u80wl")
-metadata/_edit_use_anchors_ = true
 
-[node name="BarTomato" type="TextureProgressBar" parent="FunnyBar"]
-offset_left = 252.0
-offset_top = -55.0
-offset_right = 657.0
-offset_bottom = 9.0
+[node name="BarTomato" type="TextureProgressBar" parent="GUI/FunnyBar"]
+offset_left = 194.0
+offset_top = -50.0
+offset_right = 599.0
+offset_bottom = 14.0
 scale = Vector2(1, 0.395426)
 value = 50.0
 rounded = true
@@ -130,21 +174,17 @@ nine_patch_stretch = true
 texture_over = ExtResource("2_g5582")
 texture_progress = ExtResource("7_ukvkr")
 script = ExtResource("3_tiox5")
-metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
-
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="GUI"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 530.0
-offset_top = 91.0
-offset_right = 668.0
-offset_bottom = 156.0
+offset_left = -100.0
+offset_top = -269.0
+offset_right = 38.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
@@ -152,27 +192,20 @@ text = "60"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Timer" type="Timer" parent="GUI"]
+process_callback = 0
 
-[node name="transitioner" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ParallaxFront" type="ParallaxBackground" parent="."]
+layer = 1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxFront"]
+position = Vector2(-972, 11)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_2t27m")
-}
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxFront/ParallaxLayer"]
+visible = false
+position = Vector2(1306, -110)
+scale = Vector2(0.69638, 1.66332)
+texture = ExtResource("13_xcmmy")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -191,5 +224,5 @@ scale = Vector2(32.96, 1)
 shape = SubResource("RectangleShape2D_4xay3")
 
 [connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="animation_finished" from="CanvasLayer/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="GUI/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="GUI/Timer" to="." method="_on_timer_timeout"]
