@@ -28,7 +28,7 @@ func _input(event):
 	#if event.is_action_pressed("Exit"):
 		#get_tree().quit()
 
-func process_movement(delta):
+func process_movement(delta, jump_button, move_buttons):
 	
 	if not enable_movement:
 		return
@@ -38,12 +38,12 @@ func process_movement(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed(jump_button) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis(move_buttons[0], move_buttons[1])
 	if direction:
 		velocity.x = direction * SPEED
 	else:
