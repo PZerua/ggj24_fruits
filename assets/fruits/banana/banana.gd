@@ -6,4 +6,4 @@ func _physics_process(delta):
 
 func _input(event):
 	
-	process_moves(event, "BLOCK_2")
+	process_moves("BLOCK_2")
