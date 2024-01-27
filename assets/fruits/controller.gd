@@ -3,6 +3,8 @@ extends CharacterBody2D
 # FRUIT STUFF
 
 var life_points : int = 50
+var punch_damage : int = 2
+var kick_damage : int = 2
 
 # MOVEMENT STUFF
 
@@ -64,7 +66,7 @@ func process_moves(buttons):
 	
 	# BLOCK
 	
-	if Input.is_action_pressed(block_button) and available_hit_blocks > 0 and is_on_floor():
+	if Input.is_action_just_pressed(block_button) and available_hit_blocks > 0 and is_on_floor():
 		is_blocking = true
 		# Get first frame to check parry later
 		if Input.is_action_just_pressed(block_button):
@@ -76,13 +78,14 @@ func process_moves(buttons):
 		
 	# PUNCH
 	
-	if Input.is_action_pressed(punch_button):
-		pass
+		
+	if Input.is_action_just_pressed(punch_button):
+		%PunchAnimation.play("Punch")
 		
 	# KICK
 	
-	if Input.is_action_pressed(kick_button):
-		pass
+	if Input.is_action_just_pressed(kick_button):
+		%KickAnimation.play("Kick")
 
 func process_movement(delta, jump_button, move_buttons):
 	
