@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=22 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dr01rq1m3fkhp" path="res://assets/bars/bar-banana.png" id="9_4ow40"]
 [ext_resource type="Texture2D" uid="uid://dv3ajrrerbjh1" path="res://assets/bars/bar-over-tomato.png" id="9_tqscr"]
 [ext_resource type="Texture2D" uid="uid://dc0babkt42pj8" path="res://assets/bars/bar-tomato.png" id="10_1sdks"]
+[ext_resource type="Texture2D" uid="uid://wio3gtbkd2ws" path="res://assets/backgrounds/background_3.png" id="15_3vjtf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(3135, 53.5)
@@ -82,44 +83,39 @@ script = ExtResource("1_sshmf")
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
-position = Vector2(-140, -268)
-scale = Vector2(1.36, 1.36)
+position = Vector2(693, 220)
 motion_scale = Vector2(0.5, 0.5)
 script = ExtResource("3_2qpbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
-position = Vector2(544.118, 376.471)
-scale = Vector2(0.764706, 0.764706)
 texture = ExtResource("2_3hqkn")
 
 [node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
-position = Vector2(-140, -268)
-scale = Vector2(1.36, 1.36)
+position = Vector2(693, 220)
 motion_scale = Vector2(0.5, 0.5)
 script = ExtResource("3_2qpbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
-position = Vector2(544.118, 376.471)
-scale = Vector2(0.764706, 0.764706)
 texture = ExtResource("4_hwt11")
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
-position = Vector2(-140, -268)
-scale = Vector2(1.36, 1.36)
-motion_scale = Vector2(0.5, 0.5)
+position = Vector2(693, 220)
 script = ExtResource("3_2qpbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
-position = Vector2(544.118, 376.471)
-scale = Vector2(0.764706, 0.764706)
 texture = ExtResource("5_n4qd6")
 
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 unique_name_in_owner = true
 z_index = 36
-position = Vector2(322, 637)
+position = Vector2(325, 507)
+
+[node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
+unique_name_in_owner = true
+position = Vector2(889, 481)
+rotation = -0.00158102
 
 [node name="camera" type="Camera2D" parent="."]
 zoom = Vector2(0.9, 0.9)
@@ -128,18 +124,13 @@ position_smoothing_speed = 7.0
 editor_draw_limits = true
 script = ExtResource("3_h0w0o")
 
-[node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
-unique_name_in_owner = true
-position = Vector2(853, 629)
-rotation = -0.00158102
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(28, 156)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(639.5, 626.25)
+position = Vector2(732.5, 482.25)
 shape = SubResource("RectangleShape2D_f6e4s")
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -150,6 +141,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="GUI"]
 visible = false
@@ -183,6 +175,7 @@ nine_patch_stretch = true
 texture_over = ExtResource("7_7jug4")
 texture_progress = ExtResource("9_4ow40")
 script = ExtResource("7_u80wl")
+metadata/_edit_use_anchors_ = true
 
 [node name="BarTomato" type="TextureProgressBar" parent="GUI/FunnyBar"]
 offset_left = 194.0
@@ -198,6 +191,7 @@ texture_over = ExtResource("9_tqscr")
 texture_progress = ExtResource("10_1sdks")
 texture_progress_offset = Vector2(-0.235, -0.155)
 script = ExtResource("3_tiox5")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="GUI"]
 anchors_preset = 8
@@ -215,6 +209,7 @@ theme_override_font_sizes/font_size = 50
 text = "60"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="GUI"]
 process_callback = 0
@@ -223,26 +218,24 @@ process_callback = 0
 layer = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxFront"]
-position = Vector2(-972, 11)
+position = Vector2(-139, 499)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxFront/ParallaxLayer"]
-visible = false
-position = Vector2(1306, -110)
-scale = Vector2(0.69638, 1.66332)
-texture = ExtResource("5_n4qd6")
+position = Vector2(828, -278)
+texture = ExtResource("15_3vjtf")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-412, 296)
+position = Vector2(-278, 152)
 rotation = 1.57079
 scale = Vector2(32.96, 1)
 shape = SubResource("RectangleShape2D_4xay3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(1615, 299)
+position = Vector2(1669, 155)
 rotation = 1.57079
 scale = Vector2(32.96, 1)
 shape = SubResource("RectangleShape2D_4xay3")
