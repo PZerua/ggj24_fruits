@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3ywe6im5afpj"
-path="res://.godot/imported/layer_01_2048 x 1546.png-5b59c155fde6b623692dca10d3f39e8a.ctex"
+uid="uid://dv3ajrrerbjh1"
+path="res://.godot/imported/bar-over-tomato.png-ef9e26a5c91fb67552387c60bc5f09de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/layer_01_2048 x 1546.png"
-dest_files=["res://.godot/imported/layer_01_2048 x 1546.png-5b59c155fde6b623692dca10d3f39e8a.ctex"]
+source_file="res://assets/bars/bar-over-tomato.png"
+dest_files=["res://.godot/imported/bar-over-tomato.png-ef9e26a5c91fb67552387c60bc5f09de.ctex"]
 
 [params]
 

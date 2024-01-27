@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://qir670b60hs5"]
 
 [ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="1_m5ces"]
-[ext_resource type="SpriteFrames" uid="uid://h5kr26k8vncq" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
+[ext_resource type="SpriteFrames" uid="uid://5yxjellvaehc" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
 [ext_resource type="Script" path="res://assets/fruits/tomato/PunchCollider.gd" id="3_wy7bt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]

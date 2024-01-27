@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpuc5b3bdc2jc"
-path="res://.godot/imported/yellow-orange.png-4cd041d1815e235174a6ca8eaf0cd814.ctex"
+uid="uid://dr01rq1m3fkhp"
+path="res://.godot/imported/bar-banana.png-c56c0aef1c7764d663f4c1dad5aa2f1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bars/yellow-orange.png"
-dest_files=["res://.godot/imported/yellow-orange.png-4cd041d1815e235174a6ca8eaf0cd814.ctex"]
+source_file="res://assets/bars/bar-banana.png"
+dest_files=["res://.godot/imported/bar-banana.png-c56c0aef1c7764d663f4c1dad5aa2f1d.ctex"]
 
 [params]
 
