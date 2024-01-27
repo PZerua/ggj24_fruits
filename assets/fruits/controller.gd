@@ -9,8 +9,6 @@ var life_points : int = 50
 const SPEED = 700.0
 const JUMP_VELOCITY = -1200.0
 
-var enable_movement : bool = true
-
 var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # BLOCKING STUFF
@@ -53,12 +51,6 @@ func process_moves(buttons):
 	if Input.is_action_just_released(block_button):
 		is_blocking = false
 		recover_block_timer = TIME_RECOVER_BLOCK
-		
-	# THIS SIMULATED THE 'ON HIT' METHOD
-	#if Input.is_action_just_pressed("KICK_1"):
-		#process_hit("BANANA")
-	#if Input.is_action_just_pressed("KICK_2"):
-		#process_hit("TOMATO")	
 	
 	# PUNCH
 	
@@ -72,7 +64,7 @@ func process_moves(buttons):
 
 func process_movement(delta, jump_button, move_buttons):
 	
-	if not enable_movement:
+	if is_blocking:
 		return
 
 	# Add the gravity.
@@ -93,18 +85,24 @@ func process_movement(delta, jump_button, move_buttons):
 
 	move_and_slide()
 
-func process_hit(damage):
+func process_hit(body, damage):
 	
-	if is_blocking:
-		available_hit_blocks -= 1
-		available_hit_blocks = max(available_hit_blocks, 0)
-		print("block used... (", available_hit_blocks, ")")
+	if not body.is_in_group("Fruit"):
+		return
 	
-	life_points -= damage
-
+	if body.is_blocking:
+		body.available_hit_blocks -= 1
+		body.available_hit_blocks = max(body.available_hit_blocks, 0)
+		print("block used... (", body.available_hit_blocks, ")")
+	else:
+		body.life_points -= damage
+		life_points += damage
+		
 func update_animation(animated_sprite, idle_anim, walk_anim):
 	
-	if abs(velocity.x) > 0.0:
+	if is_blocking:
+		animated_sprite.play("block")
+	elif abs(velocity.x) > 0.0:
 		animated_sprite.play("walk")
 	else:
 		animated_sprite.play("idle")
