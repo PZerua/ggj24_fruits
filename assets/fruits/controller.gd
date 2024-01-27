@@ -5,6 +5,8 @@ extends CharacterBody2D
 const SPEED = 700.0
 const JUMP_VELOCITY = -1200.0
 
+var enable_movement : bool = true
+
 var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # BLOCKING STUFF
@@ -16,17 +18,16 @@ var is_blocking : bool = false
 var available_hit_blocks : int = MAX_BLOCKED_HITS
 var recover_block_timer : float = 0.0
 
-enum AnimState {
-	IDLE,
-	WALK
-}
+# ANIMATIONS
 
-var enable_movement : bool = true
+enum AnimState { IDLE, WALK }
+var anim_state : AnimState = AnimState.IDLE
 
 func _ready():
 	pass
 	
 func _process(delta):
+	
 	if not is_blocking and available_hit_blocks < MAX_BLOCKED_HITS:
 		recover_block_timer -= delta;
 		if recover_block_timer <= 0.0:
@@ -34,7 +35,11 @@ func _process(delta):
 			recover_block_timer = TIME_RECOVER_BLOCK
 			print("new block available! (", available_hit_blocks, ")")
 			
-func process_moves(block_button):
+func process_moves(buttons):
+	
+	var punch_button = buttons[0]
+	var kick_button = buttons[1]
+	var block_button = buttons[2]
 	
 	# BLOCK
 	
@@ -48,6 +53,16 @@ func process_moves(block_button):
 	# THIS SIMULATED THE 'ON HIT' METHOD
 	if Input.is_action_just_pressed("JUMP_2"):
 		process_hit()
+		
+	# PUNCH
+	
+	if Input.is_action_pressed(punch_button):
+		pass
+		
+	# KICK
+	
+	if Input.is_action_pressed(kick_button):
+		pass
 
 func process_movement(delta, jump_button, move_buttons):
 	
@@ -72,24 +87,23 @@ func process_movement(delta, jump_button, move_buttons):
 
 	move_and_slide()
 
-	#var mat : StandardMaterial3D = %Sprite/Plane.get_surface_override_material(0)
-	#if (abs(velocity.z) + abs(velocity.x)) / 2.0 > 0.00:
-		#mat.albedo_texture = walking_anim
-		#mat.emission_texture = walking_anim_emissive
-		#anim_state = AnimState.WALK
-	#else:
-		#mat.albedo_texture = standing_anim
-		#mat.emission_texture = standing_anim_emissive
-		#anim_state = AnimState.IDLE
-
-	#if velocity.x > 0.0:
-		#mat.uv1_scale.x = -1
-	#elif velocity.x < 0.0:
-		#mat.uv1_scale.x = 1
-		
-
 func process_hit():
+	
 	if is_blocking:
 		available_hit_blocks -= 1
 		available_hit_blocks = max(available_hit_blocks, 0)
 		print("block used... (", available_hit_blocks, ")")
+		
+func flip_uv_if_necessary(mat : StandardMaterial3D, idle_anim, walk_anim):
+	
+	if abs(velocity.x) > 0.0:
+		mat.albedo_texture = walk_anim
+		anim_state = AnimState.WALK
+	else:
+		mat.albedo_texture = idle_anim
+		anim_state = AnimState.IDLE
+
+	if velocity.x > 0.0:
+		mat.uv1_scale.x = -1
+	elif velocity.x < 0.0:
+		mat.uv1_scale.x = 1

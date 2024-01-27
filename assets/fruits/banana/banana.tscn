@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://qir670b60hs5"]
+[gd_scene load_steps=6 format=3 uid="uid://qir670b60hs5"]
 
 [ext_resource type="Script" path="res://assets/fruits/tomato/tomato.gd" id="1_haue7"]
 [ext_resource type="Texture2D" uid="uid://c3uxi7f5ppecd" path="res://assets/fruits/banana/banana.png" id="2_u2ixo"]
@@ -6,6 +6,12 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
 radius = 55.0
 height = 204.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnjxr"]
+radius = 12.0026
+height = 83.9944
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o0n7w"]
 
 [node name="Banana" type="CharacterBody2D"]
 rotation = 0.00266102
@@ -23,6 +29,14 @@ texture = ExtResource("2_u2ixo")
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hqn10")
 
-[node name="PunchCollider" type="CollisionShape2D" parent="."]
+[node name="PunchTrigger" type="Area2D" parent="."]
 
-[node name="KickCollider" type="CollisionShape2D" parent="."]
+[node name="PunchCollider" type="CollisionShape2D" parent="PunchTrigger"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnjxr")
+
+[node name="KickTrigger" type="Area2D" parent="."]
+position = Vector2(-49.7763, 84.1328)
+
+[node name="KickCollider" type="CollisionShape2D" parent="KickTrigger"]
+shape = SubResource("CapsuleShape2D_o0n7w")
