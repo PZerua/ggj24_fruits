@@ -36,6 +36,15 @@ func _process(delta):
 			available_hit_blocks += 1
 			recover_block_timer = TIME_RECOVER_BLOCK
 			print("new block available! (", available_hit_blocks, ")")
+			
+	# Invert UV of the sprite animateion
+	update_animation()
+	
+	# Invert collider
+	if velocity.x > 0.0:
+		$Punch.scale.x = 1
+	elif velocity.x < 0.0:
+		$Punch.scale.x = -1
 	
 func process_moves(buttons):
 	
@@ -98,16 +107,18 @@ func process_hit(body, damage):
 		body.life_points -= damage
 		life_points += damage
 		
-func update_animation(animated_sprite, idle_anim, walk_anim):
+func update_animation():
+	
+	var sprite = $AnimatedSprite2D
 	
 	if is_blocking:
-		animated_sprite.play("block")
+		sprite.play("block")
 	elif abs(velocity.x) > 0.0:
-		animated_sprite.play("walk")
+		sprite.play("walk")
 	else:
-		animated_sprite.play("idle")
+		sprite.play("idle")
 
 	if velocity.x > 0.0:
-		animated_sprite.flip_h = true
+		sprite.flip_h = true
 	elif velocity.x < 0.0:
-		animated_sprite.flip_h = false
+		sprite.flip_h = false
