@@ -13,7 +13,8 @@ func _input(event):
 	
 	process_moves(["PUNCH_1", "KICK_1", "BLOCK_1"])
 
-func make_laugh(intensity):
-	funny += intensity
-	%Tomato.funny -= intensity;
+func make_laugh(player, intensity):
+	if player == "BANANA":	
+		funny += intensity
+		%Tomato.funny -= intensity;
 

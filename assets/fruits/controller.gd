@@ -52,9 +52,11 @@ func process_moves(buttons):
 		recover_block_timer = TIME_RECOVER_BLOCK
 		
 	# THIS SIMULATED THE 'ON HIT' METHOD
-	if Input.is_action_just_pressed("JUMP_2"):
-		process_hit()
-		
+	if Input.is_action_just_pressed("KICK_1"):
+		process_hit("BANANA")
+	if Input.is_action_just_pressed("KICK_2"):
+		process_hit("TOMATO")	
+	
 	# PUNCH
 	
 	if Input.is_action_pressed(punch_button):
@@ -77,7 +79,6 @@ func process_movement(delta, jump_button, move_buttons):
 	# Handle jump.
 	if Input.is_action_just_pressed(jump_button) and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		make_laugh(5)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -86,17 +87,21 @@ func process_movement(delta, jump_button, move_buttons):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	
 
 	move_and_slide()
 
-func process_hit():
+func process_hit(player):
 	
 	if is_blocking:
 		available_hit_blocks -= 1
 		available_hit_blocks = max(available_hit_blocks, 0)
 		print("block used... (", available_hit_blocks, ")")
+	
+	if player == "BANANA": 
+		player = "TOMATO"
+	elif player: 
+		player = "BANANA"
+	make_laugh(player, 5)
 		
 func flip_uv_if_necessary(mat : StandardMaterial3D, idle_anim, walk_anim):
 	
@@ -112,6 +117,6 @@ func flip_uv_if_necessary(mat : StandardMaterial3D, idle_anim, walk_anim):
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
 
-func make_laugh(intensity):
+func make_laugh(player, intensity):
 	funny += intensity
 
