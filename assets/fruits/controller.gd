@@ -9,6 +9,9 @@ var life_points : int = 50
 const SPEED = 700.0
 const JUMP_VELOCITY = -1300.0
 
+enum Sides { LEFT, RIGHT }
+
+var side = Sides.RIGHT
 var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # BLOCKING STUFF
@@ -19,11 +22,7 @@ const TIME_RECOVER_BLOCK = 2.0
 var is_blocking : bool = false
 var available_hit_blocks : int = MAX_BLOCKED_HITS
 var recover_block_timer : float = 0.0
-
-# ANIMATIONS
-
-enum AnimState { IDLE, WALK }
-var anim_state : AnimState = AnimState.IDLE
+var last_block_time : float = 0.0
 
 func _ready():
 	pass
@@ -56,6 +55,9 @@ func process_moves(buttons):
 	
 	if Input.is_action_pressed(block_button) and available_hit_blocks > 0 and is_on_floor():
 		is_blocking = true
+		# Get first frame to check parry later
+		if Input.is_action_just_pressed(block_button):
+			last_block_time = Time.get_ticks_msec()
 		
 	if Input.is_action_just_released(block_button) or available_hit_blocks == 0:
 		is_blocking = false
@@ -102,10 +104,17 @@ func process_hit(body, damage):
 	if not body.is_in_group("Fruit"):
 		return
 	
-	if body.is_blocking:
-		body.available_hit_blocks -= 1
-		body.available_hit_blocks = max(body.available_hit_blocks, 0)
-		print("enemy used block... (", body.available_hit_blocks, " remaining)")
+	var can_block = body.is_blocking and side != body.side
+	
+	if can_block:
+		# Parry??
+		var dt = Time.get_ticks_msec() - body.last_block_time
+		if dt < 350:
+			print("PARRY!!")
+		else:
+			body.available_hit_blocks -= 1
+			body.available_hit_blocks = max(body.available_hit_blocks, 0)
+			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
 	else:
 		body.life_points -= damage
 		life_points += damage
@@ -123,5 +132,7 @@ func update_animation():
 
 	if velocity.x > 0.0:
 		sprite.flip_h = true
+		side = Sides.RIGHT
 	elif velocity.x < 0.0:
 		sprite.flip_h = false
+		side = Sides.LEFT
