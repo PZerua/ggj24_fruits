@@ -1,13 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=19 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
 [ext_resource type="Texture2D" uid="uid://b0k1h3yv0rjhw" path="res://assets/bars/bar-over.png" id="2_g5582"]
+[ext_resource type="Texture2D" uid="uid://cqacrpmqyhg4f" path="res://assets/fruits/backgrounds/layer_04_2048 x 1546.png" id="2_l0kns"]
 [ext_resource type="PackedScene" uid="uid://qir670b60hs5" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
+[ext_resource type="Texture2D" uid="uid://6wyeafjeby6t" path="res://assets/fruits/backgrounds/layer_05_2048 x 1546.png" id="2_pq2q8"]
+[ext_resource type="Script" path="res://scenes/ParallaxLayer.gd" id="3_2qpbc"]
 [ext_resource type="Script" path="res://assets/bars/tomatoBar.gd" id="3_tiox5"]
 [ext_resource type="Texture2D" uid="uid://cpuc5b3bdc2jc" path="res://assets/bars/yellow-orange.png" id="5_ut5nq"]
 [ext_resource type="Script" path="res://assets/bars/bananaBar.gd" id="7_u80wl"]
 [ext_resource type="Texture2D" uid="uid://dlam4itbryoui" path="res://assets/bars/red-bar.jpg" id="7_ukvkr"]
+[ext_resource type="Texture2D" uid="uid://3ywe6im5afpj" path="res://assets/fruits/backgrounds/layer_01_2048 x 1546.png" id="10_ebuv3"]
+[ext_resource type="Texture2D" uid="uid://wkv5v7kra43r" path="res://assets/fruits/backgrounds/layer_02_2048 x 1546.png" id="11_cu5go"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1147, 49)
@@ -69,8 +74,36 @@ _data = {
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("1_sshmf")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-609, 4)
+motion_mirroring = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(527, -15)
+texture = ExtResource("2_pq2q8")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-998, -18)
+motion_mirroring = Vector2(1423.64, 0)
+script = ExtResource("3_2qpbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(608, 250)
+scale = Vector2(0.69638, 0.663325)
+texture = ExtResource("2_l0kns")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(610, 249)
+scale = Vector2(0.69638, 0.663325)
+texture = ExtResource("10_ebuv3")
+
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 unique_name_in_owner = true
+z_index = 36
 position = Vector2(308, 391)
 
 [node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
@@ -147,6 +180,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -159,6 +193,16 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_2t27m")
 }
+
+[node name="ParallaxFront" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxFront"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxFront/ParallaxLayer"]
+position = Vector2(607, 249)
+scale = Vector2(0.69638, 0.663325)
+texture = ExtResource("11_cu5go")
 
 [connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
