@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://assets/fruits/tomato/PunchCollider.gd" id="3_wy7bt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
-radius = 55.0
-height = 204.0
+radius = 77.037
+height = 251.37
 
 [sub_resource type="Animation" id="Animation_u0afy"]
 resource_name = "Punch"

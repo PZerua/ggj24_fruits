@@ -2,6 +2,8 @@ extends "res://assets/fruits/controller.gd"
 
 func _process(delta):
 	
+	super._process(delta)
+
 	if Input.is_action_just_pressed("PUNCH_2"):
 		%PunchAnimation.play("Punch")
 		
