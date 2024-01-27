@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=11 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
+[ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
 [ext_resource type="Texture2D" uid="uid://b0k1h3yv0rjhw" path="res://assets/bars/bar-over.png" id="2_g5582"]
-[ext_resource type="PackedScene" uid="uid://bg5fug08dimbt" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
+[ext_resource type="PackedScene" uid="uid://qir670b60hs5" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
 [ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="3_0iy8d"]
-[ext_resource type="Script" path="res://scenes/BarTomato.gd" id="3_tiox5"]
-[ext_resource type="Script" path="res://scenes/BarBanana.gd" id="5_34f5s"]
+[ext_resource type="Script" path="res://assets/bars/BarTomato.gd" id="3_tiox5"]
+[ext_resource type="Script" path="res://assets/bars/BarBanana.gd" id="5_34f5s"]
 [ext_resource type="Texture2D" uid="uid://cpuc5b3bdc2jc" path="res://assets/bars/yellow-orange.png" id="5_ut5nq"]
 [ext_resource type="Texture2D" uid="uid://dlam4itbryoui" path="res://assets/bars/red-bar.jpg" id="7_ukvkr"]
 
@@ -13,6 +14,7 @@
 size = Vector2(1147, 49)
 
 [node name="combat_scene" type="Node2D"]
+script = ExtResource("1_sshmf")
 
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 unique_name_in_owner = true
