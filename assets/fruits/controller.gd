@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+# FRUIT STUFF
+
+var life_points : int = 50
+
 # MOVEMENT STUFF
 
 const SPEED = 700.0
@@ -34,7 +38,7 @@ func _process(delta):
 			available_hit_blocks += 1
 			recover_block_timer = TIME_RECOVER_BLOCK
 			print("new block available! (", available_hit_blocks, ")")
-			
+	
 func process_moves(buttons):
 	
 	var punch_button = buttons[0]
@@ -51,9 +55,11 @@ func process_moves(buttons):
 		recover_block_timer = TIME_RECOVER_BLOCK
 		
 	# THIS SIMULATED THE 'ON HIT' METHOD
-	if Input.is_action_just_pressed("JUMP_2"):
-		process_hit()
-		
+	#if Input.is_action_just_pressed("KICK_1"):
+		#process_hit("BANANA")
+	#if Input.is_action_just_pressed("KICK_2"):
+		#process_hit("TOMATO")	
+	
 	# PUNCH
 	
 	if Input.is_action_pressed(punch_button):
@@ -87,13 +93,15 @@ func process_movement(delta, jump_button, move_buttons):
 
 	move_and_slide()
 
-func process_hit():
+func process_hit(damage):
 	
 	if is_blocking:
 		available_hit_blocks -= 1
 		available_hit_blocks = max(available_hit_blocks, 0)
 		print("block used... (", available_hit_blocks, ")")
-		
+	
+	life_points -= damage
+
 func flip_uv_if_necessary(mat : StandardMaterial3D, idle_anim, walk_anim):
 	
 	if abs(velocity.x) > 0.0:

@@ -1,9 +1,9 @@
 extends "res://assets/fruits/controller.gd"
 
 func _process(delta):
-	
-	var mat : StandardMaterial3D = %Sprite2D.get_surface_override_material(0)
-	flip_uv_if_necessary(mat, "", "")
+	pass
+	#var mat : StandardMaterial3D = %Sprite2D.get_surface_override_material(0)
+	#flip_uv_if_necessary(mat, "", "")
 
 func _physics_process(delta):
 

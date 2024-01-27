@@ -1,21 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=14 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
-[ext_resource type="PackedScene" uid="uid://bg5fug08dimbt" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
-[ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="3_0iy8d"]
+[ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
+[ext_resource type="Texture2D" uid="uid://b0k1h3yv0rjhw" path="res://assets/bars/bar-over.png" id="2_g5582"]
+[ext_resource type="PackedScene" uid="uid://qir670b60hs5" path="res://assets/fruits/banana/banana.tscn" id="2_nrd0u"]
+[ext_resource type="Script" path="res://assets/bars/tomatoBar.gd" id="3_tiox5"]
+[ext_resource type="Texture2D" uid="uid://cpuc5b3bdc2jc" path="res://assets/bars/yellow-orange.png" id="5_ut5nq"]
+[ext_resource type="Script" path="res://assets/bars/bananaBar.gd" id="7_u80wl"]
+[ext_resource type="Texture2D" uid="uid://dlam4itbryoui" path="res://assets/bars/red-bar.jpg" id="7_ukvkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1147, 49)
 
+[sub_resource type="Animation" id="Animation_52gks"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b5fbp"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_phtuo"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2t27m"]
+_data = {
+"RESET": SubResource("Animation_52gks"),
+"fade_in": SubResource("Animation_b5fbp"),
+"fade_out": SubResource("Animation_phtuo")
+}
+
 [node name="combat_scene" type="Node2D"]
+script = ExtResource("1_sshmf")
 
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
+unique_name_in_owner = true
 position = Vector2(308, 391)
 
 [node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
+unique_name_in_owner = true
 position = Vector2(939, 401)
 rotation = -0.00158102
-script = ExtResource("3_0iy8d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -24,3 +85,80 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(575, 624)
 shape = SubResource("RectangleShape2D_f6e4s")
+
+[node name="FunnyBar" type="Node2D" parent="."]
+position = Vector2(-51, 79)
+
+[node name="BarBanana" type="TextureProgressBar" parent="FunnyBar"]
+offset_left = 656.0
+offset_top = -55.0
+offset_right = 1061.0
+offset_bottom = 9.00002
+scale = Vector2(1, 0.405734)
+value = 50.0
+rounded = true
+nine_patch_stretch = true
+texture_over = ExtResource("2_g5582")
+texture_progress = ExtResource("5_ut5nq")
+script = ExtResource("7_u80wl")
+metadata/_edit_use_anchors_ = true
+
+[node name="BarTomato" type="TextureProgressBar" parent="FunnyBar"]
+offset_left = 252.0
+offset_top = -55.0
+offset_right = 657.0
+offset_bottom = 9.0
+scale = Vector2(1, 0.395426)
+value = 50.0
+rounded = true
+fill_mode = 1
+nine_patch_stretch = true
+texture_over = ExtResource("2_g5582")
+texture_progress = ExtResource("7_ukvkr")
+script = ExtResource("3_tiox5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 530.0
+offset_top = 91.0
+offset_right = 668.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="transitioner" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2t27m")
+}
+
+[connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
