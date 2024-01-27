@@ -1,12 +1,20 @@
 extends CharacterBody2D
 
+# MOVEMENT STUFF
+
 const SPEED = 700.0
 const JUMP_VELOCITY = -1200.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var isBackwardsAnim : bool = false
+# BLOCKING STUFF
+
+const MAX_BLOCKED_HITS = 5
+const TIME_RECOVER_BLOCK = 2.0
+
+var is_blocking : bool = false
+var available_hit_blocks : int = MAX_BLOCKED_HITS
+var recover_block_timer : float = 0.0
 
 enum AnimState {
 	IDLE,
@@ -19,14 +27,27 @@ func _ready():
 	pass
 	
 func _process(delta):
-	pass
+	if not is_blocking and available_hit_blocks < MAX_BLOCKED_HITS:
+		recover_block_timer -= delta;
+		if recover_block_timer <= 0.0:
+			available_hit_blocks += 1
+			recover_block_timer = TIME_RECOVER_BLOCK
+			print("new block available! (", available_hit_blocks, ")")
+			
+func process_moves(block_button):
 	
-func _input(event):
-	pass
-	#if event.is_action_pressed("Interact"):
-		#print("interact")
-	#if event.is_action_pressed("Exit"):
-		#get_tree().quit()
+	# BLOCK
+	
+	if Input.is_action_pressed(block_button):
+		is_blocking = true
+		
+	if Input.is_action_just_released(block_button):
+		is_blocking = false
+		recover_block_timer = TIME_RECOVER_BLOCK
+		
+	# THIS SIMULATED THE 'ON HIT' METHOD
+	if Input.is_action_just_pressed("JUMP_2"):
+		process_hit()
 
 func process_movement(delta, jump_button, move_buttons):
 	
@@ -66,3 +87,9 @@ func process_movement(delta, jump_button, move_buttons):
 	#elif velocity.x < 0.0:
 		#mat.uv1_scale.x = 1
 		
+
+func process_hit():
+	if is_blocking:
+		available_hit_blocks -= 1
+		available_hit_blocks = max(available_hit_blocks, 0)
+		print("block used... (", available_hit_blocks, ")")
