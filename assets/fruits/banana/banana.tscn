@@ -8,6 +8,7 @@ radius = 55.0
 height = 204.0
 
 [node name="Banana" type="CharacterBody2D"]
+rotation = 0.00266102
 collision_layer = 2
 collision_mask = 5
 slide_on_ceiling = false
@@ -19,5 +20,9 @@ script = ExtResource("1_haue7")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_u2ixo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hqn10")
+
+[node name="PunchCollider" type="CollisionShape2D" parent="."]
+
+[node name="KickCollider" type="CollisionShape2D" parent="."]

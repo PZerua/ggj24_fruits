@@ -18,5 +18,9 @@ script = ExtResource("1_1rutx")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_6idki")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0y85t")
+
+[node name="PunchCollider" type="CollisionShape2D" parent="."]
+
+[node name="KickCollider" type="CollisionShape2D" parent="."]
