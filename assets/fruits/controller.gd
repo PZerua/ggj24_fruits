@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-# CHARACTER MOVEMENT STUFF
+# MOVEMENT STUFF
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 700.0
+const JUMP_VELOCITY = -1200.0
 
 var enable_movement : bool = true
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # BLOCKING STUFF
 
@@ -107,4 +107,3 @@ func flip_uv_if_necessary(mat : StandardMaterial3D, idle_anim, walk_anim):
 		mat.uv1_scale.x = -1
 	elif velocity.x < 0.0:
 		mat.uv1_scale.x = 1
-	

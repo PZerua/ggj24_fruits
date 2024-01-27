@@ -13,11 +13,13 @@ size = Vector2(1147, 49)
 position = Vector2(308, 391)
 
 [node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
-position = Vector2(954, 388)
-scale = Vector2(1.00106, 1.02448)
+position = Vector2(939, 401)
+rotation = -0.00158102
 script = ExtResource("3_0iy8d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(575, 624)
