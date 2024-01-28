@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clh8brl2hr7mf"
+path="res://.godot/imported/aplausos y chiflido.wav-b1b5e4e1e53a0f0679984cd30e5f6a6b.sample"
+
+[deps]
+
+source_file="res://assets/audio/aplausos y chiflido.wav"
+dest_files=["res://.godot/imported/aplausos y chiflido.wav-b1b5e4e1e53a0f0679984cd30e5f6a6b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
