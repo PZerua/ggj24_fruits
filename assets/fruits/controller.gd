@@ -235,8 +235,8 @@ func update_animation():
 	
 	if is_knocked_out:
 		sprite.play("knocked")
-	if is_blocking:
-		return
+	elif is_blocking:
+		pass
 	elif abs(velocity.x) > 0.0:
 		sprite.play("walk")
 	else:
