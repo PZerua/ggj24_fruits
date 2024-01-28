@@ -22,7 +22,7 @@ var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const MAX_BLOCKED_HITS = 5
 const TIME_RECOVER_BLOCK = 2.0
-const TIME_RECOVER_KNOCKOUT = 1.0
+const TIME_RECOVER_KNOCKOUT = 1.5
 
 var is_blocking : bool = false
 var is_punching : bool = false
@@ -208,8 +208,7 @@ func update_animation():
 	var sprite = $AnimatedSprite2D
 	
 	if is_knocked_out:
-		pass
-		#sprite.play("knock")
+		sprite.play("knocked")
 	elif is_blocking:
 		sprite.play("block")
 	elif abs(velocity.x) > 0.0:
