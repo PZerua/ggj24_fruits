@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=28 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -229,7 +229,7 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="GUI/UI"]
 process_callback = 0
-wait_time = 3.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-var seconds = 3
+var seconds = 60
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
