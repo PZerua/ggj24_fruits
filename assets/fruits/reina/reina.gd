@@ -1,4 +1,6 @@
 extends Node2D
 
 func _process(delta):
-	$AnimatedSprite2D.play("idle")
+	$AnimatedSpritePinneapple.play("idle")
+	$AnimatedSpriteGrape.play("idle")
+	$AnimatedSpriteApple.play("idle")

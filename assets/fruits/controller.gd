@@ -73,7 +73,7 @@ func _process(delta):
 		release_attack()
 		
 	# Invert UV of the sprite animateion
-	if (attack_charge == 0):
+	if (attack_charge == 0.0):
 		update_animation()
 	
 func release_attack():
@@ -135,7 +135,8 @@ func process_moves(buttons):
 		
 	# BLOCK
 	
-	if Input.is_action_just_pressed(block_button) and available_hit_blocks > 0 and is_on_floor():
+	if not is_blocking and Input.is_action_pressed(block_button) and available_hit_blocks > 0 and is_on_floor() and attack_charge == 0.0:
+		
 		is_blocking = true
 		
 		sprite.play("block")
@@ -199,8 +200,6 @@ func process_movement(delta, jump_button, move_buttons):
 		
 	previous_velocity = velocity
 	move_and_slide()
-	
-	#print(velocity)
 	
 	if not is_on_floor():
 		if get_slide_collision_count() > 0:

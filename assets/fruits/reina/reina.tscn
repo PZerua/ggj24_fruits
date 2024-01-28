@@ -1,11 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb0rtldgi8fgg"]
+[gd_scene load_steps=5 format=3 uid="uid://cb0rtldgi8fgg"]
 
 [ext_resource type="Script" path="res://assets/fruits/reina/reina.gd" id="1_l4vcy"]
 [ext_resource type="SpriteFrames" uid="uid://brrf1t21tv6t2" path="res://assets/fruits/reina/reina_frames.tres" id="1_vrylu"]
+[ext_resource type="SpriteFrames" uid="uid://bji2ynricblh7" path="res://assets/fruits/grape/grape_frames.tres" id="3_w57bh"]
+[ext_resource type="SpriteFrames" uid="uid://bksbj7uqb4byf" path="res://assets/fruits/apple/apple_frames.tres" id="4_kphtl"]
 
 [node name="Reina" type="Node2D"]
 script = ExtResource("1_l4vcy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSpritePinneapple" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_vrylu")
+animation = &"idle"
+
+[node name="AnimatedSpriteGrape" type="AnimatedSprite2D" parent="."]
+position = Vector2(-59, 330)
+sprite_frames = ExtResource("3_w57bh")
+animation = &"idle"
+
+[node name="AnimatedSpriteApple" type="AnimatedSprite2D" parent="."]
+position = Vector2(-546, 116)
+sprite_frames = ExtResource("4_kphtl")
 animation = &"idle"
