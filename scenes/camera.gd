@@ -1,9 +1,9 @@
 extends Camera2D
 
-const MAX_DISTANCE_BETWEEN_CHARACTERS : float = 1036.0
+const MAX_DISTANCE_BETWEEN_CHARACTERS : float = 1028.0
 const LERP_MOVE_SPEED : float = 0.5
-const LERP_ZOOM_SPEED : float = 0.25
-const MIN_ZOOM : float = 0.6
+const LERP_ZOOM_SPEED : float = 0.4
+const MIN_ZOOM : float = 0.7
 const MAX_ZOOM : float = 1.1
 
 var tomato : CharacterBody2D
