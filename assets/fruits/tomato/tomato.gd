@@ -1,7 +1,7 @@
 extends "res://assets/fruits/controller.gd"
 
 var punch_pause_frame : int = 3
-var kick_pause_frame : int = 0
+var kick_pause_frame : int = 1
 
 func _init():
 	fruit_type = FruitType.TOMATO
@@ -22,7 +22,7 @@ func _on_punch_trigger_body_entered(body):
 	process_hit(body, punch_damage)
 
 func _on_kick_trigger_body_entered(body):
-	process_hit(body, kick_damage)
+	process_hit(body, kick_damage, Vector2(0.5, -0.7).normalized())
 
 func _on_animated_sprite_2d_animation_finished():
 	if ($AnimatedSprite2D.animation == "punch") or \

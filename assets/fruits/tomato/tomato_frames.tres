@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://cxoci2w2tp4ss"]
+[gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://cxoci2w2tp4ss"]
 
 [ext_resource type="Texture2D" uid="uid://bc2g6p4c0oal5" path="res://assets/fruits/tomato/block/ESCUDO-01.png" id="1_56fpi"]
 [ext_resource type="Texture2D" uid="uid://pkeotqtihj6b" path="res://assets/fruits/tomato/block/ESCUDO-02.png" id="2_25qek"]
@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://1nchqp7ho2t" path="res://assets/fruits/tomato/punch/BARRIGAZO-02.png" id="5_qj8gy"]
 [ext_resource type="Texture2D" uid="uid://drbpxgwtc8ujw" path="res://assets/fruits/tomato/punch/BARRIGAZO-03.png" id="6_7yptw"]
 [ext_resource type="Texture2D" uid="uid://tfvd6sqskx2t" path="res://assets/fruits/tomato/knocked/knocked_dizzy_0.png" id="6_iuwel"]
+[ext_resource type="Texture2D" uid="uid://bqsbyhry76wds" path="res://assets/fruits/tomato/kick/RAMA-01.png" id="6_wfikg"]
+[ext_resource type="Texture2D" uid="uid://rm7n57i35w8d" path="res://assets/fruits/tomato/kick/RAMA-02.png" id="7_03roa"]
 [ext_resource type="Texture2D" uid="uid://by8cad13a8kl3" path="res://assets/fruits/tomato/punch/BARRIGAZO-04.png" id="7_6fvfo"]
 [ext_resource type="Texture2D" uid="uid://sfiukfshd1ao" path="res://assets/fruits/tomato/knocked/knocked_dizzy_1.png" id="7_vmh47"]
 [ext_resource type="Texture2D" uid="uid://bmd3fnsw2y0lw" path="res://assets/fruits/tomato/punch/BARRIGAZO-05.png" id="8_8jo1g"]
+[ext_resource type="Texture2D" uid="uid://dckdt1e2kspqw" path="res://assets/fruits/tomato/kick/RAMA-03.png" id="8_l3srw"]
 [ext_resource type="Texture2D" uid="uid://dqx230h2maxm0" path="res://assets/fruits/tomato/walk/WALK-01.png" id="13_eua8d"]
 [ext_resource type="Texture2D" uid="uid://diqh2ucowy6hn" path="res://assets/fruits/tomato/walk/WALK-02.png" id="14_74ycf"]
 [ext_resource type="Texture2D" uid="uid://c0mh5m1ywx3k2" path="res://assets/fruits/tomato/walk/WALK-03.png" id="15_4ey1k"]
@@ -46,6 +49,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wfikg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_03roa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l3srw")
+}],
+"loop": false,
+"name": &"kick",
 "speed": 5.0
 }, {
 "frames": [{

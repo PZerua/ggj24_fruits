@@ -69,28 +69,16 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_32cq6"]
 resource_name = "Kick"
-length = 0.2
+length = 0.3
 step = 0.05
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("%Colliders/..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(41, 113), Vector2(139, 46), Vector2(41, 113)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%Colliders/..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.15),
+"times": PackedFloat32Array(0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -103,18 +91,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_26p8d"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(41, 113)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iwwyf"]
 _data = {
@@ -122,7 +98,8 @@ _data = {
 "RESET": SubResource("Animation_26p8d")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmcov"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jefa7"]
+size = Vector2(67.75, 120.125)
 
 [node name="Tomato" type="CharacterBody2D" groups=["Fruit"]]
 collision_mask = 6
@@ -143,9 +120,11 @@ one_shot = true
 explosiveness = 0.92
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, -3)
+position = Vector2(5, -7)
 sprite_frames = ExtResource("2_5awyp")
-animation = &"idle"
+animation = &"kick"
+frame = 2
+frame_progress = 1.0
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 22)
@@ -184,8 +163,8 @@ libraries = {
 }
 
 [node name="KickCollider" type="CollisionShape2D" parent="Colliders/KickTrigger"]
-position = Vector2(21, -13)
-shape = SubResource("CapsuleShape2D_vmcov")
+position = Vector2(156.125, -74.9375)
+shape = SubResource("RectangleShape2D_jefa7")
 disabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

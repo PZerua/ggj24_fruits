@@ -123,7 +123,7 @@ func process_moves(buttons):
 	var left_button = buttons[3]
 	var right_button = buttons[4]
 	
-	if !is_blocking:
+	if !is_blocking and attack_charge == 0.0:
 		if Input.is_action_just_pressed(left_button):
 			look_left()
 		
@@ -208,7 +208,7 @@ func process_movement(delta, jump_button, move_buttons):
 			if collision != null:
 				velocity = previous_velocity.bounce(collision.get_normal()) * 0.6
 
-func process_hit(body, damage):
+func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 	
 	# BODY: THE FRUIT THAT RECEIVES THE DAMAGE
 	
@@ -236,7 +236,7 @@ func process_hit(body, damage):
 		if (previous_velocity != Vector2(0, 0)):
 			body.velocity = previous_velocity * 0.6
 		else:
-			body.velocity = (Vector2(-1, 0) if side == Sides.LEFT else Vector2(1, 0)) * 500 * damage
+			body.velocity = (Vector2(-direction.x, direction.y) if side == Sides.LEFT else direction) * 500 * damage
 			
 		life_points += damage
 		
