@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqjc1xf02w8l4"
-path="res://.godot/imported/platano_anims_idle_02.png-63078c3ac9d53f4a5dfdd99ddbdd42f7.ctex"
+uid="uid://c6u4p6ngh1wi6"
+path="res://.godot/imported/platano__0001s_0001_ataque_03.png-824518fcd3d6939a9900d37c8aeabed5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/banana/idle/platano_anims_idle_02.png"
-dest_files=["res://.godot/imported/platano_anims_idle_02.png-63078c3ac9d53f4a5dfdd99ddbdd42f7.ctex"]
+source_file="res://assets/fruits/banana/punch/platano__0001s_0001_ataque_03.png"
+dest_files=["res://.godot/imported/platano__0001s_0001_ataque_03.png-824518fcd3d6939a9900d37c8aeabed5.ctex"]
 
 [params]
 
