@@ -45,16 +45,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_u4v3a")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("8_krchi")
 }, {
-"duration": 1.0,
+"duration": 6.0,
 "texture": ExtResource("9_5fa2u")
 }, {
-"duration": 1.0,
+"duration": 50.0,
 "texture": ExtResource("10_x3jlx")
 }],
-"loop": true,
+"loop": false,
 "name": &"trial",
 "speed": 5.0
 }]

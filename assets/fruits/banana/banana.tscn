@@ -8,7 +8,7 @@
 _data = [Vector2(0, 0.274725), 0.0, 0.0, 0, 0, Vector2(0.986667, 0.076923), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_8di1a"]
+[sub_resource type="CurveTexture" id="CurveTexture_5dwvf"]
 curve = SubResource("Curve_abhjk")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0r0a"]
@@ -16,18 +16,17 @@ particle_flag_disable_z = true
 emission_shape_scale = Vector3(0.5, 0.5, 0.5)
 emission_shape = 1
 emission_sphere_radius = 0.01
-inherit_velocity_ratio = 0.169
 velocity_pivot = Vector3(0, 0.5, 0)
 spread = 22.753
 flatness = 0.18
-initial_velocity_min = 955.05
-initial_velocity_max = 955.05
-radial_velocity_min = 44.95
-radial_velocity_max = 202.25
+initial_velocity_min = 734.84
+initial_velocity_max = 799.5
+radial_velocity_min = 75.25
+radial_velocity_max = 111.34
 gravity = Vector3(0, 0, 0)
 scale_min = 0.0
-scale_curve = SubResource("CurveTexture_8di1a")
-color = Color(0.976471, 0.486275, 0, 0.713726)
+scale_curve = SubResource("CurveTexture_5dwvf")
+color = Color(0.85098, 0.85098, 0.85098, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
 radius = 109.002
@@ -102,6 +101,14 @@ floor_max_angle = 0.0
 floor_snap_length = 0.0
 script = ExtResource("1_m5ces")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.47473, -9.51462)
+scale = Vector2(1.02106, 1.03659)
+sprite_frames = ExtResource("2_1t8ls")
+animation = &"punch"
+frame = 4
+frame_progress = 1.0
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(9.10109, 37.9759)
 scale = Vector2(0.565539, 1)
@@ -112,12 +119,6 @@ texture = ExtResource("2_o1dlf")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.92
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_1t8ls")
-animation = &"kick"
-frame = 4
-frame_progress = 1.0
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-6.93877, 23.0185)

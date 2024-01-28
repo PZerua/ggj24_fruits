@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfqs6u457iaso"
-path="res://.godot/imported/cry_1.png-b48edc3c617a33e39d0b799ea9d11744.ctex"
+uid="uid://bqnbyewbsmsjg"
+path="res://.godot/imported/Fruitality_03.png-24220fb1ac089e75a9eeb08c09e03383.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/tomato/cry/cry_1.png"
-dest_files=["res://.godot/imported/cry_1.png-b48edc3c617a33e39d0b799ea9d11744.ctex"]
+source_file="res://assets/fruits/banana/fruitality/Fruitality_03.png"
+dest_files=["res://.godot/imported/Fruitality_03.png-24220fb1ac089e75a9eeb08c09e03383.ctex"]
 
 [params]
 

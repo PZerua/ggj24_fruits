@@ -10,7 +10,7 @@ script = ExtResource("1_l4vcy")
 
 [node name="AnimatedSpritePinneapple" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_vrylu")
-animation = &"idle"
+animation = &"trial"
 
 [node name="AnimatedSpriteGrape" type="AnimatedSprite2D" parent="."]
 position = Vector2(-59, 330)
