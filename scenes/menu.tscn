@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://kic4ssacatkq"]
+[gd_scene load_steps=5 format=3 uid="uid://kic4ssacatkq"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_4sci4"]
 [ext_resource type="Texture2D" uid="uid://cer2yh82aih0n" path="res://assets/menus/Menu.png" id="2_wg2vv"]
+[ext_resource type="PackedScene" uid="uid://60at5u41ll26" path="res://assets/fruits/reina/reina_init.tscn" id="3_1di6s"]
 [ext_resource type="PackedScene" uid="uid://cb0rtldgi8fgg" path="res://assets/fruits/reina/reina.tscn" id="3_pc5gd"]
 
 [node name="menu" type="Control"]
@@ -32,11 +33,24 @@ texture = ExtResource("2_wg2vv")
 
 [node name="exit" type="Button" parent="."]
 layout_mode = 2
-offset_left = 508.0
+offset_left = 597.0
 offset_top = 538.0
-offset_right = 551.0
+offset_right = 640.0
 offset_bottom = 569.0
 scale = Vector2(2.45548, 1.49433)
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "_____"
+flat = true
+
+[node name="controls" type="Button" parent="."]
+layout_mode = 2
+offset_left = 396.0
+offset_top = 538.0
+offset_right = 439.0
+offset_bottom = 569.0
+scale = Vector2(3.85548, 1.49433)
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -57,9 +71,15 @@ theme_override_font_sizes/font_size = 10
 flat = true
 icon_alignment = 1
 
+[node name="Reina2" parent="." instance=ExtResource("3_1di6s")]
+position = Vector2(550, 221)
+scale = Vector2(0.64, 0.64)
+
 [node name="Reina" parent="." instance=ExtResource("3_pc5gd")]
+visible = false
 position = Vector2(553, 216)
 scale = Vector2(0.65, 0.65)
 
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="play" to="." method="_on_play_pressed"]
