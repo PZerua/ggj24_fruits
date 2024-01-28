@@ -228,6 +228,7 @@ func process_hit(body, damage):
 			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
 	else:
 		damage += damage * attack_charge
+		damage = round(damage)
 		body.life_points -= damage
 		life_points += damage
 		
@@ -274,4 +275,3 @@ func toggle_kick_enabled():
 
 func emit_particles(fruit):
 	fruit._emit_particles()
-	pass	
