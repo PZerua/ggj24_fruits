@@ -1,7 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://qir670b60hs5"]
+[gd_scene load_steps=14 format=3 uid="uid://qir670b60hs5"]
 
 [ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="1_m5ces"]
 [ext_resource type="SpriteFrames" uid="uid://5yxjellvaehc" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
+[ext_resource type="Texture2D" uid="uid://dt677cddlr65" path="res://assets/particles/particle_orange.png" id="2_o1dlf"]
+
+[sub_resource type="Curve" id="Curve_abhjk"]
+_data = [Vector2(0, 0.274725), 0.0, 0.0, 0, 0, Vector2(0.986667, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8di1a"]
+curve = SubResource("Curve_abhjk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0r0a"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 0.01
+inherit_velocity_ratio = 0.169
+velocity_pivot = Vector3(0, 0.5, 0)
+spread = 22.753
+flatness = 0.18
+initial_velocity_min = 955.05
+initial_velocity_max = 955.05
+radial_velocity_min = 44.95
+radial_velocity_max = 202.25
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_8di1a")
+color = Color(0.811765, 0.196078, 0.101961, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
 radius = 77.037
@@ -124,6 +150,17 @@ slide_on_ceiling = false
 floor_max_angle = 0.0
 floor_snap_length = 0.0
 script = ExtResource("1_m5ces")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-35, 4)
+scale = Vector2(0.565539, 1)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_u0r0a")
+texture = ExtResource("2_o1dlf")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.92
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_1t8ls")
