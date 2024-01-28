@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=25 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -79,16 +79,6 @@ blend_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xay3"]
 size = Vector2(22.795, 21.9996)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vm2mn"]
-particles_animation = true
-particles_anim_h_frames = 2
-particles_anim_v_frames = 2
-particles_anim_loop = false
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmjt6"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
-
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("1_sshmf")
 
@@ -159,6 +149,7 @@ offset_bottom = 996.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="GUI/UI"]
+visible = false
 z_index = 50
 layout_mode = 1
 anchors_preset = 15
@@ -269,10 +260,6 @@ shape = SubResource("RectangleShape2D_4xay3")
 [node name="AudioBSO" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("16_w3t1m")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_vm2mn")
-process_material = SubResource("ParticleProcessMaterial_dmjt6")
 
 [connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]
 [connection signal="animation_finished" from="GUI/UI/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
