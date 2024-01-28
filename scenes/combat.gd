@@ -13,6 +13,7 @@ func _process(delta):
 
 func end(winner):
 	print("Ended!")
+	%MultiTargetCamera.set_target(winner)
 	$GUI/UI/Fruitality/AnimationPlayer.play("fruitality")
 	$GUI/UI/ColorRect/AnimationPlayer.play("fade_out")
 
@@ -26,4 +27,4 @@ func _on_timer_timeout():
 	
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fade_out":
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/end_game.tscn")
