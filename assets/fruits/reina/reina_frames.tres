@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://brrf1t21tv6t2"]
+
+[ext_resource type="Texture2D" uid="uid://c7vb6auk2k236" path="res://assets/fruits/reina/Aplauso_01.png" id="1_ud140"]
+[ext_resource type="Texture2D" uid="uid://b3kkpdwwrm5qw" path="res://assets/fruits/reina/Aplauso_02.png" id="2_msr1b"]
+[ext_resource type="Texture2D" uid="uid://d30ihc71v8ko" path="res://assets/fruits/reina/Idle_01.png" id="3_j16u2"]
+[ext_resource type="Texture2D" uid="uid://coa2oyhjoep0y" path="res://assets/fruits/reina/Idle_02.png" id="4_qvntt"]
+[ext_resource type="Texture2D" uid="uid://dcmvuyas43neq" path="res://assets/fruits/reina/Juicio_01.png" id="5_4f3t0"]
+[ext_resource type="Texture2D" uid="uid://du5a7y422uwwn" path="res://assets/fruits/reina/Juicio_02.png" id="6_wbulw"]
+[ext_resource type="Texture2D" uid="uid://bubsguiydrcyp" path="res://assets/fruits/reina/Juicio_03.png" id="7_u4v3a"]
+[ext_resource type="Texture2D" uid="uid://cek7k4xq0wqq5" path="res://assets/fruits/reina/Juicio_04.png" id="8_krchi"]
+[ext_resource type="Texture2D" uid="uid://mdv73um0bg4o" path="res://assets/fruits/reina/Juicio_05.png" id="9_5fa2u"]
+[ext_resource type="Texture2D" uid="uid://b11rocjoxkiic" path="res://assets/fruits/reina/Juicio_06.png" id="10_x3jlx"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ud140")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_msr1b")
+}],
+"loop": true,
+"name": &"applause",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j16u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qvntt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4f3t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wbulw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u4v3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_krchi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5fa2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x3jlx")
+}],
+"loop": true,
+"name": &"trial",
+"speed": 5.0
+}]
