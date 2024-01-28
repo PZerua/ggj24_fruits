@@ -249,6 +249,8 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 		body.get_node("AnimatedSprite2D").play("fruitality")
 		emit_particles(body)
 		scene.end()
+		Music.stream = load("res://assets/audio/applause.ogg")
+		Music.play()
 		return
 	
 	var can_block = body.is_blocking and side != body.side
