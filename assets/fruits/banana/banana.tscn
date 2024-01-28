@@ -105,8 +105,8 @@ script = ExtResource("1_m5ces")
 position = Vector2(5.47473, -9.51462)
 scale = Vector2(1.02106, 1.03659)
 sprite_frames = ExtResource("2_1t8ls")
-animation = &"punch"
-frame = 4
+animation = &"walk"
+frame = 7
 frame_progress = 1.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
