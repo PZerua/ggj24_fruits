@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dt4g2ewu42uek"]
+[gd_scene load_steps=17 format=3 uid="uid://dt4g2ewu42uek"]
 
 [ext_resource type="Script" path="res://assets/fruits/tomato/tomato.gd" id="1_1rutx"]
 [ext_resource type="SpriteFrames" uid="uid://cxoci2w2tp4ss" path="res://assets/fruits/tomato/tomato_frames.tres" id="2_5awyp"]
 [ext_resource type="Texture2D" uid="uid://dsuqgvhohqi1s" path="res://assets/particles/particle.png" id="2_qxjud"]
+[ext_resource type="AudioStream" uid="uid://bgm5mw4j0f3af" path="res://assets/audio/tomato_damage.ogg" id="4_tll87"]
 
 [sub_resource type="Curve" id="Curve_cigm6"]
 _data = [Vector2(0, 0.274725), 0.0, 0.0, 0, 0, Vector2(0.986667, 0.076923), 0.0, 0.0, 0, 0]
@@ -162,6 +163,10 @@ libraries = {
 position = Vector2(156.125, -74.9375)
 shape = SubResource("RectangleShape2D_jefa7")
 disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tll87")
+volume_db = -4.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

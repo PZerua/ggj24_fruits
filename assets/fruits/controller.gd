@@ -284,6 +284,8 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 			get_node("../MultiTargetCamera").set_target(self)
 			$"..".to_fruitality_state(self)
 		
+		body.get_node("AudioStreamPlayer2D").play()
+		
 		emit_particles(body)
 		
 func look_right():

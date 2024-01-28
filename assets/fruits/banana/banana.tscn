@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://qir670b60hs5"]
+[gd_scene load_steps=15 format=3 uid="uid://qir670b60hs5"]
 
 [ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="1_m5ces"]
 [ext_resource type="SpriteFrames" uid="uid://5yxjellvaehc" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
 [ext_resource type="Texture2D" uid="uid://dt677cddlr65" path="res://assets/particles/particle_orange.png" id="2_o1dlf"]
+[ext_resource type="AudioStream" uid="uid://cbub8c4dt7r5f" path="res://assets/audio/banana_damage.ogg" id="4_5bv42"]
 
 [sub_resource type="Curve" id="Curve_abhjk"]
 _data = [Vector2(0, 0.274725), 0.0, 0.0, 0, 0, Vector2(0.986667, 0.076923), 0.0, 0.0, 0, 0]
@@ -162,6 +163,10 @@ root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_6cbsb")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5bv42")
+volume_db = -4.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
