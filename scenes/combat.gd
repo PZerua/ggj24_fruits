@@ -5,7 +5,8 @@ var seconds = 60
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$AudioBSO.play()
+	Music.stream = load("res://assets/audio/Fruitality_Fight_Theme_-_Aleix_Ramon.ogg")
+	Music.play()
 	$GUI/UI/ColorRect/AnimationPlayer.play("fade_in")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
