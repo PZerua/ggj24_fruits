@@ -6,6 +6,9 @@ var kick_pause_frame : int = 0
 func _init():
 	fruit_type = FruitType.BANANA
 	
+func _ready():
+	look_left()
+	
 func _process(delta):
 	super._process(delta)
 
@@ -16,11 +19,9 @@ func _input(event):
 	process_moves(["PUNCH_2", "KICK_2", "BLOCK_2", "MOVE_LEFT_2", "MOVE_RIGHT_2"])
 
 func _on_punch_trigger_body_entered(body):
-	$GPUParticles2D.restart()
 	process_hit(body, punch_damage)
 
 func _on_kick_trigger_body_entered(body):
-	$GPUParticles2D.restart()
 	process_hit(body, kick_damage)
 
 func _on_animated_sprite_2d_animation_finished():
@@ -33,8 +34,11 @@ func _on_animated_sprite_2d_frame_changed():
 		if $AnimatedSprite2D.frame == punch_pause_frame && is_punching:
 			$AnimatedSprite2D.pause()
 		if $AnimatedSprite2D.frame == 3:
-			velocity = Vector2(0, 1000)
+			velocity = Vector2(0, 2000)
 		
 	if $AnimatedSprite2D.animation == "kick" && \
 		$AnimatedSprite2D.frame == kick_pause_frame && is_kicking:
 		$AnimatedSprite2D.pause()
+		
+func _emit_particles():
+	$GPUParticles2D.restart()

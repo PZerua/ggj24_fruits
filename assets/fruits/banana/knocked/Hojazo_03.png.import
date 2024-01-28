@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6u4p6ngh1wi6"
-path="res://.godot/imported/platano__0001s_0001_ataque_03.png-824518fcd3d6939a9900d37c8aeabed5.ctex"
+uid="uid://cf3qkii5nu0ha"
+path="res://.godot/imported/Hojazo_03.png-ead25eb33cc76f4d414b0b34aac174a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/banana/punch/platano__0001s_0001_ataque_03.png"
-dest_files=["res://.godot/imported/platano__0001s_0001_ataque_03.png-824518fcd3d6939a9900d37c8aeabed5.ctex"]
+source_file="res://assets/fruits/banana/knocked/Hojazo_03.png"
+dest_files=["res://.godot/imported/Hojazo_03.png-ead25eb33cc76f4d414b0b34aac174a5.ctex"]
 
 [params]
 
