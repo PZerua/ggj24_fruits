@@ -52,10 +52,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.8,
 "texture": ExtResource("4_m8pf7")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": ExtResource("5_qj8gy")
 }, {
 "duration": 1.0,
@@ -69,7 +69,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"punch",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,

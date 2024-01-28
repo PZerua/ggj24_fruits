@@ -170,7 +170,9 @@ explosiveness = 0.92
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -3)
 sprite_frames = ExtResource("2_5awyp")
-animation = &"block"
+animation = &"punch"
+frame = 4
+frame_progress = 1.0
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 visible = false

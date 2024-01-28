@@ -21,7 +21,6 @@ func _input(event):
 func _on_punch_trigger_body_entered(body):
 	process_hit(body, punch_damage)
 
-
 func _on_kick_trigger_body_entered(body):
 	process_hit(body, kick_damage)
 

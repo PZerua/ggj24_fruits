@@ -229,8 +229,9 @@ func process_hit(body, damage):
 			body.available_hit_blocks = max(body.available_hit_blocks, 0)
 			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
 	else:
-		body.life_points -= 10000
-		life_points += 10000
+		damage += damage * attack_charge
+		body.life_points -= damage
+		life_points += damage
 		
 		# Manage victory cam
 		if body.life_points <= 0.0:
