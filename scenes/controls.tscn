@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://mxm8g4m0xcke"]
+
+[ext_resource type="Script" path="res://scenes/controls.gd" id="1_3qyqp"]
+[ext_resource type="Texture2D" uid="uid://cm1dix7ohc8a" path="res://assets/menus/controls.png" id="1_bw0t3"]
+[ext_resource type="SpriteFrames" uid="uid://cxoci2w2tp4ss" path="res://assets/fruits/tomato/tomato_frames.tres" id="2_2bxy6"]
+[ext_resource type="SpriteFrames" uid="uid://5yxjellvaehc" path="res://assets/fruits/banana/banana_frames.tres" id="3_k7d03"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aysmx"]
+font_size = 40
+font_color = Color(0.992157, 0.929412, 0.823529, 1)
+
+[node name="Controls" type="Node2D"]
+script = ExtResource("1_3qyqp")
+
+[node name="title" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.67, 0.67)
+size_flags_horizontal = 4
+texture = ExtResource("1_bw0t3")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 976.0
+offset_top = 363.0
+offset_right = 1208.0
+offset_bottom = 446.0
+text = "Player 2
+"
+label_settings = SubResource("LabelSettings_aysmx")
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 170.0
+offset_top = 363.0
+offset_right = 402.0
+offset_bottom = 446.0
+text = "Player 1"
+label_settings = SubResource("LabelSettings_aysmx")
+vertical_alignment = 2
+
+[node name="back" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 666.0
+offset_right = 67.0
+offset_bottom = 697.0
+rotation = -0.0616204
+scale = Vector2(2.45548, 1.49433)
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "_____"
+flat = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(110, 369)
+scale = Vector2(0.634615, 0.634615)
+sprite_frames = ExtResource("2_2bxy6")
+animation = &"idle"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1183, 358)
+scale = Vector2(-0.465, 0.465)
+sprite_frames = ExtResource("3_k7d03")
+animation = &"idle"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
