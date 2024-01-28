@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://assets/bars/tomatoBar.gd" id="3_tiox5"]
 [ext_resource type="Texture2D" uid="uid://bv083suvinbcf" path="res://assets/backgrounds/background_1.png" id="4_hwt11"]
 [ext_resource type="Texture2D" uid="uid://cpykyj0qwbl14" path="res://assets/backgrounds/background_2.png" id="5_n4qd6"]
-[ext_resource type="Script" path="res://scenes/pineapple.gd" id="6_m3o1b"]
 [ext_resource type="Texture2D" uid="uid://50cxdc1hw7tt" path="res://assets/bars/bar-over-banana.png" id="7_7jug4"]
 [ext_resource type="Script" path="res://assets/bars/bananaBar.gd" id="7_u80wl"]
 [ext_resource type="PackedScene" uid="uid://cb0rtldgi8fgg" path="res://assets/fruits/reina/reina.tscn" id="8_uyxct"]
@@ -121,9 +120,6 @@ script = ExtResource("3_2qpbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
 texture = ExtResource("5_n4qd6")
-
-[node name="Pineapple" type="CharacterBody2D" parent="."]
-script = ExtResource("6_m3o1b")
 
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 unique_name_in_owner = true
