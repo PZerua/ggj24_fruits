@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3uxi7f5ppecd"
-path="res://.godot/imported/banana.png-2ca31d3a9c422d3f293df5c9868835c8.ctex"
+uid="uid://cqpvm08ob4mcs"
+path="res://.godot/imported/Kick_01.png-1ae096d8bdafa7b948243254ebbf14eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/banana/banana.png"
-dest_files=["res://.godot/imported/banana.png-2ca31d3a9c422d3f293df5c9868835c8.ctex"]
+source_file="res://assets/fruits/banana/kick/Kick_01.png"
+dest_files=["res://.godot/imported/Kick_01.png-1ae096d8bdafa7b948243254ebbf14eb.ctex"]
 
 [params]
 

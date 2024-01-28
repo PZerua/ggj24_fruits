@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf3qkii5nu0ha"
-path="res://.godot/imported/Hojazo_03.png-ead25eb33cc76f4d414b0b34aac174a5.ctex"
+uid="uid://bkgvlsue0civd"
+path="res://.godot/imported/Knocked_01.png-3cdf0d7b40feeb26c907618e05a529fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/banana/knocked/Hojazo_03.png"
-dest_files=["res://.godot/imported/Hojazo_03.png-ead25eb33cc76f4d414b0b34aac174a5.ctex"]
+source_file="res://assets/fruits/banana/knocked/Knocked_01.png"
+dest_files=["res://.godot/imported/Knocked_01.png-3cdf0d7b40feeb26c907618e05a529fc.ctex"]
 
 [params]
 
