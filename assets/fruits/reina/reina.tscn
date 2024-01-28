@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb0rtldgi8fgg"]
+
+[ext_resource type="Script" path="res://assets/fruits/reina/reina.gd" id="1_l4vcy"]
+[ext_resource type="SpriteFrames" uid="uid://brrf1t21tv6t2" path="res://assets/fruits/reina/reina_frames.tres" id="1_vrylu"]
+
+[node name="Reina" type="Node2D"]
+script = ExtResource("1_l4vcy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_vrylu")
+animation = &"idle"
