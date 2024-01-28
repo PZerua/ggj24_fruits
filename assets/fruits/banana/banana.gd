@@ -17,7 +17,7 @@ func _physics_process(delta):
 	process_movement(delta, "JUMP_2", ["MOVE_LEFT_2", "MOVE_RIGHT_2"])
 
 func _on_punch_trigger_body_entered(body):
-	process_hit(body, punch_damage)
+	process_hit(body, punch_damage, Vector2(1.5, 0))
 
 func _on_kick_trigger_body_entered(body):
 	process_hit(body, kick_damage, Vector2(1.5, 0))

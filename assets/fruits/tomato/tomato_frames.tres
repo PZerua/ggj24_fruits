@@ -1,11 +1,13 @@
-[gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://cxoci2w2tp4ss"]
+[gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://cxoci2w2tp4ss"]
 
 [ext_resource type="Texture2D" uid="uid://bc2g6p4c0oal5" path="res://assets/fruits/tomato/block/ESCUDO-01.png" id="1_56fpi"]
 [ext_resource type="Texture2D" uid="uid://pkeotqtihj6b" path="res://assets/fruits/tomato/block/ESCUDO-02.png" id="2_25qek"]
 [ext_resource type="Texture2D" uid="uid://bq6xau7jrklaj" path="res://assets/fruits/tomato/idle/idle_0.png" id="2_q1d6s"]
 [ext_resource type="Texture2D" uid="uid://y3nyiosnnoah" path="res://assets/fruits/tomato/block/ESCUDO-03.png" id="3_pyjsj"]
 [ext_resource type="Texture2D" uid="uid://djk37seka00by" path="res://assets/fruits/tomato/idle/idle_1.png" id="3_ynyaw"]
+[ext_resource type="Texture2D" uid="uid://vuddyehmgdjn" path="res://assets/fruits/tomato/cry/cry_0.png" id="4_g8hg4"]
 [ext_resource type="Texture2D" uid="uid://t2t6og0dwbua" path="res://assets/fruits/tomato/punch/BARRIGAZO-01.png" id="4_m8pf7"]
+[ext_resource type="Texture2D" uid="uid://c4xbjgx08ggi2" path="res://assets/fruits/tomato/cry/cry_1.png" id="5_71aui"]
 [ext_resource type="Texture2D" uid="uid://1nchqp7ho2t" path="res://assets/fruits/tomato/punch/BARRIGAZO-02.png" id="5_qj8gy"]
 [ext_resource type="Texture2D" uid="uid://drbpxgwtc8ujw" path="res://assets/fruits/tomato/punch/BARRIGAZO-03.png" id="6_7yptw"]
 [ext_resource type="Texture2D" uid="uid://tfvd6sqskx2t" path="res://assets/fruits/tomato/knocked/knocked_dizzy_0.png" id="6_iuwel"]
@@ -39,6 +41,17 @@ animations = [{
 "loop": false,
 "name": &"block",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g8hg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_71aui")
+}],
+"loop": true,
+"name": &"cry",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
