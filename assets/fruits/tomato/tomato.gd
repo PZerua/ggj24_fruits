@@ -39,4 +39,8 @@ func _on_animated_sprite_2d_frame_changed():
 		$AnimatedSprite2D.pause()
 
 func _emit_particles():
+	var direction = Vector2(1,0)
+	if side == Sides.LEFT:
+		direction.x = -1
+	$GPUParticles2D.process_material.set("direction", direction)
 	$GPUParticles2D.restart()

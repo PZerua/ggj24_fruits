@@ -20,18 +20,18 @@
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("1_xaym1")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("2_05nag")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_uedsu")
 }],
-"loop": true,
+"loop": false,
 "name": &"block",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -71,7 +71,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_wu15f")
 }],
-"loop": true,
+"loop": false,
 "name": &"knocked",
 "speed": 5.0
 }, {
@@ -102,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_orsgx")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk",
 "speed": 5.0
 }]

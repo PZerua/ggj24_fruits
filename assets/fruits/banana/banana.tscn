@@ -27,6 +27,7 @@ radial_velocity_max = 202.25
 gravity = Vector3(0, 0, 0)
 scale_min = 0.0
 scale_curve = SubResource("CurveTexture_8di1a")
+color = Color(0.976471, 0.486275, 0, 0.713726)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
 radius = 109.002
@@ -102,7 +103,7 @@ floor_snap_length = 0.0
 script = ExtResource("1_m5ces")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-35, 4)
+position = Vector2(9.10109, 37.9759)
 scale = Vector2(0.565539, 1)
 emitting = false
 amount = 15
@@ -114,9 +115,7 @@ explosiveness = 0.92
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_1t8ls")
-animation = &"kick"
-frame = 4
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-6.93877, 23.0185)
