@@ -29,7 +29,7 @@
 [resource]
 animations = [{
 "frames": [{
-"duration": 0.7,
+"duration": 0.5,
 "texture": ExtResource("1_56fpi")
 }, {
 "duration": 0.8,
