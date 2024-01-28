@@ -250,4 +250,5 @@ func toggle_kick_enabled():
 	$Colliders/KickTrigger/KickCollider.disabled = !$Colliders/KickTrigger/KickCollider.disabled
 
 func emit_particles(fruit):
-	pass
+	fruit._emit_particles()
+	pass	

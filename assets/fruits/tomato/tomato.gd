@@ -17,14 +17,12 @@ func _on_punch_trigger_body_entered(body):
 
 
 func _on_kick_trigger_body_entered(body):
-	$GPUParticles2D.restart()
 	process_hit(body, kick_damage)
 
 func _on_animated_sprite_2d_animation_finished():
 	if ($AnimatedSprite2D.animation == "punch") or \
 	($AnimatedSprite2D.animation == "kick"):
 		attack_charge = 0
-	$GPUParticles2D.restart()
 
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation == "punch" && \
@@ -35,3 +33,5 @@ func _on_animated_sprite_2d_frame_changed():
 		$AnimatedSprite2D.frame == kick_pause_frame && is_kicking:
 		$AnimatedSprite2D.pause()
 
+func _emit_particles():
+	$GPUParticles2D.restart()

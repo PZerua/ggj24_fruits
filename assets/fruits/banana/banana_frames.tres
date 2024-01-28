@@ -1,16 +1,31 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://5yxjellvaehc"]
+[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://5yxjellvaehc"]
 
-[ext_resource type="Texture2D" uid="uid://cww5idu0f85y3" path="res://assets/fruits/banana/banana_block_0.png" id="1_2hnj0"]
+[ext_resource type="Texture2D" uid="uid://cwthcj58wufce" path="res://assets/fruits/banana/block/Block_01.png" id="1_xaym1"]
+[ext_resource type="Texture2D" uid="uid://d38jupj8l4swo" path="res://assets/fruits/banana/block/Block_02.png" id="2_05nag"]
 [ext_resource type="Texture2D" uid="uid://dx7eba7t145m5" path="res://assets/fruits/banana/punch/Ataque desc_01.png" id="2_orsgx"]
 [ext_resource type="Texture2D" uid="uid://sjvhepir3wyf" path="res://assets/fruits/banana/punch/Ataque desc_02.png" id="3_7kwgd"]
+[ext_resource type="Texture2D" uid="uid://j3xrltv38nru" path="res://assets/fruits/banana/block/Block_03.png" id="3_uedsu"]
 [ext_resource type="Texture2D" uid="uid://b4jexphuj0mj7" path="res://assets/fruits/banana/punch/Ataque desc_03.png" id="4_0dpbx"]
+[ext_resource type="Texture2D" uid="uid://pux6tlfm6g1h" path="res://assets/fruits/banana/idle/Idle_01.png" id="4_o38ir"]
 [ext_resource type="Texture2D" uid="uid://citxpocf0rxd0" path="res://assets/fruits/banana/punch/Ataque desc_04.png" id="5_mv8f7"]
+[ext_resource type="Texture2D" uid="uid://bfon8ws4dlv5p" path="res://assets/fruits/banana/idle/Idle_02.png" id="5_nv87f"]
+[ext_resource type="Texture2D" uid="uid://cqpvm08ob4mcs" path="res://assets/fruits/banana/knocked/Kick_01.png" id="6_jlsjb"]
+[ext_resource type="Texture2D" uid="uid://be7teuhkug6bu" path="res://assets/fruits/banana/knocked/Kick_02.png" id="7_8124u"]
+[ext_resource type="Texture2D" uid="uid://6lbb0qnxk6ly" path="res://assets/fruits/banana/knocked/Kick_03.png" id="8_5upbx"]
+[ext_resource type="Texture2D" uid="uid://rxhu6x272mnn" path="res://assets/fruits/banana/knocked/Kick_04.png" id="9_qmerk"]
+[ext_resource type="Texture2D" uid="uid://cirwq6dwnw66e" path="res://assets/fruits/banana/knocked/Kick_05.png" id="10_u268i"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_2hnj0")
+"texture": ExtResource("1_xaym1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_05nag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uedsu")
 }],
 "loop": true,
 "name": &"block",
@@ -18,11 +33,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_orsgx")
+"texture": ExtResource("4_o38ir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nv87f")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jlsjb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8124u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5upbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qmerk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u268i")
+}],
+"loop": true,
+"name": &"kick",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bscxsfms5cf5u"
-path="res://.godot/imported/platano__0001s_0000_ataque_04.png-94e6b8f3c05bf2b8b507cba35a19be7c.ctex"
+uid="uid://cirwq6dwnw66e"
+path="res://.godot/imported/Kick_05.png-93f212ffba7ac0b292f7df417be0bcd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/banana/punch/platano__0001s_0000_ataque_04.png"
-dest_files=["res://.godot/imported/platano__0001s_0000_ataque_04.png-94e6b8f3c05bf2b8b507cba35a19be7c.ctex"]
+source_file="res://assets/fruits/banana/knocked/Kick_05.png"
+dest_files=["res://.godot/imported/Kick_05.png-93f212ffba7ac0b292f7df417be0bcd5.ctex"]
 
 [params]
 
