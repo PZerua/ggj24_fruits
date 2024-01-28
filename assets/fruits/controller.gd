@@ -13,6 +13,9 @@ var kick_damage : int = 2
 var attack_charge : float = 0.0
 var attack_max_charge : float = 1.5
 
+var attack_cooldown : float = 0.0
+var attack_max_cooldown : float = 0.2
+
 var previous_velocity : Vector2 = Vector2(0,0)
 
 # MOVEMENT STUFF
@@ -69,6 +72,11 @@ func _process(delta):
 		var shake_intensity = clamp(attack_charge/attack_max_charge, 0.0, 1.0)
 		get_node("../MultiTargetCamera").shake(shake_intensity * 100, 1e10)
 		
+	if (attack_cooldown >= 0.0):
+		attack_cooldown -= delta
+	else:
+		attack_cooldown = 0.0
+	
 	if (attack_charge >= attack_max_charge):
 		release_attack()
 		
@@ -152,14 +160,16 @@ func process_moves(buttons):
 		
 	# PUNCH
 	
-	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0 \
+		&& attack_cooldown == 0.0:
 		is_punching = true
 		sprite.play("punch")
 		velocity = Vector2(0, 0)
 	
 	# KICK
 	
-	if is_on_floor() and Input.is_action_pressed(kick_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(kick_button) && attack_charge == 0 \
+		&& attack_cooldown == 0.0:
 		is_kicking = true
 		sprite.play("kick")
 		velocity = Vector2(0, 0)
