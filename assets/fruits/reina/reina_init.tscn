@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://60at5u41ll26"]
+
+[ext_resource type="Script" path="res://assets/fruits/reina/reina.gd" id="1_nq7xk"]
+[ext_resource type="SpriteFrames" uid="uid://brrf1t21tv6t2" path="res://assets/fruits/reina/reina_frames.tres" id="2_p7c10"]
+[ext_resource type="SpriteFrames" uid="uid://bksbj7uqb4byf" path="res://assets/fruits/apple/apple_frames.tres" id="4_3lkoe"]
+
+[node name="Reina" type="Node2D"]
+script = ExtResource("1_nq7xk")
+
+[node name="AnimatedSpritePinneapple" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_p7c10")
+animation = &"idle"
+
+[node name="AnimatedSpriteApple" type="AnimatedSprite2D" parent="."]
+position = Vector2(-133, 92)
+sprite_frames = ExtResource("4_3lkoe")
+animation = &"idle"

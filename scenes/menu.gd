@@ -27,3 +27,6 @@ func _on_play_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+	
+func _on_controls_pressed():
+	get_tree().change_scene_to_file("res://scenes/controls.tscn")
