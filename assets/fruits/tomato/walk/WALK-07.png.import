@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnxe2r4g4uftr"
-path="res://.godot/imported/fruitality.png-b2977776d4cb1c2a96838f42b4b2a826.ctex"
+uid="uid://dk27uljg6cpq8"
+path="res://.godot/imported/WALK-07.png-0d1db5dcc9f500260d23afe88e19215c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruitality.png"
-dest_files=["res://.godot/imported/fruitality.png-b2977776d4cb1c2a96838f42b4b2a826.ctex"]
+source_file="res://assets/fruits/tomato/walk/WALK-07.png"
+dest_files=["res://.godot/imported/WALK-07.png-0d1db5dcc9f500260d23afe88e19215c.ctex"]
 
 [params]
 
