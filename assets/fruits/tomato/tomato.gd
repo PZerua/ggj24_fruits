@@ -42,7 +42,8 @@ func _on_animated_sprite_2d_animation_finished():
 	if ($AnimatedSprite2D.animation == "punch") or \
 	($AnimatedSprite2D.animation == "kick"):
 		attack_charge = 0
-
+		attack_cooldown = attack_max_cooldown
+		
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation == "punch" && \
 		$AnimatedSprite2D.frame == punch_pause_frame && is_punching:

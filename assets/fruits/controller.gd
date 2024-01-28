@@ -13,6 +13,12 @@ var kick_damage : int = 2
 var attack_charge : float = 0.0
 var attack_max_charge : float = 1.5
 
+var attack_cooldown : float = 0.0
+var attack_max_cooldown : float = 0.2
+
+var impulse_cooldown : float = 0.0
+var impulse_max_cooldown : float = 0.2
+
 var previous_velocity : Vector2 = Vector2(0,0)
 
 # MOVEMENT STUFF
@@ -69,6 +75,16 @@ func _process(delta):
 		var shake_intensity = clamp(attack_charge/attack_max_charge, 0.0, 1.0)
 		get_node("../MultiTargetCamera").shake(shake_intensity * 100, 1e10)
 		
+	if (attack_cooldown >= 0.0):
+		attack_cooldown -= delta
+	else:
+		attack_cooldown = 0.0
+		
+	if (impulse_cooldown >= 0.0):
+		impulse_cooldown -= delta
+	else:
+		impulse_cooldown = 0.0
+	
 	if (attack_charge >= attack_max_charge):
 		release_attack()
 		
@@ -152,14 +168,16 @@ func process_moves(buttons):
 		
 	# PUNCH
 	
-	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0 \
+		&& attack_cooldown == 0.0:
 		is_punching = true
 		sprite.play("punch")
 		velocity = Vector2(0, 0)
 	
 	# KICK
 	
-	if is_on_floor() and Input.is_action_pressed(kick_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(kick_button) && attack_charge == 0 \
+		&& attack_cooldown == 0.0:
 		is_kicking = true
 		sprite.play("kick")
 		velocity = Vector2(0, 0)
@@ -187,7 +205,7 @@ func process_movement(delta, jump_button, move_buttons):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(move_buttons[0], move_buttons[1])
-	if direction:
+	if direction && impulse_cooldown == 0.0:
 		if is_on_floor() && attack_charge == 0:
 			velocity.x = direction * final_speed
 		else:
@@ -232,12 +250,14 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 		damage = round(damage)
 		body.life_points -= damage
 		
-		if (previous_velocity != Vector2(0, 0)):
+		if (previous_velocity != Vector2(0, 0) && direction == Vector2(0, 0)):
 			body.velocity = previous_velocity * 0.6
 		else:
 			body.velocity = (Vector2(-direction.x, direction.y) if side == Sides.LEFT else direction) * 500 * damage
 			
 		life_points += damage
+		
+		body.impulse_cooldown = impulse_max_cooldown
 		
 		# Manage victory cam
 		if body.life_points <= 0.0:
