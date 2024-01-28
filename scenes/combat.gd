@@ -14,7 +14,8 @@ func _process(delta):
 func end(winner):
 	print("Ended!")
 	%MultiTargetCamera.set_target(winner)
-	$GUI/UI/Fruitality/AnimationPlayer.play("fruitality")
+	#$GUI/UI/Fruitality/AnimationPlayer.play("fruitality")
+	$GUI/UI/AnimatedSprite2D.play("frutality")
 	$GUI/UI/ColorRect/AnimationPlayer.play("fade_out")
 
 func _on_timer_timeout():

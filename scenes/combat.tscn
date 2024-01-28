@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=30 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -17,7 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dc0babkt42pj8" path="res://assets/bars/bar-tomato.png" id="10_1sdks"]
 [ext_resource type="Texture2D" uid="uid://wio3gtbkd2ws" path="res://assets/backgrounds/background_3.png" id="15_3vjtf"]
 [ext_resource type="AudioStream" uid="uid://chm3q8mphxvtd" path="res://assets/audio/Fruitality_Fight_Theme_-_Aleix_Ramon.ogg" id="16_w3t1m"]
-[ext_resource type="Texture2D" uid="uid://cx0jpcjmo23fq" path="res://assets/fruitality.png" id="16_x80bp"]
+[ext_resource type="Texture2D" uid="uid://bhchynieveg21" path="res://assets/fruitality.png" id="16_x80bp"]
+[ext_resource type="SpriteFrames" uid="uid://brou7atiuphma" path="res://assets/text/text.tres" id="17_ege5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1242, 53.5)
@@ -233,6 +234,7 @@ one_shot = true
 autostart = true
 
 [node name="Fruitality" type="TextureRect" parent="GUI/UI"]
+visible = false
 z_index = 100
 layout_mode = 0
 offset_left = -1200.0
@@ -245,6 +247,14 @@ texture = ExtResource("16_x80bp")
 libraries = {
 "": SubResource("AnimationLibrary_uns5w")
 }
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GUI/UI"]
+z_index = 50
+position = Vector2(612, 325)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("17_ege5f")
+animation = &"frutality"
+frame_progress = 0.0256774
 
 [node name="ParallaxFront" type="ParallaxBackground" parent="."]
 layer = 1
