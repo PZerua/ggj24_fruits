@@ -1,10 +1,14 @@
 extends "res://assets/fruits/controller.gd"
 
+const IDLE_TIME_TO_CRY : float = 5000.0 # ms
+const CRY_TIME : float = 1.5 # seconds
+
 var punch_pause_frame : int = 3
 var kick_pause_frame : int = 1
 
 var is_crying : bool = false
 var last_input_time : float = 0.0
+var cry_timer : float = 0.0
 
 func _init():
 	fruit_type = FruitType.TOMATO
@@ -15,11 +19,17 @@ func _ready():
 func _process(delta):
 	
 	var new_time = Time.get_ticks_msec()
-	if (new_time - last_input_time) > 5000.0:
+	if (new_time - last_input_time) > IDLE_TIME_TO_CRY:
 		is_crying = true
 	
 	if is_crying:
 		$AnimatedSprite2D.play("cry")
+		cry_timer += delta
+		print(cry_timer)
+		if cry_timer >= CRY_TIME:
+			last_input_time = new_time
+			cry_timer = 0.0
+			is_crying = false
 	else:
 		process_moves(["PUNCH_1", "KICK_1", "BLOCK_1", "MOVE_LEFT_1", "MOVE_RIGHT_1"])
 		super._process(delta)
