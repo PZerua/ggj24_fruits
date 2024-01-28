@@ -69,7 +69,7 @@ func release_attack():
 		%PunchAnimation.play("Punch")
 		sprite.play("punch")
 		is_punching = false
-		var impulse = Vector2(10000, -1000)
+		var impulse = Vector2(2000, -1000)
 		impulse = %Colliders.global_transform.basis_xform(impulse) * attack_charge
 		velocity += impulse
 
@@ -155,11 +155,28 @@ func process_movement(delta, jump_button, move_buttons):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(move_buttons[0], move_buttons[1])
 	if direction:
-		velocity.x = direction * final_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, final_speed)
+		if is_on_floor():
+			velocity.x = direction * final_speed
+		#else:
+			#velocity.x += direction * final_speed * 0.03
 
+	if is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, 100)
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, 10)
+		
+	var previous_vel = velocity
 	move_and_slide()
+	
+	#print(velocity)
+	
+	if not is_on_floor():
+		if get_slide_collision_count() > 0:
+			var collision = get_slide_collision(0)
+			if collision != null:
+				velocity = previous_vel.bounce(collision.get_normal()) * 0.6
+
+
 
 func process_hit(body, damage):
 	
