@@ -94,6 +94,8 @@ func process_moves(buttons):
 	
 	if is_knocked_out:
 		return
+		
+	var sprite = $AnimatedSprite2D
 	
 	var punch_button = buttons[0]
 	var kick_button = buttons[1]
@@ -101,30 +103,35 @@ func process_moves(buttons):
 	var left_button = buttons[3]
 	var right_button = buttons[4]
 	
-	if Input.is_action_just_pressed(left_button):
-		look_left()
-	
-	if Input.is_action_just_pressed(right_button):
-		look_right()
+	if !is_blocking:
+		if Input.is_action_just_pressed(left_button):
+			look_left()
 		
-	if (Input.is_action_just_released(right_button) or Input.is_action_just_released(left_button)):
-		check_direction(left_button, right_button)
-	
+		if Input.is_action_just_pressed(right_button):
+			look_right()
+			
+		if (Input.is_action_just_released(right_button) or Input.is_action_just_released(left_button)):
+			check_direction(left_button, right_button)
+		
 	# BLOCK
 	
 	if Input.is_action_just_pressed(block_button) and available_hit_blocks > 0 and is_on_floor():
 		is_blocking = true
+		
+		sprite.play("block")
+				
 		# Get first frame to check parry later
 		if Input.is_action_just_pressed(block_button):
 			last_block_time = Time.get_ticks_msec()
 		
 	if Input.is_action_just_released(block_button) or available_hit_blocks == 0:
 		is_blocking = false
+		check_direction(left_button, right_button)
 		recover_block_timer = TIME_RECOVER_BLOCK
 		
 	# PUNCH
 	
-	var sprite = $AnimatedSprite2D
+
 	
 	if is_on_floor() and Input.is_action_just_pressed(punch_button) && attack_charge == 0:
 		is_punching = true
@@ -228,8 +235,8 @@ func update_animation():
 	
 	if is_knocked_out:
 		sprite.play("knocked")
-	elif is_blocking:
-		sprite.play("block")
+	if is_blocking:
+		return
 	elif abs(velocity.x) > 0.0:
 		sprite.play("walk")
 	else:

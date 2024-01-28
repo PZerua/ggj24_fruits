@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d13c05hcxb8nk"
-path="res://.godot/imported/tomato_block_0.png-34b73fdef2029ccd35acd760235c869c.ctex"
+uid="uid://bc2g6p4c0oal5"
+path="res://.godot/imported/ESCUDO-01.png-67d3d7282501bba3410531037306ca0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/tomato/tomato_block_0.png"
-dest_files=["res://.godot/imported/tomato_block_0.png-34b73fdef2029ccd35acd760235c869c.ctex"]
+source_file="res://assets/fruits/tomato/block/ESCUDO-01.png"
+dest_files=["res://.godot/imported/ESCUDO-01.png-67d3d7282501bba3410531037306ca0b.ctex"]
 
 [params]
 
