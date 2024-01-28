@@ -136,6 +136,7 @@ func process_hit(body, damage):
 	else:
 		body.life_points -= damage
 		life_points += damage
+		emit_particles(body)
 		
 func update_animation():
 	
@@ -163,3 +164,6 @@ func toggle_punch_enabled():
 
 func toggle_kick_enabled():
 	$Colliders/KickTrigger/KickCollider.disabled = !$Colliders/KickTrigger/KickCollider.disabled
+
+func emit_particles(fruit):
+	pass

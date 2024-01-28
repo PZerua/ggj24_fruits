@@ -1,58 +1,60 @@
 [gd_scene load_steps=3 format=3 uid="uid://kic4ssacatkq"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_4sci4"]
-[ext_resource type="Texture2D" uid="uid://obha1q7nu7t8" path="res://assets/title.png" id="2_ocunj"]
+[ext_resource type="Texture2D" uid="uid://cer2yh82aih0n" path="res://assets/menus/Menu.png" id="2_wg2vv"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-script = ExtResource("1_4sci4")
-
-[node name="v_box_menu" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -385.0
-offset_top = -167.5
-offset_right = 385.0
-offset_bottom = 167.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 100
-
-[node name="title" type="TextureRect" parent="v_box_menu"]
-layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_ocunj")
+script = ExtResource("1_4sci4")
 
-[node name="v_box_buttons" type="VBoxContainer" parent="v_box_menu"]
-layout_mode = 2
+[node name="title" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.600016, 0.600016)
+size_flags_horizontal = 4
+texture = ExtResource("2_wg2vv")
 
-[node name="play" type="Button" parent="v_box_menu/v_box_buttons"]
+[node name="exit" type="Button" parent="."]
 layout_mode = 2
+offset_left = 508.0
+offset_top = 538.0
+offset_right = 551.0
+offset_bottom = 569.0
+scale = Vector2(2.45548, 1.49433)
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "_____"
+flat = true
+
+[node name="play" type="Button" parent="."]
+layout_mode = 2
+offset_left = 506.0
+offset_top = 385.0
+offset_right = 561.0
+offset_bottom = 416.0
+scale = Vector2(2.01871, 3.85748)
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 10
 text = "FIGHT"
+flat = true
+icon_alignment = 1
 
-[node name="about" type="Button" parent="v_box_menu/v_box_buttons"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "ABOUT
-"
-
-[node name="exit" type="Button" parent="v_box_menu/v_box_buttons"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "EXIT"
-
-[connection signal="pressed" from="v_box_menu/v_box_buttons/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="v_box_menu/v_box_buttons/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]

@@ -113,6 +113,7 @@ position = Vector2(250, 266)
 rotation = -0.00158102
 
 [node name="MultiTargetCamera" type="Camera2D" parent="."]
+unique_name_in_owner = true
 zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
