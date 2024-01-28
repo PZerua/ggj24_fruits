@@ -6,8 +6,6 @@ var seconds = 3
 func _ready():
 	$AudioBSO.play()
 	$GUI/UI/ColorRect/AnimationPlayer.play("fade_in")
-	$MultiTargetCamera.add_target($Tomato)
-	$MultiTargetCamera.add_target($Banana)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
