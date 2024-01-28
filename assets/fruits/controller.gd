@@ -34,7 +34,7 @@ var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const MAX_BLOCKED_HITS = 5
 const TIME_RECOVER_BLOCK = 2.0
-const TIME_RECOVER_KNOCKOUT = 1.5
+const TIME_RECOVER_KNOCKOUT = 2.0
 
 var is_blocking : bool = false
 var is_punching : bool = false
@@ -219,11 +219,15 @@ func process_movement(delta, jump_button, move_buttons):
 	previous_velocity = velocity
 	move_and_slide()
 	
-	if not is_on_floor():
-		if get_slide_collision_count() > 0:
-			var collision = get_slide_collision(0)
-			if collision != null:
+
+	if get_slide_collision_count() > 0:
+		var collision = get_slide_collision(0)
+		if collision != null:
+			if not is_on_floor():
 				velocity = previous_velocity.bounce(collision.get_normal()) * 0.6
+			#var collider = collision.get_collider()
+			#if collider is CharacterBody2D:
+				#collider.velocity += -collision.get_normal() * 200
 
 func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 	
@@ -248,14 +252,14 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 	else:
 		damage += damage * attack_charge
 		damage = round(damage)
-		body.life_points -= damage
+		body.life_points -= damage * 2
 		
 		if (previous_velocity != Vector2(0, 0) && direction == Vector2(0, 0)):
 			body.velocity = previous_velocity * 0.6
 		else:
 			body.velocity = (Vector2(-direction.x, direction.y) if side == Sides.LEFT else direction) * 500 * damage
 			
-		life_points += damage
+		life_points += damage * 2
 		
 		body.impulse_cooldown = impulse_max_cooldown
 		

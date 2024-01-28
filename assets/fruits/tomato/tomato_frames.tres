@@ -17,19 +17,19 @@
 [ext_resource type="Texture2D" uid="uid://sfiukfshd1ao" path="res://assets/fruits/tomato/knocked/knocked_dizzy_1.png" id="7_vmh47"]
 [ext_resource type="Texture2D" uid="uid://bmd3fnsw2y0lw" path="res://assets/fruits/tomato/punch/BARRIGAZO-05.png" id="8_8jo1g"]
 [ext_resource type="Texture2D" uid="uid://dckdt1e2kspqw" path="res://assets/fruits/tomato/kick/RAMA-03.png" id="8_l3srw"]
-[ext_resource type="Texture2D" uid="uid://vk3t1bl15ab" path="res://assets/fruits/tomato/walk/WALK-01.png" id="13_eua8d"]
-[ext_resource type="Texture2D" uid="uid://cxphc8cestbae" path="res://assets/fruits/tomato/walk/WALK-02.png" id="14_74ycf"]
-[ext_resource type="Texture2D" uid="uid://6bsntg0cojqe" path="res://assets/fruits/tomato/walk/WALK-03.png" id="15_4ey1k"]
-[ext_resource type="Texture2D" uid="uid://c4prdxd5wrgyk" path="res://assets/fruits/tomato/walk/WALK-04.png" id="16_fa7lc"]
-[ext_resource type="Texture2D" uid="uid://bfs3ysow1nwev" path="res://assets/fruits/tomato/walk/WALK-05.png" id="17_ifkjt"]
-[ext_resource type="Texture2D" uid="uid://2sd351qon40v" path="res://assets/fruits/tomato/walk/WALK-06.png" id="18_gaodu"]
-[ext_resource type="Texture2D" uid="uid://ce5sp7ackorq2" path="res://assets/fruits/tomato/walk/WALK-07.png" id="19_b3o8r"]
-[ext_resource type="Texture2D" uid="uid://prccqtn83gq2" path="res://assets/fruits/tomato/walk/WALK-08.png" id="20_s3db6"]
+[ext_resource type="Texture2D" uid="uid://dqx230h2maxm0" path="res://assets/fruits/tomato/walk/WALK-01.png" id="13_eua8d"]
+[ext_resource type="Texture2D" uid="uid://diqh2ucowy6hn" path="res://assets/fruits/tomato/walk/WALK-02.png" id="14_74ycf"]
+[ext_resource type="Texture2D" uid="uid://c0mh5m1ywx3k2" path="res://assets/fruits/tomato/walk/WALK-03.png" id="15_4ey1k"]
+[ext_resource type="Texture2D" uid="uid://swuftx1ckiq8" path="res://assets/fruits/tomato/walk/WALK-04.png" id="16_fa7lc"]
+[ext_resource type="Texture2D" uid="uid://hukjwpybli5b" path="res://assets/fruits/tomato/walk/WALK-05.png" id="17_ifkjt"]
+[ext_resource type="Texture2D" uid="uid://cbs6purg1776y" path="res://assets/fruits/tomato/walk/WALK-06.png" id="18_gaodu"]
+[ext_resource type="Texture2D" uid="uid://dk27uljg6cpq8" path="res://assets/fruits/tomato/walk/WALK-07.png" id="19_b3o8r"]
+[ext_resource type="Texture2D" uid="uid://c7xxxtdu8mgkt" path="res://assets/fruits/tomato/walk/WALK-08.png" id="20_s3db6"]
 
 [resource]
 animations = [{
 "frames": [{
-"duration": 0.7,
+"duration": 0.5,
 "texture": ExtResource("1_56fpi")
 }, {
 "duration": 0.8,
