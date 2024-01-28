@@ -278,6 +278,10 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 			body.available_hit_blocks -= 1
 			body.available_hit_blocks = max(body.available_hit_blocks, 0)
 			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
+			
+		var other_audio = body.get_node("OnHitAudioStream")
+		other_audio.stream = load("res://assets/audio/sword_hit.ogg")
+		other_audio.play()
 	else:
 		damage += damage * attack_charge
 		damage = round(damage)
