@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bksbj7uqb4byf"]
+
+[ext_resource type="Texture2D" uid="uid://chx6jtc7crb5e" path="res://assets/fruits/apple/Apple_01.png" id="1_lo1i5"]
+[ext_resource type="Texture2D" uid="uid://cfuofjd7gm5dq" path="res://assets/fruits/apple/Apple_02.png" id="2_fut0h"]
+[ext_resource type="Texture2D" uid="uid://clglv4hpoyx24" path="res://assets/fruits/apple/Apple_03.png" id="3_p1cni"]
+[ext_resource type="Texture2D" uid="uid://bnwvqtej2kl30" path="res://assets/fruits/apple/Apple_04.png" id="4_fvqkp"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lo1i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fut0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p1cni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fvqkp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

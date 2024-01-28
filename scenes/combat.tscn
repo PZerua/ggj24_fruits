@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=30 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dc0babkt42pj8" path="res://assets/bars/bar-tomato.png" id="10_1sdks"]
 [ext_resource type="Texture2D" uid="uid://wio3gtbkd2ws" path="res://assets/backgrounds/background_3.png" id="15_3vjtf"]
 [ext_resource type="AudioStream" uid="uid://chm3q8mphxvtd" path="res://assets/audio/Fruitality_Fight_Theme_-_Aleix_Ramon.ogg" id="16_w3t1m"]
-[ext_resource type="Texture2D" uid="uid://bhchynieveg21" path="res://assets/fruitality.png" id="16_x80bp"]
+[ext_resource type="Texture2D" uid="uid://dnxe2r4g4uftr" path="res://assets/fruitality.png" id="16_x80bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1242, 53.5)
@@ -74,6 +74,16 @@ _data = {
 "fade_in": SubResource("Animation_b5fbp"),
 "fade_out": SubResource("Animation_phtuo")
 }
+
+[sub_resource type="SystemFont" id="SystemFont_3a0e5"]
+font_italic = true
+font_weight = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_towyw"]
+font = SubResource("SystemFont_3a0e5")
+font_size = 30
+font_color = Color(0.239216, 0.239216, 0.239216, 1)
+shadow_size = 3
 
 [sub_resource type="Animation" id="Animation_1svsd"]
 resource_name = "fruitality"
@@ -193,7 +203,7 @@ libraries = {
 }
 
 [node name="FunnyBar" type="Node2D" parent="GUI/UI"]
-position = Vector2(612, 79)
+position = Vector2(612, 34)
 
 [node name="BarBanana" type="TextureProgressBar" parent="GUI/UI/FunnyBar"]
 offset_right = 405.0
@@ -205,7 +215,6 @@ nine_patch_stretch = true
 texture_over = ExtResource("7_7jug4")
 texture_progress = ExtResource("9_4ow40")
 script = ExtResource("7_u80wl")
-metadata/_edit_use_anchors_ = true
 
 [node name="BarTomato" type="TextureProgressBar" parent="GUI/UI/FunnyBar"]
 offset_left = -405.0
@@ -219,7 +228,6 @@ texture_over = ExtResource("9_tqscr")
 texture_progress = ExtResource("10_1sdks")
 texture_progress_offset = Vector2(-0.235, -0.155)
 script = ExtResource("3_tiox5")
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="GUI/UI"]
 layout_mode = 1
@@ -227,12 +235,13 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -196.0
-offset_top = 111.0
+offset_top = 66.0
 offset_right = -58.0
-offset_bottom = 180.0
+offset_bottom = 135.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "60"
+label_settings = SubResource("LabelSettings_towyw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -245,8 +254,8 @@ autostart = true
 [node name="Fruitality" type="TextureRect" parent="GUI/UI"]
 z_index = 100
 layout_mode = 0
-offset_left = -1200.0
-offset_right = 720.0
+offset_left = -1148.0
+offset_right = 772.0
 offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("16_x80bp")
