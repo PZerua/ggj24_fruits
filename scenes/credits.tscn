@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://tryxsvbdogwr"]
 
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_xtgup"]
-[ext_resource type="Texture2D" uid="uid://cm1dix7ohc8a" path="res://assets/menus/controls.png" id="2_b2ng3"]
+[ext_resource type="Texture2D" uid="uid://bnv54gjbodavc" path="res://assets/menus/CREDITS.png" id="2_hdeme"]
 [ext_resource type="SpriteFrames" uid="uid://cxoci2w2tp4ss" path="res://assets/fruits/tomato/tomato_frames.tres" id="3_u0vsq"]
 [ext_resource type="SpriteFrames" uid="uid://5yxjellvaehc" path="res://assets/fruits/banana/banana_frames.tres" id="4_vqqtj"]
 
@@ -13,13 +13,13 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 scale = Vector2(0.67, 0.67)
 size_flags_horizontal = 4
-texture = ExtResource("2_b2ng3")
+texture = ExtResource("2_hdeme")
 
 [node name="back" type="Button" parent="."]
-offset_left = 29.0
-offset_top = 663.0
-offset_right = 72.0
-offset_bottom = 694.0
+offset_left = 46.0
+offset_top = 656.0
+offset_right = 89.0
+offset_bottom = 687.0
 rotation = -0.0616204
 scale = Vector2(2.63098, 1.48777)
 mouse_default_cursor_shape = 2
