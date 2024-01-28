@@ -22,9 +22,11 @@ script = ExtResource("1_4sci4")
 
 [node name="title" type="TextureRect" parent="."]
 layout_mode = 1
-offset_right = 1920.0
-offset_bottom = 1080.0
-scale = Vector2(0.600016, 0.600016)
+offset_left = -62.0
+offset_top = -36.0
+offset_right = 1858.0
+offset_bottom = 1044.0
+scale = Vector2(0.665, 0.665)
 size_flags_horizontal = 4
 texture = ExtResource("2_wg2vv")
 
