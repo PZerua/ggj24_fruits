@@ -3,6 +3,9 @@ extends "res://assets/fruits/controller.gd"
 var punch_pause_frame : int = 3
 var kick_pause_frame : int = 1
 
+var is_crying : bool = false
+var last_input_time : float = 0.0
+
 func _init():
 	fruit_type = FruitType.TOMATO
 
@@ -10,11 +13,24 @@ func _ready():
 	look_right()
 	
 func _process(delta):
-	process_moves(["PUNCH_1", "KICK_1", "BLOCK_1", "MOVE_LEFT_1", "MOVE_RIGHT_1"])
-	super._process(delta)
+	
+	var new_time = Time.get_ticks_msec()
+	if (new_time - last_input_time) > 5000.0:
+		is_crying = true
+	
+	if is_crying:
+		$AnimatedSprite2D.play("cry")
+	else:
+		process_moves(["PUNCH_1", "KICK_1", "BLOCK_1", "MOVE_LEFT_1", "MOVE_RIGHT_1"])
+		super._process(delta)
 
 func _physics_process(delta):
 	process_movement(delta, "JUMP_1", ["MOVE_LEFT_1", "MOVE_RIGHT_1"])
+
+# Any event causes to stop crying...
+func _input(event):
+	is_crying = false
+	last_input_time = Time.get_ticks_msec()
 
 func _on_punch_trigger_body_entered(body):
 	process_hit(body, punch_damage)
