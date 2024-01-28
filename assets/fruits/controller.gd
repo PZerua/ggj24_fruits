@@ -240,6 +240,12 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 	
 	if scene.combat_ended:
 		body.is_in_fruitality = true
+		# Sync sides before emitting anythin nor doing animations
+		if side == body.side:
+			if side == Sides.LEFT:
+				body.look_right()
+			else:
+				body.look_left()
 		body.get_node("AnimatedSprite2D").play("fruitality")
 		emit_particles(body)
 		scene.end()
@@ -259,8 +265,7 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 			body.available_hit_blocks = max(body.available_hit_blocks, 0)
 			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
 	else:
-		# damage += damage * attack_charge
-		damage = 1000
+		damage += damage * attack_charge
 		damage = round(damage)
 		body.life_points -= damage * 2
 		
