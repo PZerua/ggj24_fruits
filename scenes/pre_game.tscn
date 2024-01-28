@@ -63,12 +63,13 @@ autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1003.0
+offset_left = 863.0
 offset_top = 12.0
-offset_right = 1277.0
+offset_right = 1223.0
 offset_bottom = 82.0
+theme_override_colors/font_color = Color(0.768627, 0.768627, 0.768627, 1)
 theme_override_font_sizes/font_size = 20
-text = "[Press \"C\" or \"O\" to skip]"
+text = "[Press KEY \"C\" or BUTTON \"X\" to skip]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

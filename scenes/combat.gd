@@ -34,8 +34,10 @@ func _on_timer_timeout():
 	var tomato_life = $Tomato.life_points
 	var orange_life = $Banana.life_points
 	if tomato_life > orange_life:
+		$Banana.is_eliminated = true
 		to_fruitality_state($Tomato)
 	else:
+		$Tomato.is_eliminated = true
 		to_fruitality_state($Banana)	
 	
 func _on_animation_player_animation_finished(anim_name):
