@@ -28,6 +28,7 @@ var is_blocking : bool = false
 var is_punching : bool = false
 var is_kicking : bool = false
 var is_knocked_out : bool = false
+var is_eliminated : bool = false
 
 var available_hit_blocks : int = MAX_BLOCKED_HITS
 var recover_block_timer : float = 0.0
@@ -38,6 +39,10 @@ func _ready():
 	pass
 	
 func _process(delta):
+	
+	if is_eliminated:
+		update_animation()
+		return
 	
 	if is_knocked_out:
 		recover_knockout_timer -= delta;
@@ -92,7 +97,7 @@ func check_direction(left_button, right_button):
 	
 func process_moves(buttons):
 	
-	if is_knocked_out:
+	if is_knocked_out or is_eliminated:
 		return
 		
 	var sprite = $AnimatedSprite2D
@@ -131,8 +136,6 @@ func process_moves(buttons):
 		
 	# PUNCH
 	
-
-	
 	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0:
 		is_punching = true
 		sprite.play("punch")
@@ -151,7 +154,7 @@ func process_moves(buttons):
 		
 func process_movement(delta, jump_button, move_buttons):
 	
-	if is_blocking or is_knocked_out or is_punching or is_kicking:
+	if is_blocking or is_knocked_out or is_punching or is_kicking or is_eliminated:
 		return
 
 	var final_speed = SPEED
@@ -213,17 +216,25 @@ func process_hit(body, damage):
 			body.available_hit_blocks = max(body.available_hit_blocks, 0)
 			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
 	else:
-		body.life_points -= damage
-		life_points += damage
+		body.life_points -= 10000
+		life_points += 10000
+		
+		# Manage victory cam
+		if body.life_points <= 0.0:
+			body.is_eliminated = true
+			get_node("../MultiTargetCamera").set_target(self)
+		
 		emit_particles(body)
 		
 func look_right():
+	
 	var sprite = $AnimatedSprite2D
 	sprite.flip_h = false
 	side = Sides.RIGHT
 	$Colliders.scale.x = 1
 		
 func look_left():
+	
 	var sprite = $AnimatedSprite2D
 	sprite.flip_h = true
 	side = Sides.LEFT
@@ -233,7 +244,7 @@ func update_animation():
 	
 	var sprite = $AnimatedSprite2D
 	
-	if is_knocked_out:
+	if is_knocked_out or is_eliminated:
 		sprite.play("knocked")
 	elif is_blocking:
 		pass

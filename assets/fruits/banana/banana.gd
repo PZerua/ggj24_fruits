@@ -1,7 +1,6 @@
 extends "res://assets/fruits/controller.gd"
 
 func _process(delta):
-	
 	super._process(delta)
 
 func _physics_process(delta):
