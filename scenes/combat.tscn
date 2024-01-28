@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dc0babkt42pj8" path="res://assets/bars/bar-tomato.png" id="10_1sdks"]
 [ext_resource type="Texture2D" uid="uid://wio3gtbkd2ws" path="res://assets/backgrounds/background_3.png" id="15_3vjtf"]
 [ext_resource type="AudioStream" uid="uid://chm3q8mphxvtd" path="res://assets/audio/Fruitality_Fight_Theme_-_Aleix_Ramon.ogg" id="16_w3t1m"]
-[ext_resource type="Texture2D" uid="uid://dnxe2r4g4uftr" path="res://assets/fruitality.png" id="16_x80bp"]
+[ext_resource type="Texture2D" uid="uid://c4ucgl6heyq5x" path="res://assets/fruitality.png" id="16_x80bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1242, 53.5)
@@ -145,11 +145,11 @@ texture = ExtResource("5_n4qd6")
 
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 unique_name_in_owner = true
-position = Vector2(-250, 284)
+position = Vector2(-251, 283)
 
 [node name="Banana" parent="." instance=ExtResource("2_nrd0u")]
 unique_name_in_owner = true
-position = Vector2(250, 266)
+position = Vector2(288, 236)
 
 [node name="MultiTargetCamera" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -165,7 +165,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-8, 0)
+position = Vector2(-8, -2)
 shape = SubResource("RectangleShape2D_f6e4s")
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -252,6 +252,7 @@ one_shot = true
 autostart = true
 
 [node name="Fruitality" type="TextureRect" parent="GUI/UI"]
+visible = false
 z_index = 100
 layout_mode = 0
 offset_left = -1148.0
@@ -287,6 +288,7 @@ grow_vertical = 2
 color = Color(0.807843, 0.168627, 0.0941176, 0.215686)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1, -19)
 collision_layer = 4
 collision_mask = 0
 
