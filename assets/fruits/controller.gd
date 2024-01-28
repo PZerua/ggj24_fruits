@@ -174,6 +174,12 @@ func process_moves(buttons):
 		is_punching = true
 		sprite.play("punch")
 		velocity = Vector2(0, 0)
+		if fruit_type == FruitType.TOMATO:
+			$AttackAudioStream.stream = load("res://assets/audio/tomato_charge.ogg")
+			$AttackAudioStream.play()
+		else:
+			# $AttackAudioStream.stream = load("res://assets/audio/tomato_charge.ogg")
+			pass
 	
 	# KICK
 	
@@ -182,6 +188,12 @@ func process_moves(buttons):
 		is_kicking = true
 		sprite.play("kick")
 		velocity = Vector2(0, 0)
+		if fruit_type == FruitType.TOMATO:
+			$AttackAudioStream.stream = load("res://assets/audio/tomato_charge.ogg")
+			$AttackAudioStream.play()
+		else:
+			pass
+			# $AttackAudioStream.stream = load("res://assets/audio/tomato_charge.ogg")
 		
 	if (Input.is_action_just_released(punch_button) or
 		Input.is_action_just_released(kick_button)) && attack_charge >= 0:
@@ -286,7 +298,7 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 			get_node("../MultiTargetCamera").set_target(self)
 			$"..".to_fruitality_state(self)
 		
-		body.get_node("AudioStreamPlayer2D").play()
+		body.get_node("OnHitAudioStream").play()
 		
 		emit_particles(body)
 		

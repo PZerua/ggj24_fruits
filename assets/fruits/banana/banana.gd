@@ -27,6 +27,8 @@ func _on_animated_sprite_2d_animation_finished():
 		($AnimatedSprite2D.animation == "kick"):
 		attack_charge = 0.0
 		attack_cooldown = attack_max_cooldown
+		$AttackAudioStream.stream = load("res://assets/audio/tomato_hit.ogg")
+		$AttackAudioStream.play()
 
 func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation == "punch":
