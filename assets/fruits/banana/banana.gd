@@ -1,7 +1,12 @@
 extends "res://assets/fruits/controller.gd"
 
-func _process(delta):
+var punch_pause_frame : int = 1
+var kick_pause_frame : int = 0
+
+func _init():
+	fruit_type = FruitType.BANANA
 	
+func _process(delta):
 	super._process(delta)
 
 func _physics_process(delta):
@@ -22,3 +27,14 @@ func _on_animated_sprite_2d_animation_finished():
 	if ($AnimatedSprite2D.animation == "punch") or \
 		($AnimatedSprite2D.animation == "kick"):
 		attack_charge = 0
+
+func _on_animated_sprite_2d_frame_changed():
+	if $AnimatedSprite2D.animation == "punch":
+		if $AnimatedSprite2D.frame == punch_pause_frame && is_punching:
+			$AnimatedSprite2D.pause()
+		if $AnimatedSprite2D.frame == 3:
+			velocity = Vector2(0, 1000)
+		
+	if $AnimatedSprite2D.animation == "kick" && \
+		$AnimatedSprite2D.frame == kick_pause_frame && is_kicking:
+		$AnimatedSprite2D.pause()

@@ -3,6 +3,9 @@ extends "res://assets/fruits/controller.gd"
 var punch_pause_frame : int = 3
 var kick_pause_frame : int = 0
 
+func _init():
+	fruit_type = FruitType.TOMATO
+
 func _process(delta):
 	super._process(delta)
 

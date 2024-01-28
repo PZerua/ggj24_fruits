@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 # FRUIT STUFF
 
+enum FruitType { TOMATO, BANANA }
+
+var fruit_type : FruitType
+
 var life_points : int = 50
 var punch_damage : int = 2
 var kick_damage : int = 2
@@ -68,18 +72,27 @@ func _process(delta):
 func release_attack():
 	var sprite = $AnimatedSprite2D
 	
+	var impulse : Vector2 = Vector2(0, 0)
+	
 	if (is_punching):
 		%PunchAnimation.play("Punch")
 		sprite.play("punch")
 		is_punching = false
-		var impulse = Vector2(2000, -1000)
-		impulse = %Colliders.global_transform.basis_xform(impulse) * attack_charge
-		velocity += impulse
+		
+		if fruit_type == FruitType.TOMATO:
+			impulse = Vector2(2000, -1000)
+			impulse = %Colliders.global_transform.basis_xform(impulse) * attack_charge
+			
+		if fruit_type == FruitType.BANANA:
+			impulse = Vector2(1000, -1000)
+			impulse = %Colliders.global_transform.basis_xform(impulse)
 
 	if (is_kicking):
 		%KickAnimation.play("Kick")
 		sprite.play("kick")
 		is_kicking = false
+		
+	velocity += impulse
 		
 	get_node("../MultiTargetCamera").stop_shake()
 
@@ -130,8 +143,6 @@ func process_moves(buttons):
 		recover_block_timer = TIME_RECOVER_BLOCK
 		
 	# PUNCH
-	
-
 	
 	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0:
 		is_punching = true
