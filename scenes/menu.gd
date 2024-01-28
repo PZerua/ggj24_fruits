@@ -22,8 +22,7 @@ func _process(_delta):
 	#$Panel.visible = false
 
 func _on_play_pressed():
-	print("Combat Started. Fight!")
-	get_tree().change_scene_to_file("res://scenes/combat.tscn")
+	get_tree().change_scene_to_file("res://scenes/pre_game.tscn")
 	started = true
 
 func _on_exit_pressed():

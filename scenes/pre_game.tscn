@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://clgsk5tfmailm"]
+
+[ext_resource type="Texture2D" uid="uid://d8xbmsxmibei" path="res://assets/menus/Intro_01.png" id="1_37w1u"]
+[ext_resource type="Script" path="res://assets/menus/pre_game.gd" id="1_jlabx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m4c23"]
+font_size = 21
+
+[node name="pre_game" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("1_jlabx")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.600016, 0.600016)
+size_flags_horizontal = 4
+texture = ExtResource("1_37w1u")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="cinematic_lines_up" type="ColorRect" parent="Node2D"]
+offset_right = 1151.0
+offset_bottom = 92.0
+color = Color(0, 0, 0, 1)
+
+[node name="cinematic_lines_down" type="ColorRect" parent="Node2D"]
+offset_top = 558.0
+offset_right = 1151.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 555.0
+offset_right = 1047.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[LINE]"
+label_settings = SubResource("LabelSettings_m4c23")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
