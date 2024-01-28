@@ -16,10 +16,15 @@ var center_scene
 @export var position_x_range = Vector2(-520, 520)
 @export var move_speed = LERP_MOVE_SPEED # camera position lerp speed
 @export var zoom_speed = LERP_ZOOM_SPEED  # camera zoom lerp speed
+@export var min_zoom = MIN_ZOOM
+@export var max_zoom = MAX_ZOOM
+
+var smooth_enabled : bool = true
 
 var shake_elapsed : float = 0.0
 var shake_length : float = 0.0
 var shake_amount : float = 0.0
+var shake_stop_timer : float = 1.0
 
 func _ready():
 	tomato = %Tomato
@@ -28,24 +33,16 @@ func _ready():
 
 func _process(delta):
 	
-	# Apply more zoom if using camera shake..
-	var max_zoom = MAX_ZOOM
-	var min_zoom = MIN_ZOOM
-	zoom_speed = LERP_ZOOM_SPEED
-	if shake_length > 0.0:
-		max_zoom = 1.25
-		zoom_speed = 1.0
-	
 	var baricentric_center
 	
 	# Modify camera position
 	var center_players = tomato.global_position.lerp(banana.global_position, 0.5)
 	if target:
 		baricentric_center = target.global_position
-		move_speed = 2.0 # Move faster if only following a single target
+		move_speed *= 1.5 # Move faster if only following a single target
 	else:
 		baricentric_center = center_scene.lerp(center_players, 0.5)
-		move_speed = LERP_MOVE_SPEED
+
 	# Smoothing motion
 	var new_pos = self.global_position.lerp(baricentric_center, delta * move_speed)
 	position = Vector2(clamp(new_pos.x, position_x_range[0], position_x_range[1]), 0.0)
@@ -77,6 +74,12 @@ func _process(delta):
 		
 		if shake_length <= 0.0:
 			stop_shake()
+			
+	# Recover the normal lerp speed once we finish returning to current pos
+	elif shake_stop_timer >= 0.0:
+		shake_stop_timer -= delta
+		if shake_stop_timer <= 0.0:
+			reset_smooth_values()
 
 func set_target(t):
 	target = t
@@ -87,8 +90,15 @@ func remove_target():
 func shake(amount, length):
 	shake_amount = amount
 	shake_length = length
-	move_speed = 100;
+	move_speed = 30.0
+	zoom_speed = 30.0
+	max_zoom = 1.2
 	
 func stop_shake():
 	shake_length = 0.0
+	shake_stop_timer = 0.75
+
+func reset_smooth_values():
 	move_speed = LERP_MOVE_SPEED;
+	zoom_speed = LERP_ZOOM_SPEED;
+	max_zoom = MAX_ZOOM
