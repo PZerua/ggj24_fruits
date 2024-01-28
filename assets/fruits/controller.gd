@@ -133,14 +133,14 @@ func process_moves(buttons):
 	
 
 	
-	if is_on_floor() and Input.is_action_just_pressed(punch_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0:
 		is_punching = true
 		sprite.play("punch")
 		velocity = Vector2(0, 0)
 	
 	# KICK
 	
-	if is_on_floor() and Input.is_action_just_pressed(kick_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(kick_button) && attack_charge == 0:
 		is_kicking = true
 		sprite.play("kick")
 		velocity = Vector2(0, 0)
