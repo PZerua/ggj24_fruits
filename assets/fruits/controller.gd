@@ -54,6 +54,9 @@ func _process(delta):
 	
 	if (is_punching or is_kicking):
 		attack_charge += delta
+		# update shaking
+		var shake_intensity = clamp(attack_charge/attack_max_charge, 0.0, 1.0)
+		get_node("../MultiTargetCamera").shake(shake_intensity * 50, 1e10)
 		
 	if (attack_charge >= attack_max_charge):
 		release_attack()
@@ -77,6 +80,8 @@ func release_attack():
 		%KickAnimation.play("Kick")
 		sprite.play("kick")
 		is_kicking = false
+		
+	get_node("../MultiTargetCamera").stop_shake()
 
 func check_direction(left_button, right_button):
 	if Input.is_action_pressed(left_button):
