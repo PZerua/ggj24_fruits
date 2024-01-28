@@ -231,8 +231,12 @@ func process_hit(body, damage):
 		damage += damage * attack_charge
 		damage = round(damage)
 		body.life_points -= damage
-		body.velocity = previous_velocity * 0.6
-
+		
+		if (previous_velocity != Vector2(0, 0)):
+			body.velocity = previous_velocity * 0.6
+		else:
+			body.velocity = (Vector2(-1, 0) if side == Sides.LEFT else Vector2(1, 0)) * 500 * damage
+			
 		life_points += damage
 		
 		# Manage victory cam

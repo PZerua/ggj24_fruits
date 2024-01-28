@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bji2ynricblh7"]
+
+[ext_resource type="Texture2D" uid="uid://dph14v46hwygy" path="res://assets/fruits/grape/Grape_01.png" id="1_spwur"]
+[ext_resource type="Texture2D" uid="uid://y4hwjbsekqk8" path="res://assets/fruits/grape/Grape_02.png" id="2_yi5kx"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_spwur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yi5kx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

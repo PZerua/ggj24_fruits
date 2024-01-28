@@ -34,32 +34,20 @@ radius = 109.002
 height = 270.036
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xue5o"]
-size = Vector2(75.0024, 29.9361)
+size = Vector2(122.138, 212.502)
 
 [sub_resource type="Animation" id="Animation_o8xpe"]
 resource_name = "Kick"
-length = 0.2
+length = 0.15
 step = 0.05
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Colliders/KickTrigger:position")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(88.8826, 44.2367), Vector2(126.709, 109.338), Vector2(88.8826, 44.2367)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.15),
+"times": PackedFloat32Array(0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -72,28 +60,16 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_u0afy"]
 resource_name = "Punch"
-length = 0.2
+length = 0.8
 step = 0.05
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Colliders/PunchTrigger:position")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(39, -5), Vector2(92, -5), Vector2(39, -5)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.15),
+"times": PackedFloat32Array(0.25, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -106,30 +82,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_aogj6"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Colliders/PunchTrigger:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(38, -5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Colliders/KickTrigger:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(88.8826, 44.2367)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6cbsb"]
 _data = {
@@ -138,9 +90,8 @@ _data = {
 "RESET": SubResource("Animation_aogj6")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m08m5"]
-radius = 12.0026
-height = 76.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy5ns"]
+size = Vector2(58.7586, 226.338)
 
 [node name="Banana" type="CharacterBody2D" groups=["Fruit"]]
 rotation = 0.00266102
@@ -180,6 +131,7 @@ scale = Vector2(1, -1)
 collision_layer = 0
 
 [node name="KickCollider" type="CollisionShape2D" parent="Colliders/KickTrigger"]
+position = Vector2(84.0848, 31.7764)
 shape = SubResource("RectangleShape2D_xue5o")
 disabled = true
 
@@ -191,13 +143,14 @@ libraries = {
 }
 
 [node name="PunchTrigger" type="Area2D" parent="Colliders"]
-position = Vector2(38, -5)
+position = Vector2(39, -5)
 scale = Vector2(1, -1)
 collision_layer = 0
 
 [node name="PunchCollider" type="CollisionShape2D" parent="Colliders/PunchTrigger"]
+position = Vector2(-36.3726, -145.005)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_m08m5")
+shape = SubResource("RectangleShape2D_xy5ns")
 disabled = true
 
 [node name="PunchAnimation" type="AnimationPlayer" parent="Colliders/PunchTrigger"]
