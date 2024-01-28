@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://5yxjellvaehc"]
+[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://5yxjellvaehc"]
 
 [ext_resource type="Texture2D" uid="uid://cwthcj58wufce" path="res://assets/fruits/banana/block/Block_01.png" id="1_xaym1"]
 [ext_resource type="Texture2D" uid="uid://d38jupj8l4swo" path="res://assets/fruits/banana/block/Block_02.png" id="2_05nag"]
@@ -6,10 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://sjvhepir3wyf" path="res://assets/fruits/banana/punch/Ataque desc_02.png" id="3_7kwgd"]
 [ext_resource type="Texture2D" uid="uid://j3xrltv38nru" path="res://assets/fruits/banana/block/Block_03.png" id="3_uedsu"]
 [ext_resource type="Texture2D" uid="uid://b4jexphuj0mj7" path="res://assets/fruits/banana/punch/Ataque desc_03.png" id="4_0dpbx"]
+[ext_resource type="Texture2D" uid="uid://buqbiklnfwpjl" path="res://assets/fruits/banana/fruitality/Fruitality_01.png" id="4_dq440"]
 [ext_resource type="Texture2D" uid="uid://pux6tlfm6g1h" path="res://assets/fruits/banana/idle/Idle_01.png" id="4_o38ir"]
 [ext_resource type="Texture2D" uid="uid://citxpocf0rxd0" path="res://assets/fruits/banana/punch/Ataque desc_04.png" id="5_mv8f7"]
 [ext_resource type="Texture2D" uid="uid://bfon8ws4dlv5p" path="res://assets/fruits/banana/idle/Idle_02.png" id="5_nv87f"]
+[ext_resource type="Texture2D" uid="uid://d0i8c3hlcrpec" path="res://assets/fruits/banana/fruitality/Fruitality_02.png" id="5_quhwr"]
+[ext_resource type="Texture2D" uid="uid://bqnbyewbsmsjg" path="res://assets/fruits/banana/fruitality/Fruitality_03.png" id="6_ji2ob"]
 [ext_resource type="Texture2D" uid="uid://cqpvm08ob4mcs" path="res://assets/fruits/banana/kick/Kick_01.png" id="6_jlsjb"]
+[ext_resource type="Texture2D" uid="uid://r43qgnxffneh" path="res://assets/fruits/banana/fruitality/Fruitality_04.png" id="7_5810j"]
 [ext_resource type="Texture2D" uid="uid://be7teuhkug6bu" path="res://assets/fruits/banana/kick/Kick_02.png" id="7_8124u"]
 [ext_resource type="Texture2D" uid="uid://6lbb0qnxk6ly" path="res://assets/fruits/banana/kick/Kick_03.png" id="8_5upbx"]
 [ext_resource type="Texture2D" uid="uid://rxhu6x272mnn" path="res://assets/fruits/banana/kick/Kick_04.png" id="9_qmerk"]
@@ -32,6 +36,23 @@ animations = [{
 "loop": false,
 "name": &"block",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dq440")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_quhwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ji2ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5810j")
+}],
+"loop": true,
+"name": &"fruitality",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
