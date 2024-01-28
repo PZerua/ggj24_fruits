@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=26 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://assets/bars/tomatoBar.gd" id="3_tiox5"]
 [ext_resource type="Texture2D" uid="uid://bv083suvinbcf" path="res://assets/backgrounds/background_1.png" id="4_hwt11"]
 [ext_resource type="Texture2D" uid="uid://cpykyj0qwbl14" path="res://assets/backgrounds/background_2.png" id="5_n4qd6"]
+[ext_resource type="Script" path="res://scenes/pineapple.gd" id="6_m3o1b"]
 [ext_resource type="Texture2D" uid="uid://50cxdc1hw7tt" path="res://assets/bars/bar-over-banana.png" id="7_7jug4"]
 [ext_resource type="Script" path="res://assets/bars/bananaBar.gd" id="7_u80wl"]
 [ext_resource type="PackedScene" uid="uid://cb0rtldgi8fgg" path="res://assets/fruits/reina/reina.tscn" id="8_uyxct"]
@@ -26,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("UI/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,15 +39,14 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_b5fbp"]
 resource_name = "fade_in"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("UI/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -54,15 +54,14 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_phtuo"]
 resource_name = "fade_out"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("UI/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -80,6 +79,16 @@ blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xay3"]
 size = Vector2(22.795, 21.9996)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vm2mn"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmjt6"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("1_sshmf")
@@ -113,6 +122,9 @@ script = ExtResource("3_2qpbc")
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
 texture = ExtResource("5_n4qd6")
 
+[node name="Pineapple" type="CharacterBody2D" parent="."]
+script = ExtResource("6_m3o1b")
+
 [node name="Tomato" parent="." instance=ExtResource("1_h62js")]
 unique_name_in_owner = true
 position = Vector2(-250, 284)
@@ -141,15 +153,18 @@ shape = SubResource("RectangleShape2D_f6e4s")
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="transitioner" type="Control" parent="GUI"]
+[node name="UI" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1.0
+offset_top = -4.0
+offset_right = 1501.0
+offset_bottom = 996.0
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="GUI"]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="GUI/UI"]
+z_index = 50
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -158,20 +173,20 @@ offset_top = -604.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/ColorRect"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/UI/ColorRect"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_2t27m")
 }
 
-[node name="FunnyBar" type="Node2D" parent="GUI"]
-z_index = 100
-position = Vector2(585, 90)
+[node name="FunnyBar" type="Node2D" parent="GUI/UI"]
+position = Vector2(612, 79)
 
-[node name="BarBanana" type="TextureProgressBar" parent="GUI/FunnyBar"]
-z_index = 100
+[node name="BarBanana" type="TextureProgressBar" parent="GUI/UI/FunnyBar"]
 offset_right = 405.0
 offset_bottom = 64.0
 scale = Vector2(1, 0.405734)
@@ -183,7 +198,7 @@ texture_progress = ExtResource("9_4ow40")
 script = ExtResource("7_u80wl")
 metadata/_edit_use_anchors_ = true
 
-[node name="BarTomato" type="TextureProgressBar" parent="GUI/FunnyBar"]
+[node name="BarTomato" type="TextureProgressBar" parent="GUI/UI/FunnyBar"]
 offset_left = -405.0
 offset_bottom = 64.0
 scale = Vector2(1, 0.395426)
@@ -197,23 +212,26 @@ texture_progress_offset = Vector2(-0.235, -0.155)
 script = ExtResource("3_tiox5")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="GUI"]
+[node name="Label" type="Label" parent="GUI/UI"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -646.0
-offset_top = -121.0
-offset_right = -508.0
-offset_bottom = -52.0
+offset_left = -196.0
+offset_top = 111.0
+offset_right = -58.0
+offset_bottom = 180.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "60"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="GUI"]
+[node name="Timer" type="Timer" parent="GUI/UI"]
 process_callback = 0
+wait_time = 3.0
+one_shot = true
+autostart = true
 
 [node name="ParallaxFront" type="ParallaxBackground" parent="."]
 layer = 1
@@ -256,6 +274,10 @@ shape = SubResource("RectangleShape2D_4xay3")
 visible = false
 stream = ExtResource("16_w3t1m")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vm2mn")
+process_material = SubResource("ParticleProcessMaterial_dmjt6")
+
 [connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]
-[connection signal="animation_finished" from="GUI/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="GUI/Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="GUI/UI/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="GUI/UI/Timer" to="." method="_on_timer_timeout"]
