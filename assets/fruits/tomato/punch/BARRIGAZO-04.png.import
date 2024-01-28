@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://31cbuclomfn3"
-path="res://.godot/imported/platano_anims_idle_03.png-16a05097b1571c7ab9dbff0778d99a31.ctex"
+uid="uid://by8cad13a8kl3"
+path="res://.godot/imported/BARRIGAZO-04.png-1450302541aa8dd72d8342abf2315f01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/banana/idle/platano_anims_idle_03.png"
-dest_files=["res://.godot/imported/platano_anims_idle_03.png-16a05097b1571c7ab9dbff0778d99a31.ctex"]
+source_file="res://assets/fruits/tomato/punch/BARRIGAZO-04.png"
+dest_files=["res://.godot/imported/BARRIGAZO-04.png-1450302541aa8dd72d8342abf2315f01.ctex"]
 
 [params]
 
