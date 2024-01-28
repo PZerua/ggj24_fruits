@@ -249,6 +249,7 @@ scale = Vector2(32.96, 1)
 shape = SubResource("RectangleShape2D_4xay3")
 
 [node name="AudioBSO" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("16_w3t1m")
 
 [connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]

@@ -4,7 +4,7 @@ var seconds = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AudioBSO.play()
+	#$AudioBSO.play()
 	$GUI/ColorRect/AnimationPlayer.play("fade_in")
 	$GUI/Label.text = str(seconds)	
 	$MultiTargetCamera.add_target($Tomato)

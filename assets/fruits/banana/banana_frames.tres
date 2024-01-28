@@ -1,12 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://5yxjellvaehc"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://5yxjellvaehc"]
 
 [ext_resource type="Texture2D" uid="uid://cww5idu0f85y3" path="res://assets/fruits/banana/banana_block_0.png" id="1_2hnj0"]
-[ext_resource type="Texture2D" uid="uid://74kjwo2oupmg" path="res://assets/fruits/banana/idle/platano_idle_01.png" id="2_1s3s2"]
-[ext_resource type="Texture2D" uid="uid://lm60g1dewl3p" path="res://assets/fruits/banana/banana_walk_0.png" id="3_3affm"]
-[ext_resource type="Texture2D" uid="uid://dkhikaawytk3h" path="res://assets/fruits/banana/idle/platano_idle_02.png" id="3_v8xim"]
-[ext_resource type="Texture2D" uid="uid://bscxsfms5cf5u" path="res://assets/fruits/banana/punch/platano__0001s_0000_ataque_04.png" id="4_q6q2c"]
-[ext_resource type="Texture2D" uid="uid://dc7ebpyrjdao7" path="res://assets/fruits/banana/banana_walk_1.png" id="4_tsdkq"]
-[ext_resource type="Texture2D" uid="uid://c6u4p6ngh1wi6" path="res://assets/fruits/banana/punch/platano__0001s_0001_ataque_03.png" id="5_1ff1o"]
+[ext_resource type="Texture2D" uid="uid://dx7eba7t145m5" path="res://assets/fruits/banana/punch/Ataque desc_01.png" id="2_orsgx"]
+[ext_resource type="Texture2D" uid="uid://sjvhepir3wyf" path="res://assets/fruits/banana/punch/Ataque desc_02.png" id="3_7kwgd"]
+[ext_resource type="Texture2D" uid="uid://b4jexphuj0mj7" path="res://assets/fruits/banana/punch/Ataque desc_03.png" id="4_0dpbx"]
+[ext_resource type="Texture2D" uid="uid://citxpocf0rxd0" path="res://assets/fruits/banana/punch/Ataque desc_04.png" id="5_mv8f7"]
 
 [resource]
 animations = [{
@@ -20,10 +18,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_1s3s2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_v8xim")
+"texture": ExtResource("2_orsgx")
 }],
 "loop": true,
 "name": &"idle",
@@ -31,10 +26,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_1ff1o")
+"texture": ExtResource("2_orsgx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_q6q2c")
+"texture": ExtResource("3_7kwgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0dpbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mv8f7")
 }],
 "loop": false,
 "name": &"punch",
@@ -42,10 +43,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_3affm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_tsdkq")
+"texture": ExtResource("2_orsgx")
 }],
 "loop": true,
 "name": &"walk",
