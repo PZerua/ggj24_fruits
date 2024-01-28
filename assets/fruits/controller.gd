@@ -22,7 +22,7 @@ var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const MAX_BLOCKED_HITS = 5
 const TIME_RECOVER_BLOCK = 2.0
-const TIME_RECOVER_KNOCKOUT = 1.0
+const TIME_RECOVER_KNOCKOUT = 1.5
 
 var is_blocking : bool = false
 var is_punching : bool = false
@@ -54,6 +54,9 @@ func _process(delta):
 	
 	if (is_punching or is_kicking):
 		attack_charge += delta
+		# update shaking
+		var shake_intensity = clamp(attack_charge/attack_max_charge, 0.0, 1.0)
+		get_node("../MultiTargetCamera").shake(shake_intensity * 50, 1e10)
 		
 	if (attack_charge >= attack_max_charge):
 		release_attack()
@@ -77,6 +80,8 @@ func release_attack():
 		%KickAnimation.play("Kick")
 		sprite.play("kick")
 		is_kicking = false
+		
+	get_node("../MultiTargetCamera").stop_shake()
 
 func check_direction(left_button, right_button):
 	if Input.is_action_pressed(left_button):
@@ -201,6 +206,7 @@ func process_hit(body, damage):
 	else:
 		body.life_points -= damage
 		life_points += damage
+		emit_particles(body)
 		
 func look_right():
 	var sprite = $AnimatedSprite2D
@@ -219,8 +225,7 @@ func update_animation():
 	var sprite = $AnimatedSprite2D
 	
 	if is_knocked_out:
-		pass
-		#sprite.play("knock")
+		sprite.play("knocked")
 	elif is_blocking:
 		sprite.play("block")
 	elif abs(velocity.x) > 0.0:
@@ -234,3 +239,6 @@ func toggle_punch_enabled():
 
 func toggle_kick_enabled():
 	$Colliders/KickTrigger/KickCollider.disabled = !$Colliders/KickTrigger/KickCollider.disabled
+
+func emit_particles(fruit):
+	pass
