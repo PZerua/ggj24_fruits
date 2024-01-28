@@ -10,8 +10,8 @@ var center_scene
 @onready var screen_size = get_viewport_rect().size
 
 @export var position_x_range = Vector2(-520, 520)
-@export var move_speed = 0.8 # camera position lerp speed
-@export var zoom_speed = 0.8  # camera zoom lerp speed
+@export var move_speed = 0.5 # camera position lerp speed
+@export var zoom_speed = 0.25  # camera zoom lerp speed
 @export var min_zoom = 0.6  # camera won't zoom closer than this
 @export var max_zoom = 1.1  # camera won't zoom farther than this
 
