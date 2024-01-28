@@ -22,7 +22,7 @@ var gravity = 3 * ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const MAX_BLOCKED_HITS = 5
 const TIME_RECOVER_BLOCK = 2.0
-const TIME_RECOVER_KNOCKOUT = 1.0
+const TIME_RECOVER_KNOCKOUT = 1.5
 
 var is_blocking : bool = false
 var is_punching : bool = false
@@ -72,7 +72,7 @@ func release_attack():
 		%PunchAnimation.play("Punch")
 		sprite.play("punch")
 		is_punching = false
-		var impulse = Vector2(10000, -1000)
+		var impulse = Vector2(2000, -1000)
 		impulse = %Colliders.global_transform.basis_xform(impulse) * attack_charge
 		velocity += impulse
 
@@ -94,6 +94,8 @@ func process_moves(buttons):
 	
 	if is_knocked_out:
 		return
+		
+	var sprite = $AnimatedSprite2D
 	
 	var punch_button = buttons[0]
 	var kick_button = buttons[1]
@@ -101,40 +103,47 @@ func process_moves(buttons):
 	var left_button = buttons[3]
 	var right_button = buttons[4]
 	
-	if Input.is_action_just_pressed(left_button):
-		look_left()
-	
-	if Input.is_action_just_pressed(right_button):
-		look_right()
+	if !is_blocking:
+		if Input.is_action_just_pressed(left_button):
+			look_left()
 		
-	if (Input.is_action_just_released(right_button) or Input.is_action_just_released(left_button)):
-		check_direction(left_button, right_button)
-	
+		if Input.is_action_just_pressed(right_button):
+			look_right()
+			
+		if (Input.is_action_just_released(right_button) or Input.is_action_just_released(left_button)):
+			check_direction(left_button, right_button)
+		
 	# BLOCK
 	
 	if Input.is_action_just_pressed(block_button) and available_hit_blocks > 0 and is_on_floor():
 		is_blocking = true
+		
+		sprite.play("block")
+				
 		# Get first frame to check parry later
 		if Input.is_action_just_pressed(block_button):
 			last_block_time = Time.get_ticks_msec()
 		
 	if Input.is_action_just_released(block_button) or available_hit_blocks == 0:
 		is_blocking = false
+		check_direction(left_button, right_button)
 		recover_block_timer = TIME_RECOVER_BLOCK
 		
 	# PUNCH
 	
-	var sprite = $AnimatedSprite2D
+
 	
-	if Input.is_action_just_pressed(punch_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(punch_button) && attack_charge == 0:
 		is_punching = true
 		sprite.play("punch")
+		velocity = Vector2(0, 0)
 	
 	# KICK
 	
-	if Input.is_action_just_pressed(kick_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_pressed(kick_button) && attack_charge == 0:
 		is_kicking = true
 		sprite.play("kick")
+		velocity = Vector2(0, 0)
 		
 	if (Input.is_action_just_released(punch_button) or
 		Input.is_action_just_released(kick_button)) && attack_charge >= 0:
@@ -142,7 +151,7 @@ func process_moves(buttons):
 		
 func process_movement(delta, jump_button, move_buttons):
 	
-	if is_blocking or is_knocked_out:
+	if is_blocking or is_knocked_out or is_punching or is_kicking:
 		return
 
 	var final_speed = SPEED
@@ -160,11 +169,28 @@ func process_movement(delta, jump_button, move_buttons):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(move_buttons[0], move_buttons[1])
 	if direction:
-		velocity.x = direction * final_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, final_speed)
+		if is_on_floor() && attack_charge == 0:
+			velocity.x = direction * final_speed
+		else:
+			velocity.x += direction * final_speed * 0.02
 
+	if is_on_floor() && !is_punching and !is_kicking:
+		velocity.x = move_toward(velocity.x, 0, 100)
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, 10)
+		
+	var previous_vel = velocity
 	move_and_slide()
+	
+	#print(velocity)
+	
+	if not is_on_floor():
+		if get_slide_collision_count() > 0:
+			var collision = get_slide_collision(0)
+			if collision != null:
+				velocity = previous_vel.bounce(collision.get_normal()) * 0.6
+
+
 
 func process_hit(body, damage):
 	
@@ -189,6 +215,7 @@ func process_hit(body, damage):
 	else:
 		body.life_points -= damage
 		life_points += damage
+		emit_particles(body)
 		
 func look_right():
 	var sprite = $AnimatedSprite2D
@@ -207,10 +234,9 @@ func update_animation():
 	var sprite = $AnimatedSprite2D
 	
 	if is_knocked_out:
-		pass
-		#sprite.play("knock")
+		sprite.play("knocked")
 	elif is_blocking:
-		sprite.play("block")
+		pass
 	elif abs(velocity.x) > 0.0:
 		sprite.play("walk")
 	else:
@@ -222,3 +248,6 @@ func toggle_punch_enabled():
 
 func toggle_kick_enabled():
 	$Colliders/KickTrigger/KickCollider.disabled = !$Colliders/KickTrigger/KickCollider.disabled
+
+func emit_particles(fruit):
+	pass

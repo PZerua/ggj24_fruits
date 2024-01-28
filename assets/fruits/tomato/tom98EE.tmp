@@ -1,0 +1,182 @@
+[gd_scene load_steps=12 format=3 uid="uid://dt4g2ewu42uek"]
+
+[ext_resource type="Script" path="res://assets/fruits/tomato/tomato.gd" id="1_1rutx"]
+[ext_resource type="SpriteFrames" uid="uid://cxoci2w2tp4ss" path="res://assets/fruits/tomato/tomato_frames.tres" id="2_5awyp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0y85t"]
+radius = 71.0
+height = 184.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cfrdh"]
+radius = 12.0026
+height = 76.0
+
+[sub_resource type="Animation" id="Animation_ehgxx"]
+resource_name = "Punch"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(92, -5), Vector2(171, -5), Vector2(92, -5)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Colliders/..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"toggle_punch_enabled"
+}, {
+"args": [],
+"method": &"toggle_punch_enabled"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ucj23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(92, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekp76"]
+_data = {
+"Punch": SubResource("Animation_ehgxx"),
+"RESET": SubResource("Animation_ucj23")
+}
+
+[sub_resource type="Animation" id="Animation_32cq6"]
+resource_name = "Kick"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(41, 113), Vector2(139, 46), Vector2(41, 113)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Colliders/..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"toggle_kick_enabled"
+}, {
+"args": [],
+"method": &"toggle_kick_enabled"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_26p8d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(41, 113)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwwyf"]
+_data = {
+"Kick": SubResource("Animation_32cq6"),
+"RESET": SubResource("Animation_26p8d")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vmcov"]
+
+[node name="Tomato" type="CharacterBody2D" groups=["Fruit"]]
+collision_mask = 6
+slide_on_ceiling = false
+floor_max_angle = 0.0
+floor_snap_length = 0.0
+script = ExtResource("1_1rutx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -3)
+sprite_frames = ExtResource("2_5awyp")
+animation = &"block"
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-7, 6)
+shape = SubResource("CapsuleShape2D_0y85t")
+
+[node name="Colliders" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PunchTrigger" type="Area2D" parent="Colliders"]
+position = Vector2(92, -5)
+rotation = -3.14159
+collision_layer = 0
+collision_mask = 2
+
+[node name="PunchCollider" type="CollisionShape2D" parent="Colliders/PunchTrigger"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cfrdh")
+disabled = true
+
+[node name="PunchAnimation" type="AnimationPlayer" parent="Colliders/PunchTrigger"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ekp76")
+}
+
+[node name="KickTrigger" type="Area2D" parent="Colliders"]
+position = Vector2(41, 113)
+collision_layer = 0
+collision_mask = 2
+
+[node name="KickAnimation" type="AnimationPlayer" parent="Colliders/KickTrigger"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_iwwyf")
+}
+
+[node name="KickCollider" type="CollisionShape2D" parent="Colliders/KickTrigger"]
+position = Vector2(21, -13)
+shape = SubResource("CapsuleShape2D_vmcov")
+disabled = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="Colliders/PunchTrigger" to="." method="_on_punch_trigger_body_entered"]
+[connection signal="body_entered" from="Colliders/KickTrigger" to="." method="_on_kick_trigger_body_entered"]
