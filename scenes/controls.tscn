@@ -39,12 +39,12 @@ label_settings = SubResource("LabelSettings_aysmx")
 vertical_alignment = 2
 
 [node name="back" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 666.0
-offset_right = 67.0
-offset_bottom = 697.0
+offset_left = 29.0
+offset_top = 663.0
+offset_right = 72.0
+offset_bottom = 694.0
 rotation = -0.0616204
-scale = Vector2(2.45548, 1.49433)
+scale = Vector2(2.63098, 1.48777)
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -52,13 +52,13 @@ text = "_____"
 flat = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(110, 369)
+position = Vector2(691, 159)
 scale = Vector2(0.634615, 0.634615)
 sprite_frames = ExtResource("2_2bxy6")
 animation = &"idle"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(1183, 358)
+position = Vector2(680, 476)
 scale = Vector2(-0.465, 0.465)
 sprite_frames = ExtResource("3_k7d03")
 animation = &"idle"
