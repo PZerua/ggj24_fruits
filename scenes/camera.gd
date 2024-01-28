@@ -34,17 +34,18 @@ func _ready():
 func _process(delta):
 	
 	var baricentric_center
+	var move_lerp_speed = move_speed
 	
 	# Modify camera position
 	var center_players = tomato.global_position.lerp(banana.global_position, 0.5)
 	if target:
 		baricentric_center = target.global_position
-		move_speed *= 1.5 # Move faster if only following a single target
+		move_lerp_speed *= 1.5 # Move faster if only following a single target
 	else:
 		baricentric_center = center_scene.lerp(center_players, 0.5)
 
 	# Smoothing motion
-	var new_pos = self.global_position.lerp(baricentric_center, delta * move_speed)
+	var new_pos = self.global_position.lerp(baricentric_center, delta * move_lerp_speed)
 	position = Vector2(clamp(new_pos.x, position_x_range[0], position_x_range[1]), 0.0)
 	# print(position)
 	
