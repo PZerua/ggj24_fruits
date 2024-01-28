@@ -126,15 +126,17 @@ func process_moves(buttons):
 	
 	var sprite = $AnimatedSprite2D
 	
-	if Input.is_action_just_pressed(punch_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_just_pressed(punch_button) && attack_charge == 0:
 		is_punching = true
 		sprite.play("punch")
+		velocity = Vector2(0, 0)
 	
 	# KICK
 	
-	if Input.is_action_just_pressed(kick_button) && attack_charge == 0:
+	if is_on_floor() and Input.is_action_just_pressed(kick_button) && attack_charge == 0:
 		is_kicking = true
 		sprite.play("kick")
+		velocity = Vector2(0, 0)
 		
 	if (Input.is_action_just_released(punch_button) or
 		Input.is_action_just_released(kick_button)) && attack_charge >= 0:
@@ -142,7 +144,7 @@ func process_moves(buttons):
 		
 func process_movement(delta, jump_button, move_buttons):
 	
-	if is_blocking or is_knocked_out:
+	if is_blocking or is_knocked_out or is_punching or is_kicking:
 		return
 
 	var final_speed = SPEED
@@ -160,12 +162,12 @@ func process_movement(delta, jump_button, move_buttons):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(move_buttons[0], move_buttons[1])
 	if direction:
-		if is_on_floor():
+		if is_on_floor() && attack_charge == 0:
 			velocity.x = direction * final_speed
-		#else:
-			#velocity.x += direction * final_speed * 0.03
+		else:
+			velocity.x += direction * final_speed * 0.02
 
-	if is_on_floor():
+	if is_on_floor() && !is_punching and !is_kicking:
 		velocity.x = move_toward(velocity.x, 0, 100)
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, 10)
