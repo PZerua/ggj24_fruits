@@ -13,6 +13,8 @@ var kick_damage : int = 2
 var attack_charge : float = 0.0
 var attack_max_charge : float = 1.5
 
+var previous_velocity : Vector2 = Vector2(0,0)
+
 # MOVEMENT STUFF
 
 const SPEED = 700.0
@@ -65,7 +67,7 @@ func _process(delta):
 		attack_charge += delta
 		# update shaking
 		var shake_intensity = clamp(attack_charge/attack_max_charge, 0.0, 1.0)
-		get_node("../MultiTargetCamera").shake(shake_intensity * 50, 1e10)
+		get_node("../MultiTargetCamera").shake(shake_intensity * 100, 1e10)
 		
 	if (attack_charge >= attack_max_charge):
 		release_attack()
@@ -195,7 +197,7 @@ func process_movement(delta, jump_button, move_buttons):
 	#else:
 		#velocity.x = move_toward(velocity.x, 0, 10)
 		
-	var previous_vel = velocity
+	previous_velocity = velocity
 	move_and_slide()
 	
 	#print(velocity)
@@ -204,9 +206,7 @@ func process_movement(delta, jump_button, move_buttons):
 		if get_slide_collision_count() > 0:
 			var collision = get_slide_collision(0)
 			if collision != null:
-				velocity = previous_vel.bounce(collision.get_normal()) * 0.6
-
-
+				velocity = previous_velocity.bounce(collision.get_normal()) * 0.6
 
 func process_hit(body, damage):
 	
@@ -230,7 +230,10 @@ func process_hit(body, damage):
 			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
 	else:
 		damage += damage * attack_charge
+		damage = round(damage)
 		body.life_points -= damage
+		body.velocity = previous_velocity * 0.6
+
 		life_points += damage
 		
 		# Manage victory cam
@@ -276,4 +279,3 @@ func toggle_kick_enabled():
 
 func emit_particles(fruit):
 	fruit._emit_particles()
-	pass	

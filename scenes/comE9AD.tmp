@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://by7e8og87xis2"]
+[gd_scene load_steps=27 format=3 uid="uid://by7e8og87xis2"]
 
 [ext_resource type="PackedScene" uid="uid://dt4g2ewu42uek" path="res://assets/fruits/tomato/tomato.tscn" id="1_h62js"]
 [ext_resource type="Script" path="res://scenes/combat.gd" id="1_sshmf"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dc0babkt42pj8" path="res://assets/bars/bar-tomato.png" id="10_1sdks"]
 [ext_resource type="Texture2D" uid="uid://wio3gtbkd2ws" path="res://assets/backgrounds/background_3.png" id="15_3vjtf"]
 [ext_resource type="AudioStream" uid="uid://chm3q8mphxvtd" path="res://assets/audio/Fruitality_Fight_Theme_-_Aleix_Ramon.ogg" id="16_w3t1m"]
-[ext_resource type="Texture2D" uid="uid://c2xc8tkdc4q8g" path="res://assets/fruitality.png" id="16_x80bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1242, 53.5)
@@ -75,31 +74,21 @@ _data = {
 "fade_out": SubResource("Animation_phtuo")
 }
 
-[sub_resource type="Animation" id="Animation_1svsd"]
-resource_name = "fruitality"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-1200, 0), Vector2(0, 0), Vector2(-1200, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uns5w"]
-_data = {
-"fruitality": SubResource("Animation_1svsd")
-}
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k8eee"]
 blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xay3"]
 size = Vector2(22.795, 21.9996)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vm2mn"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmjt6"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("1_sshmf")
@@ -171,7 +160,6 @@ offset_bottom = 996.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="GUI/UI"]
-visible = false
 z_index = 50
 layout_mode = 1
 anchors_preset = 15
@@ -242,20 +230,6 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="Fruitality" type="TextureRect" parent="GUI/UI"]
-z_index = 100
-layout_mode = 0
-offset_left = -1096.0
-offset_right = 824.0
-offset_bottom = 1080.0
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("16_x80bp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/UI/Fruitality"]
-libraries = {
-"": SubResource("AnimationLibrary_uns5w")
-}
-
 [node name="ParallaxFront" type="ParallaxBackground" parent="."]
 layer = 1
 
@@ -269,9 +243,9 @@ material = SubResource("CanvasItemMaterial_k8eee")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1095.0
+offset_left = -1101.0
 offset_top = -600.0
-offset_right = 1119.0
+offset_right = 1113.0
 offset_bottom = 617.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -296,6 +270,10 @@ shape = SubResource("RectangleShape2D_4xay3")
 [node name="AudioBSO" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("16_w3t1m")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vm2mn")
+process_material = SubResource("ParticleProcessMaterial_dmjt6")
 
 [connection signal="property_list_changed" from="Tomato" to="Tomato" method="_on_property_list_changed"]
 [connection signal="animation_finished" from="GUI/UI/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
