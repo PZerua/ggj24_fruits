@@ -43,7 +43,15 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_qe2q3")
 }],
+"loop": false,
+"name": &"fruitality_text",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qe2q3")
+}],
 "loop": true,
-"name": &"frutality",
-"speed": 6.0
+"name": &"full",
+"speed": 5.0
 }]

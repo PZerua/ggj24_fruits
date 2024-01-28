@@ -41,6 +41,7 @@ var is_punching : bool = false
 var is_kicking : bool = false
 var is_knocked_out : bool = false
 var is_eliminated : bool = false
+var is_in_fruitality : bool = false
 
 var available_hit_blocks : int = MAX_BLOCKED_HITS
 var recover_block_timer : float = 0.0
@@ -52,7 +53,7 @@ func _ready():
 	
 func _process(delta):
 	
-	if is_eliminated:
+	if is_eliminated or is_in_fruitality:
 		update_animation()
 		return
 	
@@ -232,8 +233,16 @@ func process_movement(delta, jump_button, move_buttons):
 func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 	
 	# BODY: THE FRUIT THAT RECEIVES THE DAMAGE
-	
 	if not body.is_in_group("Fruit"):
+		return
+	
+	var scene = get_node("../")
+	
+	if scene.combat_ended:
+		body.is_in_fruitality = true
+		body.get_node("AnimatedSprite2D").play("fruitality")
+		emit_particles(body)
+		scene.end()
 		return
 	
 	var can_block = body.is_blocking and side != body.side
@@ -250,7 +259,8 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 			body.available_hit_blocks = max(body.available_hit_blocks, 0)
 			print("ENEMY BLOCKED (", body.available_hit_blocks, " remaining)")
 	else:
-		damage += damage * attack_charge
+		# damage += damage * attack_charge
+		damage = 1000
 		damage = round(damage)
 		body.life_points -= damage * 2
 		
@@ -267,7 +277,7 @@ func process_hit(body, damage, direction : Vector2 = Vector2(1, 0)):
 		if body.life_points <= 0.0:
 			body.is_eliminated = true
 			get_node("../MultiTargetCamera").set_target(self)
-			$"..".end(self)
+			$"..".to_fruitality_state(self)
 		
 		emit_particles(body)
 		
@@ -289,7 +299,9 @@ func update_animation():
 	
 	var sprite = $AnimatedSprite2D
 	
-	if is_knocked_out or is_eliminated:
+	if is_in_fruitality:
+		pass
+	elif is_knocked_out or is_eliminated:
 		sprite.play("knocked")
 	elif is_blocking:
 		pass

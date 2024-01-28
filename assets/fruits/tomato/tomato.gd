@@ -25,7 +25,6 @@ func _process(delta):
 	if is_crying:
 		$AnimatedSprite2D.play("cry")
 		cry_timer += delta
-		print(cry_timer)
 		if cry_timer >= CRY_TIME:
 			last_input_time = new_time
 			cry_timer = 0.0

@@ -59,7 +59,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_5810j")
 }],
-"loop": true,
+"loop": false,
 "name": &"fruitality",
 "speed": 5.0
 }, {
