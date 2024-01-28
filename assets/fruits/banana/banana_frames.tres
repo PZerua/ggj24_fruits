@@ -60,7 +60,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_u268i")
 }],
-"loop": true,
+"loop": false,
 "name": &"kick",
 "speed": 15.0
 }, {
@@ -76,10 +76,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.6,
+"texture": ExtResource("5_mv8f7")
+}, {
+"duration": 0.7,
+"texture": ExtResource("5_mv8f7")
+}, {
+"duration": 0.8,
 "texture": ExtResource("2_orsgx")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": ExtResource("3_7kwgd")
 }, {
 "duration": 1.0,
