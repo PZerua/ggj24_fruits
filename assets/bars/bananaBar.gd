@@ -8,4 +8,4 @@ func _ready():
 func _process(delta):
 	value = %Banana.life_points;
 	if value == 100:
-		$"../../..".end()
+		$"../../../..".end()
