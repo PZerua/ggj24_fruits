@@ -1,11 +1,12 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://5yxjellvaehc"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://5yxjellvaehc"]
 
 [ext_resource type="Texture2D" uid="uid://cww5idu0f85y3" path="res://assets/fruits/banana/banana_block_0.png" id="1_2hnj0"]
-[ext_resource type="Texture2D" uid="uid://kc8rxr31ixs1" path="res://assets/fruits/banana/idle/platano_anims_idle_01.png" id="2_n5xnt"]
+[ext_resource type="Texture2D" uid="uid://74kjwo2oupmg" path="res://assets/fruits/banana/idle/platano_idle_01.png" id="2_1s3s2"]
 [ext_resource type="Texture2D" uid="uid://lm60g1dewl3p" path="res://assets/fruits/banana/banana_walk_0.png" id="3_3affm"]
-[ext_resource type="Texture2D" uid="uid://dqjc1xf02w8l4" path="res://assets/fruits/banana/idle/platano_anims_idle_02.png" id="3_yrsxx"]
-[ext_resource type="Texture2D" uid="uid://31cbuclomfn3" path="res://assets/fruits/banana/idle/platano_anims_idle_03.png" id="4_8rc78"]
+[ext_resource type="Texture2D" uid="uid://dkhikaawytk3h" path="res://assets/fruits/banana/idle/platano_idle_02.png" id="3_v8xim"]
+[ext_resource type="Texture2D" uid="uid://bscxsfms5cf5u" path="res://assets/fruits/banana/punch/platano__0001s_0000_ataque_04.png" id="4_q6q2c"]
 [ext_resource type="Texture2D" uid="uid://dc7ebpyrjdao7" path="res://assets/fruits/banana/banana_walk_1.png" id="4_tsdkq"]
+[ext_resource type="Texture2D" uid="uid://c6u4p6ngh1wi6" path="res://assets/fruits/banana/punch/platano__0001s_0001_ataque_03.png" id="5_1ff1o"]
 
 [resource]
 animations = [{
@@ -19,16 +20,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_n5xnt")
+"texture": ExtResource("2_1s3s2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_yrsxx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_8rc78")
+"texture": ExtResource("3_v8xim")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1ff1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q6q2c")
+}],
+"loop": false,
+"name": &"punch",
 "speed": 5.0
 }, {
 "frames": [{

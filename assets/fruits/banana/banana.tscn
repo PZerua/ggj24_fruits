@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://qir670b60hs5"]
 
 [ext_resource type="Script" path="res://assets/fruits/banana/banana.gd" id="1_m5ces"]
-[ext_resource type="SpriteFrames" uid="uid://h5kr26k8vncq" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
+[ext_resource type="SpriteFrames" uid="uid://5yxjellvaehc" path="res://assets/fruits/banana/banana_frames.tres" id="2_1t8ls"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqn10"]
 radius = 77.037
-height = 251.37
+height = 374.009
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xue5o"]
 size = Vector2(75.0024, 29.9361)
@@ -126,12 +126,11 @@ floor_snap_length = 0.0
 script = ExtResource("1_m5ces")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.1, 1.1)
 sprite_frames = ExtResource("2_1t8ls")
-animation = &"idle"
+animation = &"punch"
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
-position = Vector2(6.99731, -1.01862)
+position = Vector2(6.0532, 19.984)
 shape = SubResource("CapsuleShape2D_hqn10")
 
 [node name="Colliders" type="Node2D" parent="."]
@@ -170,5 +169,6 @@ libraries = {
 "": SubResource("AnimationLibrary_6cbsb")
 }
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Colliders/KickTrigger" to="." method="_on_kick_trigger_body_entered"]
 [connection signal="body_entered" from="Colliders/PunchTrigger" to="." method="_on_punch_trigger_body_entered"]

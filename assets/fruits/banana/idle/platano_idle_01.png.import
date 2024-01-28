@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btedy53tpop1n"
-path="res://.godot/imported/banana_idle_1.png-252f8a3cb6da698d6337880b21591578.ctex"
+uid="uid://74kjwo2oupmg"
+path="res://.godot/imported/platano_idle_01.png-8da552757a857b846b0774a5b44e5be0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fruits/banana/banana_idle_1.png"
-dest_files=["res://.godot/imported/banana_idle_1.png-252f8a3cb6da698d6337880b21591578.ctex"]
+source_file="res://assets/fruits/banana/idle/platano_idle_01.png"
+dest_files=["res://.godot/imported/platano_idle_01.png-8da552757a857b846b0774a5b44e5be0.ctex"]
 
 [params]
 

@@ -6,6 +6,9 @@ var life_points : int = 50
 var punch_damage : int = 2
 var kick_damage : int = 2
 
+var attack_charge : float = 0.0
+var attack_max_charge : float = 1.5
+
 # MOVEMENT STUFF
 
 const SPEED = 700.0
@@ -22,6 +25,8 @@ const TIME_RECOVER_BLOCK = 2.0
 const TIME_RECOVER_KNOCKOUT = 1.0
 
 var is_blocking : bool = false
+var is_punching : bool = false
+var is_kicking : bool = false
 var is_knocked_out : bool = false
 
 var available_hit_blocks : int = MAX_BLOCKED_HITS
@@ -46,14 +51,39 @@ func _process(delta):
 			recover_block_timer = TIME_RECOVER_BLOCK
 			print("new block available! (", available_hit_blocks, ")")
 			
-	# Invert UV of the sprite animateion
-	update_animation()
 	
-	# Invert collider
-	if velocity.x > 0.0:
-		$Colliders.scale.x = 1
-	elif velocity.x < 0.0:
-		$Colliders.scale.x = -1
+	if (is_punching or is_kicking):
+		attack_charge += delta
+		
+	if (attack_charge >= attack_max_charge):
+		release_attack()
+		
+	# Invert UV of the sprite animateion
+	if (attack_charge == 0):
+		update_animation()
+	
+func release_attack():
+	var sprite = $AnimatedSprite2D
+	
+	if (is_punching):
+		%PunchAnimation.play("Punch")
+		sprite.play("punch")
+		is_punching = false
+		var impulse = Vector2(10000, -1000)
+		impulse = %Colliders.global_transform.basis_xform(impulse) * attack_charge
+		velocity += impulse
+
+	if (is_kicking):
+		%KickAnimation.play("Kick")
+		sprite.play("kick")
+		is_kicking = false
+
+func check_direction(left_button, right_button):
+	if Input.is_action_pressed(left_button):
+		look_left()
+	
+	if Input.is_action_pressed(right_button):
+		look_right()
 	
 func process_moves(buttons):
 	
@@ -63,6 +93,17 @@ func process_moves(buttons):
 	var punch_button = buttons[0]
 	var kick_button = buttons[1]
 	var block_button = buttons[2]
+	var left_button = buttons[3]
+	var right_button = buttons[4]
+	
+	if Input.is_action_just_pressed(left_button):
+		look_left()
+	
+	if Input.is_action_just_pressed(right_button):
+		look_right()
+		
+	if (Input.is_action_just_released(right_button) or Input.is_action_just_released(left_button)):
+		check_direction(left_button, right_button)
 	
 	# BLOCK
 	
@@ -78,15 +119,22 @@ func process_moves(buttons):
 		
 	# PUNCH
 	
-		
-	if Input.is_action_just_pressed(punch_button):
-		%PunchAnimation.play("Punch")
-		
+	var sprite = $AnimatedSprite2D
+	
+	if Input.is_action_just_pressed(punch_button) && attack_charge == 0:
+		is_punching = true
+		sprite.play("punch")
+	
 	# KICK
 	
-	if Input.is_action_just_pressed(kick_button):
-		%KickAnimation.play("Kick")
-
+	if Input.is_action_just_pressed(kick_button) && attack_charge == 0:
+		is_kicking = true
+		sprite.play("kick")
+		
+	if (Input.is_action_just_released(punch_button) or
+		Input.is_action_just_released(kick_button)) && attack_charge >= 0:
+		release_attack()
+		
 func process_movement(delta, jump_button, move_buttons):
 	
 	if is_blocking or is_knocked_out:
@@ -137,6 +185,18 @@ func process_hit(body, damage):
 		body.life_points -= damage
 		life_points += damage
 		
+func look_right():
+	var sprite = $AnimatedSprite2D
+	sprite.flip_h = false
+	side = Sides.RIGHT
+	$Colliders.scale.x = 1
+		
+func look_left():
+	var sprite = $AnimatedSprite2D
+	sprite.flip_h = true
+	side = Sides.LEFT
+	$Colliders.scale.x = -1
+
 func update_animation():
 	
 	var sprite = $AnimatedSprite2D
@@ -151,12 +211,6 @@ func update_animation():
 	else:
 		sprite.play("idle")
 
-	if velocity.x > 0.0:
-		sprite.flip_h = false
-		side = Sides.RIGHT
-	elif velocity.x < 0.0:
-		sprite.flip_h = true
-		side = Sides.LEFT
 
 func toggle_punch_enabled():
 	$Colliders/PunchTrigger/PunchCollider.disabled = !$Colliders/PunchTrigger/PunchCollider.disabled
