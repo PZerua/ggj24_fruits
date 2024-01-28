@@ -240,6 +240,7 @@ func process_hit(body, damage):
 		if body.life_points <= 0.0:
 			body.is_eliminated = true
 			get_node("../MultiTargetCamera").set_target(self)
+			$"..".end(self)
 		
 		emit_particles(body)
 		

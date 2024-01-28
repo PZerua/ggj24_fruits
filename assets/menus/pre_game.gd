@@ -5,7 +5,7 @@ var current_line = 0
 
 const lines = [
 	"[miss grape enters the scene]",
-	"Next in line awaits the duel between the contender Henry Tomato and the royal knight Gori Banana.",
+	"Next in line awaits the duel between the contender Juan Tomato and the royal knight Henry Orange.",
 	"The aim of this confrontation is to determine whether the esteemed designation of fruit shall be bestowed or withheld from all tomatoes within the realm.",
 	"Combatants, prepare yourselves for the impending clash!"
 ]

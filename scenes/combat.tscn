@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dc0babkt42pj8" path="res://assets/bars/bar-tomato.png" id="10_1sdks"]
 [ext_resource type="Texture2D" uid="uid://wio3gtbkd2ws" path="res://assets/backgrounds/background_3.png" id="15_3vjtf"]
 [ext_resource type="AudioStream" uid="uid://chm3q8mphxvtd" path="res://assets/audio/Fruitality_Fight_Theme_-_Aleix_Ramon.ogg" id="16_w3t1m"]
-[ext_resource type="Texture2D" uid="uid://dnxe2r4g4uftr" path="res://assets/fruitality.png" id="16_x80bp"]
+[ext_resource type="Texture2D" uid="uid://bhchynieveg21" path="res://assets/fruitality.png" id="16_x80bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6e4s"]
 size = Vector2(1242, 53.5)
@@ -84,10 +84,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-1200, 0), Vector2(0, 0), Vector2(-1200, 0)]
+"values": [Vector2(-1200, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uns5w"]
@@ -245,7 +245,8 @@ autostart = true
 [node name="Fruitality" type="TextureRect" parent="GUI/UI"]
 z_index = 100
 layout_mode = 0
-offset_right = 1920.0
+offset_left = -1200.0
+offset_right = 720.0
 offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("16_x80bp")
