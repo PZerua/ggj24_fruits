@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_4sci4"]
 [ext_resource type="Texture2D" uid="uid://cer2yh82aih0n" path="res://assets/menus/Menu.png" id="2_wg2vv"]
-[ext_resource type="PackedScene" path="res://assets/fruits/reina/reina_init.tscn" id="3_1di6s"]
+[ext_resource type="PackedScene" uid="uid://60at5u41ll26" path="res://assets/fruits/reina/reina_init.tscn" id="3_1di6s"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
