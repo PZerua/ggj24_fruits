@@ -15,7 +15,7 @@ func _ready():
 	
 func _process(delta):
 	timer -= delta
-	if timer <= 0.0 or Input.is_action_pressed("PUNCH_1") or Input.is_action_pressed("PUNCH_2"):
+	if timer <= 0.0 or Input.is_action_just_pressed("PUNCH_1") or Input.is_action_just_pressed("PUNCH_2"):
 		current_line += 1
 		if current_line >= lines.size():
 			print("Combat Started. Fight!")
