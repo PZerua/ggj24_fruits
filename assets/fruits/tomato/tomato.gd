@@ -10,6 +10,8 @@ var is_crying : bool = false
 var last_input_time : float = 0.0
 var cry_timer : float = 0.0
 
+var cry_audio = load("res://assets/audio/tomato_scream.ogg")
+
 func _init():
 	fruit_type = FruitType.TOMATO
 
@@ -19,27 +21,33 @@ func _ready():
 func _process(delta):
 	
 	var new_time = Time.get_ticks_msec()
-	if (new_time - last_input_time) > IDLE_TIME_TO_CRY:
+	if not is_crying and (new_time - last_input_time) > IDLE_TIME_TO_CRY:
 		is_crying = true
+		$AttackAudioStream.stream = cry_audio
+		$AttackAudioStream.play()
 	
 	if is_crying:
 		$AnimatedSprite2D.play("cry")
 		cry_timer += delta
 		if cry_timer >= CRY_TIME:
 			last_input_time = new_time
-			cry_timer = 0.0
-			is_crying = false
+			stop_crying()
 	else:
 		process_moves(["PUNCH_1", "KICK_1", "BLOCK_1", "MOVE_LEFT_1", "MOVE_RIGHT_1"])
 		super._process(delta)
+
+func stop_crying():
+	cry_timer = 0.0
+	is_crying = false
+	$AttackAudioStream.stop()
 
 func _physics_process(delta):
 	process_movement(delta, "JUMP_1", ["MOVE_LEFT_1", "MOVE_RIGHT_1"])
 
 # Any event causes to stop crying...
 func _input(event):
-	is_crying = false
 	last_input_time = Time.get_ticks_msec()
+	stop_crying()
 
 func _on_punch_trigger_body_entered(body):
 	process_hit(body, punch_damage)
